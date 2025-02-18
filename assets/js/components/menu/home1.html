@@ -1,0 +1,398 @@
+<div>
+
+   <!-- Topbar Start button show -->
+   <div class="container-fluid bg-gradientX d-none d-lg-block">
+      <div class="row align-items-center top-bar">
+         <div class="col-lg-3 col-md-12 text-center text-lg-start">
+            <a href="" class="navbar-brand m-0 p-0">
+               <img src="assets/img/logo.png" class="img_logo m-0">
+            </a>
+         </div>
+         <div class="col-lg-9 col-md-12 text-end text-white">
+            <div class="h-100 d-inline-flex align-items-center me-4">
+               <i class="fa fa-map-marker-alt  me-2"></i>
+               <p class="m-0 "><a href="portifolio/index.html#/" class="text-white" target="_blank"
+                     rel="noopener noreferrer">Meu Portifolo</a></p>
+            </div>
+
+            <div class="h-100 d-inline-flex align-items-center me-4">
+               <i class="far fa-envelope-open me-2"></i>
+               <p class="m-0">geral@jlsystem.ao</p>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center">
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Topbar End -->
+
+   <!-- Navbar Start -->
+   <div id="headerX" class="container-fluid nav-bar bg-gradientX  headerX">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
+         <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+            <img src="assets/img/logo.png" class="img_logo m-0">
+         </a>
+         <button @click="mostrarMenu()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+         </button>
+
+         <div class="collapse navbar-collapse " :class="{ show:activo }">
+
+
+            <div class="navbar-nav me-auto">
+               <a @click="homeMenu()" href="#/" class="nav-item nav-link" :class="{ active_item:activo1 }">Home</a>
+               <a @click="sobreMenu()" href="#/sobre" class="nav-item nav-link" :class="{ active_item:activo2 }">Sobre
+                  Nós</a>
+
+               <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle show" @click="mostrarMenuService()">Serviços</a>
+
+                  <div class="dropdown-menu fade-up m-0 " :class="{ show:activoService }">
+                    
+                     <div class=" menu_sub">
+                        <div class="swiper mySwiper ">
+                           <div class="swiper-wrapper ">
+                              <div class="swiper-slide menu_sub1">
+
+                                 <div class="row_servico ">
+
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-globe fa-2x text-primary"></i>
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Criação de Sites</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa-solid fa-store fa-2x text-primary"></i>
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center"> Loja Virtual </h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-pager fa-2x text-primary"></i>
+         
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Sistema de Gestão</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-server fa-2x text-primary"></i>
+         
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Hospedagem de Sites</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-house-signal fa-2x text-primary"></i>
+         
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Domínio</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list ">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-at fa-2x text-primary"></i>
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Email Profissional</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+         
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-street-view fa-2x text-primary"></i>
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Designer Gráfico</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center p-4 servico_list">
+                                          <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                             style="width: 100%; height: 80px;">
+                                             <i class="fa fa-solid fa-building-lock fa-2x text-primary"></i>
+         
+                                          </div>
+                                          <div class="ms-3">
+                                             <h6 class="m-0 text-secondary text-center">Segurança eletrônica</h6>
+                                          </div>
+                                       </div>
+                                    </div>
+         
+                                    <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                                       <div class="border border-5 align-items-center">
+         
+                                          <div class="flipbox-container">
+                                             <div class="flipbox-wrapper">
+                                                <!-- flipbox front -->
+                                                <div class="flipbox-front  p-4 ">
+                                                   <div class="flipbox-content">
+         
+                                                      <div
+                                                         class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                                         style="width: 100%; height: 80px;">
+                                                         <i class="fa fa-solid fa-bullhorn fa-2x text-primary"></i>
+                                                      </div>
+                                                      <div class="ms-3">
+                                                         <h6 class="m-0 text-secondary text-center">Marketing Digital</h6>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <!-- flipbox back -->
+                                                <div class="flipbox-back  p-4 ">
+                                                   <div class="flipbox-content">
+                                                      <p> <a href="#/gestao-de-redes-sociais" class="flipbox-container"> Gestão
+                                                            de Mídias Sociais</a>
+                                                      </p>
+                                                      <p><a href="team.html" class="flipbox-container">Marketing de Conteúdo</a>
+                                                      </p>
+                                                      <p><a href="#/email-marketing" class="flipbox-container"> Email
+                                                            Marketing</a></p>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+         
+         
+         
+         
+                                       </div>
+                                    </div>
+         
+                                 </div>
+
+                              </div>
+                           </div>
+                           <div class="swiper-scrollbar"></div>
+                        </div>
+
+
+
+                        <div class="row_servico">
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-globe fa-2x text-primary"></i>
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Criação de Sites</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa-solid fa-store fa-2x text-primary"></i>
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center"> Loja Virtual </h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-pager fa-2x text-primary"></i>
+
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Sistema de Gestão</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-server fa-2x text-primary"></i>
+
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Hospedagem de Sites</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-house-signal fa-2x text-primary"></i>
+
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Domínio</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list ">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-at fa-2x text-primary"></i>
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Email Profissional</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-street-view fa-2x text-primary"></i>
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Designer Gráfico</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center p-4 servico_list">
+                                 <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                    style="width: 100%; height: 80px;">
+                                    <i class="fa fa-solid fa-building-lock fa-2x text-primary"></i>
+
+                                 </div>
+                                 <div class="ms-3">
+                                    <h6 class="m-0 text-secondary text-center">Segurança eletrônica</h6>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="border border-5 align-items-center">
+
+                                 <div class="flipbox-container">
+                                    <div class="flipbox-wrapper">
+                                       <!-- flipbox front -->
+                                       <div class="flipbox-front  p-4 ">
+                                          <div class="flipbox-content">
+
+                                             <div
+                                                class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                                                style="width: 100%; height: 80px;">
+                                                <i class="fa fa-solid fa-bullhorn fa-2x text-primary"></i>
+                                             </div>
+                                             <div class="ms-3">
+                                                <h6 class="m-0 text-secondary text-center">Marketing Digital</h6>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!-- flipbox back -->
+                                       <div class="flipbox-back  p-4 ">
+                                          <div class="flipbox-content">
+                                             <p> <a href="#/gestao-de-redes-sociais" class="flipbox-container"> Gestão
+                                                   de Mídias Sociais</a>
+                                             </p>
+                                             <p><a href="team.html" class="flipbox-container">Marketing de Conteúdo</a>
+                                             </p>
+                                             <p><a href="#/email-marketing" class="flipbox-container"> Email
+                                                   Marketing</a></p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
+
+
+                              </div>
+                           </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 ">
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-12">
+
+                        </div>
+
+                        
+                     </div>
+
+                  </div>
+               </div>
+               <a @click="contactoMenu()" href="#/contato" class="nav-item nav-link"
+                  :class="{ active_item:activo5 }">Contactos</a>
+            </div>
+            <!-- 
+ -->
+
+            <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4 bg-primary d-flex align-items-center">
+               <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                  style="width: 45px; height: 45px;">
+                  <i class="fa fa-phone-alt text-primary"></i>
+               </div>
+               <div class="ms-3">
+                  <p class="mb-1 text-white">Atendimento 24/7</p>
+                  <h5 class="m-0 text-secondary">+244 942 459 967</h5>
+               </div>
+            </div>
+         </div>
+
+      </nav>
+   </div>
+   <!-- Navbar End -->
+
+</div>

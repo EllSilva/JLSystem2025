@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>JLSystem - Soluções Tecnológicas </title>
+    <link rel="icon" href="./assets/img/favicon.png" type="image/gif" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+
+    <style>
+        .mrgb15x {
+            margin-bottom: 50px;
+        }
+
+        .mrgt15x {
+            margin-top: 150px;
+        }
+
+        .mrgt8x {
+            margin-top: 80px;
+        }
+
+        .mrgb4x {
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            position: relative;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-heading h3 {
+            letter-spacing: 4px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .letterspace4x {
+            letter-spacing: 4px;
+        }
+
+        .section-heading.blue-border h3::after {
+            border-bottom: 3px solid #42a5f6;
+            bottom: -15px;
+            content: "";
+            display: block;
+            height: 3px;
+            margin: 0 auto;
+            position: absolute;
+            width: 42px;
+            left: 48%;
+        }
+
+        .section-heading p {
+            font-size: 16px;
+            margin-top: 44px;
+        }
+
+        .nav-pills>li+li {
+            margin-left: 0;
+        }
+
+        .nav-pills>li+li {
+            margin-left: 0;
+        }
+
+        /*..................PRICING TABLE SECTION...........*/
+        .plan-option .nav.nav-pills li a {
+            border: 1px solid #ebf0f2;
+            color: #232323;
+            font-size: 12px;
+            padding: 18px 35px;
+            border-radius: 0px;
+        }
+
+        .plan-option .nav.nav-pills .active a {
+            border-color: #42a5f6;
+            background-color: #42a5f6;
+            color: #fff;
+        }
+
+        .plan-option .nav.nav-pills li:last-child a {
+            border-left: none;
+        }
+
+        .plan-option .nav.nav-pills {
+            display: inline-flex;
+        }
+
+        .plan-option .nav.nav-pills li {
+            position: relative;
+        }
+
+        .nav-pills>li+li {
+            margin-left: 0;
+        }
+
+        .plan-option .or-crircle {
+            background-color: #42a5f6;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+            color: #fff;
+            display: block;
+            font-size: 9px;
+            height: 25px;
+            line-height: 27px;
+            text-align: center;
+            width: 25px;
+            position: absolute;
+            top: 0px;
+            left: -14px;
+            z-index: 1;
+        }
+
+        .pricing-table p {
+            font-size: 14px;
+            color: #777777;
+            margin-bottom: 40px;
+            margin-top: 10px;
+        }
+
+        .plan-price h1 {
+            font-size: 50px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .plan-price h1 sup {
+            top: -0.4em;
+            font-size: 28px;
+        }
+
+        .plan-price sub {
+            font-size: 12px;
+            color: #333333;
+            display: inline-block;
+            font-family: 'PT Sans';
+            bottom: 0.25em;
+        }
+
+        .plan-price span.underline {
+            border-bottom: 2px solid #42a5f6;
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            text-align: left;
+            width: 22px;
+        }
+
+        .upper-detail {
+            position: relative;
+            padding-top: 50px;
+        }
+
+        .plan-price {
+            padding-bottom: 43px;
+            position: relative;
+        }
+
+        .lower-detail ul>li {
+            border-bottom: 1px solid #f0f0f0;
+            margin: 0;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .lower-detail ul li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-get {
+            padding: 18px 42px;
+            border: 2px solid #e5e5e5;
+            background: transparent;
+            color: #232323;
+            font-size: 12px;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-top: 30px;
+            margin-bottom: 0;
+        }
+
+        .outer-border:hover .btn-get {
+            background-color: #42a5f6;
+            border-color: #42a5f6;
+            color: #fff;
+        }
+
+        .upper-detail::after {
+            border-left: 172px solid transparent;
+            border-right: 171px solid transparent;
+            border-top: 30px solid #fff;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            transition: all 0.4s ease-in 0s;
+        }
+
+        .plan-price::after {
+            border-left: 172px solid #fff;
+            border-right: 170px solid #fff;
+            border-top: 30px solid #ededed;
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+        }
+
+        .pricing-table {
+            border: 1px solid #ededed;
+        }
+
+        .outer-border {
+            border: 8px solid #f8f8f8;
+        }
+
+        .new-tag span {
+            font-size: 12px;
+            background-color: #204165;
+            color: #fff;
+            font-family: 'PT Sans';
+            padding: 6px 15px;
+        }
+
+        .new-tag {
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+
+        .lower-detail {
+            margin-top: 25px;
+            padding: 0 50px;
+        }
+
+        .outer-border:hover .upper-detail {
+            background-color: #f8f9fb;
+        }
+
+        .outer-border:hover .upper-detail::after {
+            border-top-color: #f8f9fb;
+        }
+
+        .outer-border:hover {
+            border-color: #fff;
+            box-shadow: 0 0 12px #f6f6f6;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+     
+        <div class="container">
+            <div class="pricing-plan mrgt15x mrgb15x">
+                <div class="section-heading blue-border text-center mrgb4x">
+                    <h3 class="letterspace4x">SELECT PRICING PLAN</h3>
+                    <p>Thundercats Portland aesthetic DIY pork belly mumblecore, ennui fixie synth Williamsburg
+                        cliche<br>
+                        beard post-ironic heirloom. Bespoke synth shabby chicen.
+                    </p>
+                </div>
+
+                <div class="pricing-content text-center">
+
+                    
+                    <div class="plan-option">
+                        <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="tab" href="#monthly" aria-expanded="true">MONTHLY</a>
+                            </li>
+                            <li><span class="or-crircle">OR</span></li>
+                            <li><a data-toggle="tab" href="#yearly">YEARLY</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="tab-content mrgt8x">
+                        <div id="monthly" class="tab-pane   in active">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="outer-border">
+                                        <div class="pricing-table">
+                                            <div class="upper-detail">
+                                                <h5 class="plan-name letterspace4x">BASIC</h5>
+                                                <p>Perfectly Suitable For Business</p>
+                                                <div class="plan-price">
+                                                    <h1><sup>$</sup>10</h1>
+                                                    <sub><span class="underline">PER</span><span>MONTH</span></sub>
+                                                </div>
+                                            </div>
+                                            <div class="lower-detail">
+                                                <ul>
+                                                    <li>Full statistics</li>
+                                                    <li>Max 100 items/month</li>
+                                                    <li>Up to 5 users</li>
+                                                    <li>Unlimited queries</li>
+                                                </ul>
+                                                <a href="#" class="btn-get">GET STARTED</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="outer-border">
+                                        <div class="pricing-table">
+                                            <div class="upper-detail">
+                                                <div class="new-tag">
+                                                    <span>NEW!</span>
+                                                </div>
+                                                <h5 class="plan-name letterspace4x">POPULAR</h5>
+                                                <p>Best Plan for Professionals Users</p>
+                                                <div class="plan-price">
+                                                    <h1><sup>$</sup>39</h1>
+                                                    <sub><span class="underline">PER</span><span>MONTH</span></sub>
+                                                </div>
+                                            </div>
+                                            <div class="lower-detail">
+                                                <ul>
+                                                    <li>Full statistics</li>
+                                                    <li>Max 100 items/month</li>
+                                                    <li>Up to 5 users</li>
+                                                    <li>Unlimited queries</li>
+                                                </ul>
+                                                <a href="#" class="btn-get">GET STARTED</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="outer-border">
+                                        <div class="pricing-table">
+                                            <div class="upper-detail">
+                                                <h5 class="plan-name letterspace4x">PREMIUM</h5>
+                                                <p>Power User Select this Plan</p>
+                                                <div class="plan-price">
+                                                    <h1><sup>$</sup>79</h1>
+                                                    <sub><span class="underline">PER</span><span>MONTH</span></sub>
+                                                </div>
+                                            </div>
+                                            <div class="lower-detail">
+                                                <ul>
+                                                    <li>Full statistics</li>
+                                                    <li>Max 100 items/month</li>
+                                                    <li>Up to 5 users</li>
+                                                    <li>Unlimited queries</li>
+                                                </ul>
+                                                <a href="#" class="btn-get">GET STARTED</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+ 
+    <!-- Javascript files-->
+    <script src="./assets/lib/jquery.min.js"></script>
+    <script src="./assets/lib/bootstrap.bundle.min.js"></script> 
+
+   
+</body>
+</html>

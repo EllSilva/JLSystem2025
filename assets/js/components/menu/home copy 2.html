@@ -1,0 +1,285 @@
+<div>
+
+   <!-- Topbar Start button show -->
+   <div class="container-fluid bg-gradientX d-none d-lg-block">
+      <div class="row align-items-center top-bar">
+         <div class="col-lg-3 col-md-12 text-center text-lg-start">
+            <a href="" class="navbar-brand m-0 p-0">
+               <img src="assets/img/logo.png" class="img_logo m-0">
+            </a>
+         </div>
+         <div class="col-lg-9 col-md-12 text-end text-white">
+            <div class="h-100 d-inline-flex align-items-center me-4">
+               <i class="fa fa-map-marker-alt  me-2"></i>
+               <p class="m-0 "><a href="portifolio/index.html#/" class="text-white" target="_blank"
+                     rel="noopener noreferrer">Meu Portifolo</a></p>
+            </div>
+
+            <div class="h-100 d-inline-flex align-items-center me-4">
+               <i class="far fa-envelope-open me-2"></i>
+               <p class="m-0">geral@jlsystem.ao</p>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center">
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+               <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Topbar End -->
+
+
+
+
+   
+   <!-- Navbar Start -->
+   <div id="headerX" class="container-fluid nav-bar bg-gradientX  headerX">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
+         <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+            <img src="assets/img/logo.png" class="img_logo m-0">
+         </a>
+         <button @click="mostrarMenu()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+         </button>
+
+         <div class="collapse navbar-collapse " :class="{ show:activo }">
+
+
+            <div class="navbar-nav me-auto">
+               <a @click="homeMenu()" href="#/" class="nav-item nav-link" :class="{ active_item:activo1 }">Home</a>
+               <a @click="sobreMenu()" href="#/sobre" class="nav-item nav-link" :class="{ active_item:activo2 }">Sobre
+                  Nós</a>
+
+               <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle show" @click="mostrarMenuService()">Serviços</a>
+
+                  <div class="dropdown-menu fade-up m-0 " :class="{ show:activoService }">
+                     <div class="row menu_sub">
+
+
+                        <div class="swiper mySwiper">
+                           <div class="swiper-wrapper">
+                             <div class="swiper-slide">
+                               <h4>Scroll Container</h4>
+                               <p>
+                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
+                                 ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
+                                 dolor lectus eu libero. Vestibulum venenatis eget turpis sed
+                                 faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
+                                 elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
+                                 tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
+                                 Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
+                                 hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
+                                 tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
+                                 nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
+                                 sodales posuere eget non est. Fusce convallis vestibulum dolor non
+                                 volutpat. Vivamus vestibulum quam ut ultricies pretium.
+                               </p>
+                               <p>
+                                 Suspendisse rhoncus fringilla nisl. Mauris eget lorem ac urna
+                                 consectetur convallis non vel mi. Donec libero dolor, volutpat ut
+                                 urna sit amet, aliquet molestie purus. Phasellus faucibus, leo vel
+                                 scelerisque lobortis, ipsum leo sollicitudin metus, eget sagittis
+                                 ante orci eu ipsum. Nulla ac mauris eu risus sagittis scelerisque
+                                 iaculis bibendum mauris. Cras ut egestas orci. Cras odio risus,
+                                 sagittis ut nunc vitae, aliquam consectetur purus. Vivamus ornare
+                                 nunc vel tellus facilisis, quis dictum elit tincidunt. Donec
+                                 accumsan nisi at laoreet sodales. Cras at ullamcorper massa.
+                                 Maecenas at facilisis ex. Nam mollis dignissim purus id efficitur.
+                               </p>
+                               <p>
+                                 Curabitur eget aliquam erat. Curabitur a neque vitae purus volutpat
+                                 elementum. Vivamus quis vestibulum leo, efficitur ullamcorper velit.
+                                 Integer tincidunt finibus metus vel porta. Mauris sed mauris congue,
+                                 pretium est nec, malesuada purus. Nulla hendrerit consectetur arcu
+                                 et lacinia. Suspendisse augue justo, convallis eget arcu in, pretium
+                                 tempor ligula. Nullam vulputate tincidunt est ut ullamcorper.
+                               </p>
+                               <p>
+                                 Curabitur sed sodales leo. Nulla facilisi. Etiam condimentum, nisi
+                                 id tempor vulputate, nisi justo cursus justo, pellentesque
+                                 condimentum diam arcu sit amet leo. Cum sociis natoque penatibus et
+                                 magnis dis parturient montes, nascetur ridiculus mus. In placerat
+                                 tellus a posuere vehicula. Donec diam massa, efficitur vitae mattis
+                                 et, pretium in augue. Fusce iaculis mi quis ante venenatis, sit amet
+                                 pellentesque orci aliquam. Vestibulum elementum posuere vehicula.
+                               </p>
+                               <p>
+                                 Sed tincidunt diam a massa pharetra faucibus. Praesent condimentum
+                                 id arcu nec fringilla. Maecenas faucibus, ante et venenatis
+                                 interdum, erat mi eleifend dui, at convallis nisl est nec arcu. Duis
+                                 vitae arcu rhoncus, faucibus magna ut, tempus metus. Cras in nibh
+                                 sed ipsum consequat rhoncus. Proin fringilla nulla ut augue tempor
+                                 fermentum. Nunc hendrerit non nisi vitae finibus. Donec eget ornare
+                                 libero. Aliquam auctor erat enim, a semper risus semper at. In ut
+                                 dui in metus tincidunt euismod eget et lacus. Aenean et dictum urna,
+                                 sed rhoncus lorem. Duis pharetra sagittis odio. Etiam a libero ut
+                                 nisi feugiat tincidunt vel vitae turpis. Maecenas vel orci sit amet
+                                 lorem hendrerit venenatis sollicitudin ut dui. Quisque rhoncus nibh
+                                 in massa pretium scelerisque.
+                               </p>
+                               <p>
+                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
+                                 ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
+                                 dolor lectus eu libero. Vestibulum venenatis eget turpis sed
+                                 faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
+                                 elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
+                                 tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
+                                 Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
+                                 hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
+                                 tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
+                                 nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
+                                 sodales posuere eget non est. Fusce convallis vestibulum dolor non
+                                 volutpat. Vivamus vestibulum quam ut ultricies pretium.
+                               </p>
+                               <p>
+                                 Suspendisse rhoncus fringilla nisl. Mauris eget lorem ac urna
+                                 consectetur convallis non vel mi. Donec libero dolor, volutpat ut
+                                 urna sit amet, aliquet molestie purus. Phasellus faucibus, leo vel
+                                 scelerisque lobortis, ipsum leo sollicitudin metus, eget sagittis
+                                 ante orci eu ipsum. Nulla ac mauris eu risus sagittis scelerisque
+                                 iaculis bibendum mauris. Cras ut egestas orci. Cras odio risus,
+                                 sagittis ut nunc vitae, aliquam consectetur purus. Vivamus ornare
+                                 nunc vel tellus facilisis, quis dictum elit tincidunt. Donec
+                                 accumsan nisi at laoreet sodales. Cras at ullamcorper massa.
+                                 Maecenas at facilisis ex. Nam mollis dignissim purus id efficitur.
+                               </p>
+                               <p>
+                                 Curabitur eget aliquam erat. Curabitur a neque vitae purus volutpat
+                                 elementum. Vivamus quis vestibulum leo, efficitur ullamcorper velit.
+                                 Integer tincidunt finibus metus vel porta. Mauris sed mauris congue,
+                                 pretium est nec, malesuada purus. Nulla hendrerit consectetur arcu
+                                 et lacinia. Suspendisse augue justo, convallis eget arcu in, pretium
+                                 tempor ligula. Nullam vulputate tincidunt est ut ullamcorper.
+                               </p>
+                               <p>
+                                 Curabitur sed sodales leo. Nulla facilisi. Etiam condimentum, nisi
+                                 id tempor vulputate, nisi justo cursus justo, pellentesque
+                                 condimentum diam arcu sit amet leo. Cum sociis natoque penatibus et
+                                 magnis dis parturient montes, nascetur ridiculus mus. In placerat
+                                 tellus a posuere vehicula. Donec diam massa, efficitur vitae mattis
+                                 et, pretium in augue. Fusce iaculis mi quis ante venenatis, sit amet
+                                 pellentesque orci aliquam. Vestibulum elementum posuere vehicula.
+                               </p>
+                               <p>
+                                 Sed tincidunt diam a massa pharetra faucibus. Praesent condimentum
+                                 id arcu nec fringilla. Maecenas faucibus, ante et venenatis
+                                 interdum, erat mi eleifend dui, at convallis nisl est nec arcu. Duis
+                                 vitae arcu rhoncus, faucibus magna ut, tempus metus. Cras in nibh
+                                 sed ipsum consequat rhoncus. Proin fringilla nulla ut augue tempor
+                                 fermentum. Nunc hendrerit non nisi vitae finibus. Donec eget ornare
+                                 libero. Aliquam auctor erat enim, a semper risus semper at. In ut
+                                 dui in metus tincidunt euismod eget et lacus. Aenean et dictum urna,
+                                 sed rhoncus lorem. Duis pharetra sagittis odio. Etiam a libero ut
+                                 nisi feugiat tincidunt vel vitae turpis. Maecenas vel orci sit amet
+                                 lorem hendrerit venenatis sollicitudin ut dui. Quisque rhoncus nibh
+                                 in massa pretium scelerisque.
+                               </p>
+                             </div>
+                           </div>
+                           <div class="swiper-scrollbar"></div>
+                         </div>
+
+
+
+
+                        <div class="col-lg-3 col-md-12 ">
+                           <div class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-secondary  "
+                                 @click="mostrarSite()">APLICAÇÕES E SISTEMAS </a>
+                              <div class="dropdown-menu fade-up m-0" :class="{ show:activoSite }">
+                                 <a @click="fechaTodosMenu()" href="#/criacao-de-sites" class="dropdown-item">Criação de
+                                    Sites</a>
+                                 <a @click="fechaTodosMenu()" href="#/criacao-de-loja-virtual"
+                                    class="dropdown-item">Loja Virtual (E-Commerce)</a>
+                                 <a @click="fechaTodosMenu()" href="#" class="dropdown-item">Sistema de Gestão</a>
+                                 <hr>
+                                 <a @click="fechaTodosMenu()" href="#/hospedagem" class="dropdown-item">Hospedagem</a>
+                                 <a @click="fechaTodosMenu()" href="#/dominios" class="dropdown-item">Domínio</a>
+
+
+                                 <a @click="fechaTodosMenu()" href="#/email-profissional" class="dropdown-item">Email
+                                    Profissional</a>
+
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12">
+                           <div class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-secondary text-uppercase"
+                                 @click="mostrarDesign()">DESIGN GRÁFICO</a>
+                              <div class="dropdown-menu fade-up m-0" :class="{ show:activoDesign }">
+                                 <a @click="fechaTodosMenu()" href="#/criacao-de-logotipo" class="dropdown-item">
+                                    Logotipos</a>
+                                 <a @click="fechaTodosMenu()" href="#/criacao-de-cartoes" class="dropdown-item">Cartões de Visitas
+                                 </a>
+                                 <a @click="fechaTodosMenu()" href="#/papelaria" class="dropdown-item">Papel Timbrado & Envelope </a>
+                                 <a @click="fechaTodosMenu()" href="#/criacao-flyer-folder" class="dropdown-item">Flyer
+                                    e
+                                    folder</a>
+                                 <a @click="fechaTodosMenu()" href="#/criacao-visual" class="dropdown-item">Identidade
+                                    Visual</a>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12">
+
+                           <div class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-secondary text-uppercase"
+                                 @click="mostrarMarketig()">MARKETING DIGITAL</a>
+                              <div class="dropdown-menu fade-up m-0" :class="{ show:activoMarketig }">
+                                 <a @click="fechaTodosMenu()" href="#/gestao-de-redes-sociais" class="dropdown-item"> Gestão
+                                    de Mídias Sociais</a>
+                                 <a @click="fechaTodosMenu()" href="team.html" class="dropdown-item">Marketing de Conteúdo</a>
+                                 <a @click="fechaTodosMenu()" href="#/email-marketing" class="dropdown-item"> Email
+                                    Marketing</a>
+                              </div>
+                           </div>
+
+                          
+                        </div>
+
+                        <div class="col-lg-3 col-md-12">
+                           
+                           <div class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-secondary text-uppercase"
+                                 @click="mostrarOutros()">OUTROS</a>
+                              <div class="dropdown-menu fade-up m-0" :class="{ show:activoOutros }">
+                                  <a @click="fechaTodosMenu()" href="#/assinatura-de-email" class="dropdown-item"> Assinatura
+                              de E-mail</a>
+                              </div>
+                           </div>
+                            
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+               <a @click="contactoMenu()" href="#/contato" class="nav-item nav-link"
+                  :class="{ active_item:activo5 }">Contactos</a>
+            </div>
+            <!-- 
+ -->
+
+            <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4 bg-primary d-flex align-items-center">
+               <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                  style="width: 45px; height: 45px;">
+                  <i class="fa fa-phone-alt text-primary"></i>
+               </div>
+               <div class="ms-3">
+                  <p class="mb-1 text-white">Atendimento 24/7</p>
+                  <h5 class="m-0 text-secondary">+244 942 459 967</h5>
+               </div>
+            </div>
+         </div>
+
+      </nav>
+   </div>
+   <!-- Navbar End -->
+
+</div>

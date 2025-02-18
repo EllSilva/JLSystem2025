@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Pequeno Responsivo</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .top-menu {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+        }
+        .top-menu .left {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .top-menu .right {
+            display: flex;
+            align-items: center;
+        }
+        .top-menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .top-menu a:hover {
+            text-decoration: none;
+        }
+        .top-menu .left a:not(:last-child)::after {
+            content: " | ";
+            color: white;
+            margin-left: 10px;
+        }
+        @media screen and (max-width: 600px) {
+            .top-menu {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px;
+            }
+            .top-menu .left {
+                gap: 10px;
+            }
+            .top-menu a {
+                font-size: 0;
+                white-space: nowrap;
+            }
+            .top-menu a::before {
+                font-size: 16px;
+                content: attr(data-icon);
+            }
+            .top-menu .left a:not(:last-child)::after {
+                content: " | ";
+                color: white;
+                margin-left: 5px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-menu">
+        <div class="left">
+            <a href="mailto:contato@empresa.com" data-icon="📧">📧 contato@empresa.com</a>
+            <a href="tel:+351123456789" data-icon="📞">📞 +351 123 456 789</a>
+            <a href="https://wa.me/351123456789" target="_blank" data-icon="💬">💬 WhatsApp</a>
+        </div>
+        <div class="right">
+            <a href="#client-area" data-icon="👤">👤 Área do Cliente</a>
+        </div>
+    </div>
+</body>
+</html>
