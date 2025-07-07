@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Responsivo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .menu {
-            display: flex;
-            gap: 20px;
-            background: #333;
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 18px;
-        }
-        .menu a i {
-            font-size: 20px;
-        }
-        .menu span.separator {
-            color: white;
-            font-size: 18px;
-        }
-        @media (max-width: 600px) {
-            .menu a span {
-                display: none;
-            }
-            .menu span.separator {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Como Funciona</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #0a0a0a;
+    }
+
+    .como-funciona {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .como-funciona h2 {
+      font-size: 28px;
+      margin-bottom: 50px;
+      font-weight: 700;
+      color: #0a0a0a;
+    }
+
+    .passos {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .passo {
+      max-width: 300px;
+    }
+
+    .numero {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background-color: #e6f0ff;
+      color: #4a90e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .passo h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0a0a0a;
+    }
+
+    .passo p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-    <nav class="menu">
-        <a href="tel:+351123456789">
-            <i class="fas fa-phone"></i>
-            <span>+351 123 456 789</span>
-        </a>
-        <span class="separator">|</span>
-        <a href="mailto:email@example.com">
-            <i class="fas fa-envelope"></i>
-            <span>email@example.com</span>
-        </a>
-        <span class="separator">|</span>
-        <a href="https://wa.me/351123456789" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            <span>WhatsApp</span>
-        </a>
-    </nav>
+
+  <section class="como-funciona">
+    <h2>Como Funciona o SiteJet</h2>
+    <div class="passos">
+      <div class="passo">
+        <div class="numero">1</div>
+        <h3>Escolha um Template</h3>
+        <p>Selecione entre centenas de templates profissionais e personalizáveis.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">2</div>
+        <h3>Personalize seu Site</h3>
+        <p>Use nosso editor drag-and-drop para adicionar seu conteúdo e ajustar o design.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">3</div>
+        <h3>Publique e Cresça</h3>
+        <p>Lance seu site com um clique e comece a atrair visitantes imediatamente.</p>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>

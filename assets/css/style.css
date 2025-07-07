@@ -321,12 +321,12 @@ button {
 /*-- header --*/
 
 .header-area  {
-     padding: 10px 16px;
+     padding: 5px 6px;
      color: #f1f1f1;
      width: 100%;
      z-index: 9999999;
-     height: 47px;
-     background:#ed242e;
+     height: 37px;
+     background:#ed242e; 
 }
 
 .header-area_design  {
@@ -522,6 +522,16 @@ button {
     position: relative;
 }
 
+
+.full_bg_site {
+    background: url(../images/banner_web.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+   padding-bottom: 150px;
+    position: relative;
+}
 
 
 .full_bg .carousel-indicators {

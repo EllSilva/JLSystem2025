@@ -1,87 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Pequeno Responsivo</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .top-menu {
-            background: #333;
-            color: white;
-            padding: 10px 0;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 10px 20px;
-        }
-        .top-menu .left {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .top-menu .right {
-            display: flex;
-            align-items: center;
-        }
-        .top-menu a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .top-menu a:hover {
-            text-decoration: none;
-        }
-        .top-menu .left a:not(:last-child)::after {
-            content: " | ";
-            color: white;
-            margin-left: 10px;
-        }
-        @media screen and (max-width: 600px) {
-            .top-menu {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 10px;
-            }
-            .top-menu .left {
-                gap: 10px;
-            }
-            .top-menu a {
-                font-size: 0;
-                white-space: nowrap;
-            }
-            .top-menu a::before {
-                font-size: 16px;
-                content: attr(data-icon);
-            }
-            .top-menu .left a:not(:last-child)::after {
-                content: " | ";
-                color: white;
-                margin-left: 5px;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slider com Loop Suave</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    .slider-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: calc(100% / 6);
+      padding: 5px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 1024px) {
+      .slide {
+        min-width: calc(100% / 3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        min-width: 50%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slide {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-menu">
-        <div class="left">
-            <a href="mailto:contato@empresa.com" data-icon="📧">📧 contato@empresa.com</a>
-            <a href="tel:+351123456789" data-icon="📞">📞 +351 123 456 789</a>
-            <a href="https://wa.me/351123456789" target="_blank" data-icon="💬">💬 WhatsApp</a>
-        </div>
-        <div class="right">
-            <a href="#client-area" data-icon="👤">👤 Área do Cliente</a>
-        </div>
-    </div>
+
+<div class="slider-container">
+  <div class="slider-track" id="sliderTrack">
+    <!-- Clones do final (serão colocados no início para suavizar loop) -->
+    <div class="slide"><img src="https://picsum.photos/id/1035/600/400" alt="Clone F"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1015/600/400" alt="Clone A"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1016/600/400" alt="Clone B"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1018/600/400" alt="Clone C"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1020/600/400" alt="Clone D"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1024/600/400" alt="Clone E"></div>
+
+    <!-- Slides originais -->
+    <div class="slide"><img src="https://picsum.photos/id/1035/600/400" alt="1"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1015/600/400" alt="2"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1016/600/400" alt="3"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1018/600/400" alt="4"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1020/600/400" alt="5"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1024/600/400" alt="6"></div>
+
+    <!-- Clones do início (serão colocados no fim) -->
+    <div class="slide"><img src="https://picsum.photos/id/1035/600/400" alt="Clone 1"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1015/600/400" alt="Clone 2"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1016/600/400" alt="Clone 3"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1018/600/400" alt="Clone 4"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1020/600/400" alt="Clone 5"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1024/600/400" alt="Clone 6"></div>
+  </div>
+</div>
+
+<script>
+  const track = document.getElementById('sliderTrack');
+  const slides = track.children;
+  let index = 6; // Começa após os clones iniciais
+  let slideWidth = slides[0].offsetWidth;
+
+  // Posição inicial
+  track.style.transform = `translateX(-${slideWidth * index}px)`;
+
+  function moveSlide() {
+    index++;
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+
+    if (index === slides.length - 6) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        index = 6; // Voltar ao primeiro slide real
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+      }, 500);
+    }
+  }
+
+  setInterval(moveSlide, 3000);
+
+  window.addEventListener("resize", () => {
+    slideWidth = slides[0].offsetWidth;
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+  });
+</script>
+
 </body>
 </html>

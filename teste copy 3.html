@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Perguntas Frequentes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ece9e6, #ffffff);
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .faq-container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #eee;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 25px;
+      cursor: pointer;
+      background: #f9f9f9;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: #f1f1f1;
+    }
+
+    .faq-question span {
+      font-size: 18px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .icon {
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #fff;
+      color: #666;
+      padding: 0 25px;
+      font-size: 16px;
+      line-height: 1.5;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 15px 25px 25px;
+    }
+
+    .faq-item.active .icon {
+      transform: rotate(45deg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Perguntas Frequentes</h1>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>O que é este site?</span>
+        <div class="icon">➕</div>
+      </div>
+      <div class="faq-answer">
+        Este site é um exemplo moderno de uma área de perguntas frequentes, feita com HTML, CSS e um pouco de JavaScript.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Como personalizar o estilo?</span>
+        <div class="icon">➕</div>
+      </div>
+      <div class="faq-answer">
+        Você pode mudar as cores, fontes, sombras e layout direto no CSS para que combine com a sua identidade visual.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>É necessário JavaScript?</span>
+        <div class="icon">➕</div>
+      </div>
+      <div class="faq-answer">
+        Sim, usamos um pequeno script para controlar a abertura e o fechamento das respostas, tornando a interação mais fluida.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
