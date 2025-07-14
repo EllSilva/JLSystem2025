@@ -16,13 +16,17 @@ export default {
   },
 
   async mounted() {
-    
-    
- 
+
+
+
 
     var swiper = new Swiper(".swiper", {
       loop: true,
       grabCursor: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -47,7 +51,16 @@ export default {
       }
     });
 
-  var swiper = new Swiper(".swiper_testemuno", {
+        var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    var swiper = new Swiper(".swiper_testemuno", {
       loop: true,
       grabCursor: true,
       navigation: {

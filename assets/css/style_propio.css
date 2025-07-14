@@ -1,6 +1,11 @@
  
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+
+
+
+
 .titulo-container {
   display: inline-block; /* para o sublinhado ter largura apenas do texto */
 }
@@ -25,6 +30,158 @@ span{
   color: #f1231f; /* vermelho */ 
 }
 
+
+ .col-xl-44{
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    /* padding-right: 15px; */
+    /* padding-left: 15px; */
+}
+
+
+
+
+
+ 
+ /***
+flip flop  
+***/
+   
+
+ .row_servico {
+     --bs-gutter-x: 1.5rem;
+     --bs-gutter-y: 0;
+     display: flex;
+     flex-wrap: wrap;
+     margin-top: calc(var(--bs-gutter-y) * -1);
+     margin-right: calc(var(--bs-gutter-x) / -2);
+     margin-left: calc(var(--bs-gutter-x) / -2)
+ }
+
+
+.servico_tamanho {
+    cursor: pointer; 
+   
+}
+
+ * {
+     box-sizing: border-box;
+ }
+ .flipbox-spaco { 
+    margin-top: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+ .flipbox-container {
+     color: #fff;
+     font-size: 12px; 
+ }
+
+ .flipbox-wrapper {
+     display: flex;
+     align-items: stretch;
+     justify-content: stretch;
+     position: relative;
+     transition: .6s linear;
+     transform-style: preserve-3d;
+     cursor: pointer; 
+    height: 192.20508px;
+ }
+
+ .flipbox-front,
+ .flipbox-back {
+
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     backface-visibility: hidden;
+     background-position: center;
+     background-size: cover;
+     border-radius: 20px;
+     transform-style: preserve-3d;
+ }
+
+ .flipbox-front {
+     background-color: #202020 !important;
+     position: relative;
+ }
+
+ .flipbox-back {
+     background-color: #1E60AA;
+     position: absolute;
+     transform: rotateY(-180deg);
+     height: 100%;
+     width: 100%;
+ }
+
+ .transform-top .flipbox-back,
+ .transform-bottom .flipbox-back {
+     transform: rotateX(-180deg);
+ }
+
+ .flipbox-container:hover .flipbox-wrapper {
+     transform: rotateY(-180deg);
+ }
+
+ .flipbox-container.transform-right:hover .flipbox-wrapper {
+     transform: rotateY(180deg);
+ }
+
+ .flipbox-container.transform-top:hover .flipbox-wrapper {
+     transform: rotateX(180deg);
+ }
+
+ .flipbox-container.transform-bottom:hover .flipbox-wrapper {
+     transform: rotateX(-180deg);
+ }
+
+ .flipbox-content {
+     text-align: center;
+     color: #fff;
+     transform-style: preserve-3d;
+     transform: translateZ(50px);
+ }
+
+ .flipbox-content h3 {
+     font-size: 32px;
+     line-height: 1;
+     margin: 0;
+ }
+
+ .flipbox-content h4 {
+     font-size: 24px;
+     line-height: 1;
+     margin: 0 0 16px;
+ }
+
+
+ .flipbox-button {
+     background: #300;
+     text-decoration: none;
+     font-size: 16px;
+     line-height: 1;
+     padding: 8px 24px;
+     border-radius: 4px;
+     color: #fff
+ }
+
+
+ /***
+fimmmmmmmmmm flip flop 
+***/
+
+ 
+
+
+ 
+
+
+
+
+
 /*--------------------------------------------------------------------- 
 swiper.js
 ---------------------------------------------------------------------*/
@@ -36,6 +193,30 @@ swiper.js
     box-sizing: border-box;
 }
 
+ 
+
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+	
 #tecnolog { 
     min-height: 50vh; 
     display: flex;
@@ -81,11 +262,7 @@ swiper.js
     max-width: 485px;
 }
 
-.swiper {
-    width: 100%;
-    height: 200px;
-    padding-bottom: 60px;
-} 
+ 
 
 .swiper_tecnologia {
     width: 80%;
@@ -100,11 +277,10 @@ swiper.js
     justify-content: center;
 	text-align: center;
     box-shadow: 0px 0px 20px 0px rgba(92, 115, 160, 0.07);
-    padding: 34px;
+    padding: 14px;
     border-radius: 12px;
 
-	 display: flex;  
-  height: 200px;           /* altura da div */ 
+	 display: flex;           /* altura da div */ 
 }
 
 .testimonial-rate {
@@ -1220,19 +1396,19 @@ Galeria projecto
   }
   #gallery .item:hover,
   #gallery .item:focus{
-	transform:scale(1.1);
+	transform:scale(1.2);
 	z-index:50;
 	box-shadow:0 0 10px black;}
   #gallery .item figure{
 	transition: all ease 1s;
 	overflow:hidden;
-	height:300px;
+	height:360px;
 	padding:0;
 	margin:0;
 	position: relative;
   }
   #gallery .item figure img{
-	transform: scale(1.4);
+	transform: scale(1.1);
 	transition: all ease 1s;
   }
   #gallery .item:hover figure,
@@ -1478,7 +1654,7 @@ https://templatemo.com/tm-590-topic-listing
   }
 
   .section-overlay2 {
- 	background-image: linear-gradient(15deg, #0b285a 0%, #000000 100%);
+ 	background-image: linear-gradient(15deg, #00183b 0%, #00183b 100%);
 	position: absolute; 
 	left: 0;
 	pointer-events: none;
