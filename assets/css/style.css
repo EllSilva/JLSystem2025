@@ -533,6 +533,16 @@ button {
     position: relative;
 }
 
+.full_bg_marketing {
+    background: url(../images/banner_marketing.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+   padding-bottom: 150px;
+    position: relative;
+}
+
 
 .full_bg .carousel-indicators {
     bottom: -43px;

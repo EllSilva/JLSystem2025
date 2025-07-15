@@ -76,6 +76,10 @@ Vue.component('p-email_marketig', page_email_marketig)
 import page_gestao_redes_social from './view/marketing/gestao_redes_social.js'
 Vue.component('p-gestao_redes_social', page_gestao_redes_social)
 
+import page_link_patrocinado from './view/marketing/link_patrocinado.js'
+Vue.component('p-link_patrocinado', page_link_patrocinado)
+
+
 import page_identidade from './view/servicos/identidade.js'
 Vue.component('p-identidade', page_identidade)
 
@@ -103,7 +107,6 @@ const routes = [
     { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
     { path: '/hospedagem', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
    
-  
     { path: '/criacao-de-sites', component: { template: '<p-servicos_website></p-servicos_website>' } },
     { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
     { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
@@ -113,6 +116,8 @@ const routes = [
     { path: '/assinatura-de-email', component: { template: '<p-assinatura></p-assinatura>' } },
     { path: '/email-profissional', component: { template: '<p-email></p-email>' } },
     { path: '/gestao-de-redes-sociais', component: { template: '<p-gestao_redes_social></p-gestao_redes_social>' } },
+   { path: '/link-patrocinado', component: { template: '<p-link_patrocinado></p-link_patrocinado>' } },
+   
     { path: '/email-marketing', component: { template: '<p-email_marketig></p-email_marketig>' } },
    
      

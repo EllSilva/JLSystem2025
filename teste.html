@@ -2,90 +2,73 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Como Funciona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Website</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #0a0a0a;
-    }
-
-    .como-funciona {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .como-funciona h2 {
-      font-size: 28px;
-      margin-bottom: 50px;
-      font-weight: 700;
-      color: #0a0a0a;
-    }
-
-    .passos {
+      background: #f0f0f0;
       display: flex;
       justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .passo {
-      max-width: 300px;
-    }
-
-    .numero {
-      width: 40px;
-      height: 40px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      background-color: #e6f0ff;
-      color: #4a90e2;
-      display: flex;
       align-items: center;
-      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      position: relative;
+      width: 270px;
+      height: 290px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, #6a00ffb3, #3300ccb3);
+    }
+
+    .content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .text {
+      font-size: 16px;
       font-weight: bold;
-      font-size: 18px;
     }
 
-    .passo h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #0a0a0a;
-    }
-
-    .passo p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
+    .arrow {
+      color: yellow;
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
 
-  <section class="como-funciona">
-    <h2>Como Funciona o SiteJet</h2>
-    <div class="passos">
-      <div class="passo">
-        <div class="numero">1</div>
-        <h3>Escolha um Template</h3>
-        <p>Selecione entre centenas de templates profissionais e personalizáveis.</p>
-      </div>
-      <div class="passo">
-        <div class="numero">2</div>
-        <h3>Personalize seu Site</h3>
-        <p>Use nosso editor drag-and-drop para adicionar seu conteúdo e ajustar o design.</p>
-      </div>
-      <div class="passo">
-        <div class="numero">3</div>
-        <h3>Publique e Cresça</h3>
-        <p>Lance seu site com um clique e comece a atrair visitantes imediatamente.</p>
-      </div>
+  <div class="card">
+    <img src="./assets/images/banner_marketing.jpg" alt="Background" class="background">
+    <div class="overlay"></div>
+    <div class="content">
+      <span class="text">Criar Website</span>
+      <span class="arrow">→</span>
     </div>
-  </section>
+  </div>
 
 </body>
 </html>
