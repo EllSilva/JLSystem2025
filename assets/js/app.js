@@ -47,6 +47,8 @@ Vue.component('p-servicos_dominio', page_servicos_dominio)
 
 import page_servicos_website from './view/site_app/website.js'
 Vue.component('p-servicos_website', page_servicos_website)
+import page_servicos_app from './view/site_app/app.js'
+Vue.component('p-servicos_app', page_servicos_app)
 
 
 import page_servicos_loja_virtual from './view/site_app/loja.js'
@@ -108,7 +110,9 @@ const routes = [
     { path: '/hospedagem', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
    
     { path: '/criacao-de-sites', component: { template: '<p-servicos_website></p-servicos_website>' } },
-    { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
+    { path: '/app-web', component: { template: '<p-servicos_app></p-servicos_app>' } },
+     { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
+   
     { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
     { path: '/criacao-de-cartoes', component: { template: '<p-cartoes></p-cartoes>' } },
     { path: '/papelaria', component: { template: '<p-papelaria></p-papelaria>' } },

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider de Serviços</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f172a;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .slider {
+      font-size: 2rem;
+      border-right: 3px solid #00f2ff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 25ch; /* controla o espaço visível */
+      animation: blinkCursor 0.8s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 50% { border-color: #00f2ff; }
+      51%, 100% { border-color: transparent; }
+    }
+
+    /* Esconde os serviços na lista */
+    .services {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Aqui ficam os serviços no HTML -->
+  <ul class="services">
+    <li>Criação de Websites</li>
+    <li>Design Gráfico</li>
+    <li>Segurança Eletrônica</li>
+    <li>Construção Civil</li>
+    <li>Consultoria de TI</li>
+  </ul>
+
+  <!-- Aqui aparece o texto animado -->
+  <div class="slider" id="slider"></div>
+
+  <script>
+    const serviceElements = document.querySelectorAll(".services li");
+    const services = Array.from(serviceElements).map(el => el.textContent);
+
+    let index = 0;
+    let charIndex = 0;
+    const slider = document.getElementById("slider");
+    let deleting = false;
+
+    function typeEffect() {
+      const currentText = services[index];
+      
+      if (!deleting) {
+        slider.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentText.length) {
+          deleting = true;
+          setTimeout(typeEffect, 1500); // pausa antes de apagar
+          return;
+        }
+      } else {
+        slider.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          index = (index + 1) % services.length;
+        }
+      }
+
+      const speed = deleting ? 70 : 120;
+      setTimeout(typeEffect, speed);
+    }
+
+    typeEffect();
+  </script>
+</body>
+</html>
