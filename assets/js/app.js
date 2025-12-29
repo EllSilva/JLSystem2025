@@ -65,6 +65,8 @@ Vue.component('p-flyers', page_flyers)
 
 import page_papelaria from './view/servicos/papelaria.js'
 Vue.component('p-papelaria', page_papelaria)
+import page_portifolio from './view/servicos/portifolio.js'
+Vue.component('p-portifolio', page_portifolio)
 
 import page_assinatura from './view/servicos/assinatura.js'
 Vue.component('p-assinatura', page_assinatura)
@@ -116,6 +118,8 @@ const routes = [
     { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
     { path: '/criacao-de-cartoes', component: { template: '<p-cartoes></p-cartoes>' } },
     { path: '/papelaria', component: { template: '<p-papelaria></p-papelaria>' } },
+    { path: '/portfolio', component: { template: '<p-portifolio></p-portifolio>' } },
+
     { path: '/criacao-flyer-folder', component: { template: '<p-flyers></p-flyers>' } },
     { path: '/assinatura-de-email', component: { template: '<p-assinatura></p-assinatura>' } },
     { path: '/email-profissional', component: { template: '<p-email></p-email>' } },

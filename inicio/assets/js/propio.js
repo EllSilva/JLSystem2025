@@ -1,10 +1,14 @@
 const services = [
   "Websites",
   "Aplicações",
-  "Design Gráfico",
   "hospedagem",
-    "Marketing digital",
-  "Segurança Eletrônica",
+  "Loja Virtual",
+  "Logotipo",
+  "Portifolio",
+  "Cartões",
+   "Folder",
+  "Marketing digital",
+  "Video Marketing",
   "Consultoria de TI"
 ];
 

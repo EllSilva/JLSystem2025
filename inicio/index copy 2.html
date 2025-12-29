@@ -1,62 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slider de Serviços</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Inteligência Responsiva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8faff; padding-top: 50px; }
+        .main-title { font-weight: 700; color: #0d1b2a; margin-bottom: 40px; }
+        .highlight-orange { color: #f37021; }
+        .highlight-blue { color: #4361ee; }
+
+        /* --- DESKTOP: Zoom e Sombra (Sem Linhas) --- */
+        .card-intelligence {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            padding: 30px 15px;
+            background: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        .card-intelligence.active {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        /* --- MOBILE: Accordion (Informação por baixo) --- */
+        @media (max-width: 767px) {
+            .desktop-row { display: none; }
+            
+            .mobile-accordion-item {
+                background: white;
+                border-radius: 12px;
+                margin-bottom: 12px;
+                overflow: hidden;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                transition: 0.3s;
+            }
+
+            /* Quando aberto, ganha a sombra do zoom */
+            .mobile-accordion-item.active {
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .accordion-header {
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+                padding: 0 15px;
+            }
+
+            .mobile-accordion-item.active .accordion-content {
+                max-height: 200px; /* Altura suficiente para o texto */
+                padding-bottom: 20px;
+            }
+
+            .arrow {
+                transition: transform 0.3s;
+                color: #4361ee;
+            }
+            .active .arrow { transform: rotate(180deg); }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-accordion { display: none; }
+        }
+
+        /* Ícones e Cores */
+        .icon-box { width: 45px; height: 45px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; color: white; font-size: 20px; }
+        .icon-lg { width: 60px; height: 60px; margin: 0 auto 15px; font-size: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        
+        .bg-sales { background: linear-gradient(135deg, #ffb347, #ffcc33); }
+        .bg-app { background: linear-gradient(135deg, #ff5f6d, #ffc371); }
+        .bg-web { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+        .bg-stock { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    </style>
 </head>
 <body>
-  <div id="slider"></div><span id="cursor">|</span>
 
-  <script>
-    const services = [
-      "Criação de Websites",
-      "Design Gráfico",
-      "Segurança Eletrônica",
-      "Construção Civil",
-      "Consultoria de TI"
-    ];
+<div class="container text-center">
+    <h1 class="main-title">Os melhores <span class="highlight-orange">produtos</span> <span class="highlight-blue">para conquistar</span> seu mercado</h1>
 
-    let index = 0;
-    let charIndex = 1; // começa já com 1 letra
-    let deleting = false;
-    const slider = document.getElementById("slider");
-    const cursor = document.getElementById("cursor");
+    <div class="row g-3 desktop-row justify-content-center">
+        <div class="col-md-2">
+            <div class="card-intelligence active" onclick="activateDesktop(this)">
+                <div class="icon-lg bg-sales">💼</div>
+                <h6 class="fw-bold">Sales Intelligence</h6>
+                <p class="small text-muted">Prospecção e qualificação de clientes.</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-intelligence" onclick="activateDesktop(this)">
+                <div class="icon-lg bg-app">📱</div>
+                <h6 class="fw-bold">App Intelligence</h6>
+                <p class="small text-muted">Desempenho e aderência do seu app.</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-intelligence" onclick="activateDesktop(this)">
+                <div class="icon-lg bg-web">🌐</div>
+                <h6 class="fw-bold">Web Intelligence</h6>
+                <p class="small text-muted">Pesquisa de mercado e ferramentas SEO.</p>
+            </div>
+        </div>
+    </div>
 
-    // cursor piscando
-    setInterval(() => {
-      cursor.style.visibility = cursor.style.visibility === "hidden" ? "visible" : "hidden";
-    }, 500);
+    <div class="mobile-accordion text-start">
+        <div class="mobile-accordion-item">
+            <div class="accordion-header" onclick="toggleMobile(this)">
+                <div class="d-flex align-items-center">
+                    <div class="icon-box bg-sales">💼</div>
+                    <span class="fw-bold">Sales Intelligence</span>
+                </div>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p class="small text-muted">Prospecção, qualificação e engajamento com seus clientes ideais através de dados precisos.</p>
+                <a href="#" class="text-primary fw-bold text-decoration-none small">Saiba mais →</a>
+            </div>
+        </div>
 
-    function typeEffect() {
-      const currentText = services[index];
-      
-      if (!deleting) {
-        slider.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === currentText.length) {
-          deleting = true;
-          setTimeout(typeEffect, 1500); // pausa antes de apagar
-          return;
-        }
-      } else {
-        // nunca apaga a primeira letra
-        slider.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 1) {
-          deleting = false;
-          index = (index + 1) % services.length;
-        }
-      }
+        <div class="mobile-accordion-item">
+            <div class="accordion-header" onclick="toggleMobile(this)">
+                <div class="d-flex align-items-center">
+                    <div class="icon-box bg-app">📱</div>
+                    <span class="fw-bold">App Intelligence</span>
+                </div>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p class="small text-muted">Avalie e aumente o desempenho e a aderência do seu aplicativo no mercado competitivo.</p>
+                <a href="#" class="text-primary fw-bold text-decoration-none small">Saiba mais →</a>
+            </div>
+        </div>
+        
+        <div class="mobile-accordion-item">
+            <div class="accordion-header" onclick="toggleMobile(this)">
+                <div class="d-flex align-items-center">
+                    <div class="icon-box bg-web">🌐</div>
+                    <span class="fw-bold">Web Intelligence</span>
+                </div>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p class="small text-muted">Desbloqueie oportunidades com pesquisa de mercado avançada e análise competitiva.</p>
+                <a href="#" class="text-primary fw-bold text-decoration-none small">Saiba mais →</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-      // velocidade natural
-      const speed = deleting ? 70 : Math.random() * (150 - 80) + 80;
-      setTimeout(typeEffect, speed);
+<script>
+    // JS Desktop
+    function activateDesktop(el) {
+        document.querySelectorAll('.card-intelligence').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
     }
 
-    // começa mostrando a primeira letra já
-    slider.textContent = services[0][0];
-    typeEffect();
-  </script>
+    // JS Mobile (Accordion)
+    function toggleMobile(header) {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Fecha todos antes de abrir o novo
+        document.querySelectorAll('.mobile-accordion-item').forEach(i => i.classList.remove('active'));
+        
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    }
+</script>
+
 </body>
 </html>

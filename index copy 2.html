@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semrush Slider - Infinite Loop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        :root {
+            --bg-dark: #02040a;
+            --card-bg: #0f111a;
+            --text-dim: #9ca3af;
+            --border: rgba(255, 255, 255, 0.08);
+            --gap: 24px;
+            --items-per-view: 3.3; 
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 60px 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .header h2 { font-size: 2.5rem; font-weight: 500; margin: 0; }
+
+        .nav-btns { display: flex; gap: 12px; }
+        .nav-btns button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: white; width: 52px; height: 52px;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+        }
+
+        /* Estrutura do Slider */
+        .slider-area {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .slider-viewport { overflow: visible; }
+
+        .slider-track {
+            display: flex;
+            gap: var(--gap);
+            width: max-content;
+            /* A transição será controlada via JS para podermos desativá-la no "pulo" do loop */
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 40px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            width: calc((1200px - 40px - (var(--gap) * 3)) / 3.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 1200px) {
+            .card { width: calc((100vw - 40px - (var(--gap) * 3)) / 3.3); }
+        }
+
+        @media (max-width: 768px) {
+            .card { width: calc(85vw); }
+        }
+
+        /* Estilo Interno dos Cards */
+        .search-chip {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+        .graphic-area {
+            background: linear-gradient(180deg, #1c212e 0%, #0d1117 100%);
+            height: 180px;
+            border-radius: 16px;
+            margin-top: auto;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        h3 { font-size: 1.8rem; margin: 0 0 15px 0; }
+        p { color: var(--text-dim); line-height: 1.6; min-height: 80px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>todas as equipes</h2>
+        <div class="nav-btns">
+            <button id="prevBtn">&#8592;</button>
+            <button id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+</div>
+
+<div class="slider-area">
+    <div class="slider-viewport">
+        <div id="sliderTrack" class="slider-track">
+            <div class="card">
+                <div class="search-chip">🔍 Marketing</div>
+                <h3>Marketing</h3>
+                <p>Estratégia completa de marketing dos concorrentes.</p>
+                <div class="graphic-area"></div>
+            </div>
+            <div class="card">
+                <div class="search-chip">🔍 SEO</div>
+                <h3>Equipes de SEO</h3>
+                <p>Melhore sua visibilidade com o kit completo de SEO.</p>
+                <div class="graphic-area"></div>
+            </div>
+            <div class="card">
+                <div class="search-chip">🔍 Research</div>
+                <h3>Research</h3>
+                <p>Monitore mudanças do mercado e insights do público.</p>
+                <div class="graphic-area"></div>
+            </div>
+            <div class="card">
+                <div class="search-chip">🔍 PPC</div>
+                <h3>PPC</h3>
+                <p>Revele lacunas em anúncios dos concorrentes.</p>
+                <div class="graphic-area"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const track = document.getElementById('sliderTrack');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const originalCards = document.querySelectorAll('.card');
+    
+    // Configurações do Loop
+    const gap = 24;
+    let currentIndex = originalCards.length; // Começamos no meio (após os clones iniciais)
+    let isTransitioning = false;
+
+    // 1. Clonagem para Loop Infinito
+    originalCards.forEach(card => {
+        const cloneBefore = card.cloneNode(true);
+        const cloneAfter = card.cloneNode(true);
+        track.appendChild(cloneAfter); // Clones no fim
+        track.insertBefore(cloneBefore, track.firstChild); // Clones no início
+    });
+
+    const allCards = document.querySelectorAll('.card');
+
+    function updatePosition(transition = true) {
+        const cardWidth = originalCards[0].offsetWidth;
+        const moveAmount = (cardWidth + gap) * currentIndex;
+        
+        track.style.transition = transition ? 'transform 0.7s cubic-bezier(0.19, 1, 0.22, 1)' : 'none';
+        track.style.transform = `translateX(-${moveAmount}px)`;
+    }
+
+    // Inicializa na posição real (pulando os primeiros clones)
+    window.onload = () => {
+        updatePosition(false);
+    };
+
+    // 2. Lógica do "Salto" Silencioso
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        
+        // Se chegou nos clones do fim, pula para o início real
+        if (currentIndex >= allCards.length - (originalCards.length)) {
+            currentIndex = originalCards.length;
+            updatePosition(false);
+        }
+        // Se chegou nos clones do início, pula para o fim real
+        if (currentIndex < originalCards.length) {
+            // Ajuste específico para manter a lógica de 3.3
+            if(currentIndex === 0) {
+               currentIndex = originalCards.length;
+               updatePosition(false);
+            }
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex++;
+        updatePosition();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex--;
+        updatePosition();
+    });
+
+    // Ajuste no Resize
+    window.addEventListener('resize', () => {
+        updatePosition(false);
+    });
+</script>
+
+</body>
+</html>
