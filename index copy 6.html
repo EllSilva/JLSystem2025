@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Preços Cyberpunk</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIÁVEIS --- */
+        
+         :root {
+            --bg-color: #0a0a12;
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --primary: #ff0055;
+            /* Vermelho cyberpunk */
+            --secondary: #00ffcc;
+            /* Neon ciano */
+            --text: #e2e8f0;
+            --text-muted: #a0aec0;
+            --dark-blue: #141423;
+            --footer-dark: #07070d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 0, 85, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
+            padding-top: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* --- ABAS DE SELEÇÃO (TOP) --- */
+        
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .tabs {
+            display: flex;
+            background: var(--dark-blue);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover {
+            color: #fff;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+        /* --- GRID DOS PLANOS --- */
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        /* --- CARD DE PREÇO --- */
+        
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.1);
+        }
+        
+        .price-card.featured {
+            background: linear-gradient(145deg, #b3003b, var(--primary));
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.3);
+            color: #fff;
+        }
+        
+        .price-card.featured:hover {
+            box-shadow: 0 0 35px var(--primary);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: var(--primary);
+            padding: 4px 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .plan-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .price-wrapper {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .price-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        
+        .price-card.featured .price-number {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .includes-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+        
+        .features-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .features-list i {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .price-card.featured .features-list i {
+            color: #fff;
+        }
+        
+        .action-btn {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .action-btn:hover {
+            background: #ff3377;
+            box-shadow: 0 0 15px var(--primary);
+        }
+        
+        .price-card.featured .action-btn {
+            background: #fff;
+            color: var(--primary);
+        }
+        
+        .price-card.featured .action-btn:hover {
+            background: #f0f0f0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        /* --- NOVO FOOTER CYBERPUNK --- */
+        
+        .main-footer {
+            background-color: var(--footer-dark);
+            border-top: 2px solid var(--primary);
+            margin-top: 80px;
+            box-shadow: 0 -10px 30px rgba(255, 0, 85, 0.05);
+        }
+        /* Central de Vendas (Barra Superior do Footer) */
+        
+        .footer-sales-bar {
+            background: linear-gradient(90deg, #990033, var(--primary));
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sales-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .sales-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .sales-title p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .sales-channels {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .channel-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+        }
+        
+        .channel-item:hover {
+            transform: translateY(-2px);
+            color: var(--secondary);
+        }
+        /* Links e Grid do Footer */
+        
+        .footer-content {
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+        }
+        /* Customização para a coluna da Newsletter ficar mais larga */
+        
+        .footer-content .footer-column.newsletter-col {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content .footer-column.newsletter-col {
+                grid-column: span 1;
+            }
+        }
+        
+        .footer-column h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-column .highlight-title {
+            color: var(--primary);
+            margin-top: 20px;
+        }
+        /* Newsletter Input */
+        
+        .newsletter-col p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .cyber-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 350px;
+            margin-bottom: 20px;
+        }
+        
+        .cyber-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+        }
+        
+        .newsletter-btn-wrapper {
+            display: flex;
+        }
+        
+        .newsletter-btn-wrapper .cyber-input {
+            flex: 1;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .cyber-submit-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-submit-btn:hover {
+            background: #ff3377;
+            box-shadow: 0 0 10px var(--primary);
+        }
+        /* Métodos de Pagamento */
+        
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        
+        .pay-badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        
+        .pay-badge.crypto {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        /* Redes Sociais */
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        /* Rodapé Bottom (Direitos Autorais) */
+        
+        .footer-bottom {
+            background: #040408;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .bottom-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cyber-logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+        
+        .company-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(160, 174, 192, 0.6);
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .bottom-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .copyright {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Conteúdo Principal -->
+        <div class="container">
+
+            <div class="tab-container">
+                <div class="tabs">
+                    <button v-for="tab in abas" :key="tab" @click="abaAtiva = tab" :class="['tab-btn', { active: abaAtiva === tab }]">
+                        {{ tab }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- PLANO START -->
+                <div class="price-card" v-if="abaAtiva === 'WebSite'">
+                    <h3 class="plan-name">Plano Start</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">150.000</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Até 5 (ver páginas)</li>
+                        <li><i class="fas fa-check-circle"></i> Vídeo & Slide Show Dinâmico</li>
+                        <li><i class="fas fa-check-circle"></i> Botão do WhatsApp</li>
+                        <li><i class="fas fa-check-circle"></i> Localização Estática</li>
+                        <li><i class="fas fa-check-circle"></i> Hospedagem Anual</li>
+                        <li><i class="fas fa-check-circle"></i> Domínio .com Anual</li>
+                        <li><i class="fas fa-check-circle"></i> 3 E-Mails Corporativos</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- PLANO STANDARD -->
+                <div class="price-card featured" v-if="abaAtiva === 'WebSite'">
+                    <div class="badge">Most Popular</div>
+                    <h3 class="plan-name">Plano Standard</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">234.900</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Tudo do Plano Start</li>
+                        <li><i class="fas fa-check-circle"></i> Até 10 (ver páginas)</li>
+                        <li><i class="fas fa-check-circle"></i> Localização Dinâmica</li>
+                        <li><i class="fas fa-check-circle"></i> Formulário Personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Página de Projeto / Portfólio</li>
+                        <li><i class="fas fa-check-circle"></i> Área de Notícias / Blogs Estática</li>
+                        <li><i class="fas fa-check-circle"></i> 5 E-Mails Corporativos</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- PLANO PREMIUM -->
+                <div class="price-card" v-if="abaAtiva === 'WebSite'">
+                    <h3 class="plan-name">Plano Premium</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">280.000</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Tudo do Plano Standard</li>
+                        <li><i class="fas fa-check-circle"></i> Até 15 Subpáginas</li>
+                        <li><i class="fas fa-check-circle"></i> Optimização de Site (SEO)</li>
+                        <li><i class="fas fa-check-circle"></i> Integração Google Analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Área de Notícias / Blogs Dinâmica</li>
+                        <li><i class="fas fa-check-circle"></i> Domínio .ao .com .net / 1 ano</li>
+                        <li><i class="fas fa-check-circle"></i> 10 E-Mails Corporativos</li>
+                        <li><i class="fas fa-check-circle"></i> Personalização por Solicitação</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- E-COMMERCE START -->
+                <div class="price-card" v-if="abaAtiva === 'Lojas Online'">
+                    <h3 class="plan-name">E-Commerce Start</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">350.000</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Cadastro de até 50 produtos</li>
+                        <li><i class="fas fa-check-circle"></i> Integração de Pagamentos</li>
+                        <li><i class="fas fa-check-circle"></i> Carrinho Inteligente</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- E-COMMERCE PRO -->
+                <div class="price-card featured" v-if="abaAtiva === 'Lojas Online'">
+                    <div class="badge">Recomendado</div>
+                    <h3 class="plan-name">E-Commerce Pro</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">490.000</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Produtos Ilimitados</li>
+                        <li><i class="fas fa-check-circle"></i> Gestão de Stock e Envios</li>
+                        <li><i class="fas fa-check-circle"></i> Relatórios de Vendas</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- PORTAL CORPORATE -->
+                <div class="price-card" v-if="abaAtiva === 'Portais'">
+                    <h3 class="plan-name">Portal Corporate</h3>
+                    <div class="price-wrapper">
+                        kz <span class="price-number">750.000</span> / único
+                    </div>
+                    <div class="includes-title">Inclui:</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Sistema de Login multi-nível</li>
+                        <li><i class="fas fa-check-circle"></i> Banco de Dados Dedicado</li>
+                        <li><i class="fas fa-check-circle"></i> Painel Administrativo Total</li>
+                    </ul>
+                    <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- NOVO FOOTER BASEADO NA IMAGEM --- -->
+        <footer class="main-footer">
+
+            <!-- Barra Superior: Central de Vendas -->
+            <div class="footer-sales-bar">
+                <div class="container sales-container">
+                    <div class="sales-title">
+                        <h2>Central de Vendas</h2>
+                        <p>Dúvidas? Nossa equipe está a um clique.</p>
+                    </div>
+                    <div class="sales-channels">
+                        <a href="#" class="channel-item"><i class="fas fa-comments"></i> Chat</a>
+                        <a href="#" class="channel-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="#" class="channel-item"><i class="fas fa-phone-alt"></i> Telefone</a>
+                        <a href="#" class="channel-item"><i class="fas fa-envelope"></i> E-mail</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corpo do Footer: Links e Grid -->
+            <div class="container footer-content">
+
+                <div class="footer-column">
+                    <h3>Domínios</h3>
+                    <ul>
+                        <li><a href="#">Registro de Domínio</a></li>
+                        <li><a href="#">Transferência de Domínio</a></li>
+                    </ul>
+
+                    <h3 class="highlight-title">+ Produtos</h3>
+                    <ul>
+                        <li><a href="#">Certificado SSL</a></li>
+                        <li><a href="#">Construtor de Sites</a></li>
+                        <li><a href="#">Programa de Afiliados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Hospedagem</h3>
+                    <ul>
+                        <li><a href="#">Hospedagem de Sites</a></li>
+                        <li><a href="#">Hospedagem WordPress</a></li>
+                        <li><a href="#">Revenda de Hospedagem</a></li>
+                    </ul>
+
+                    <h3 class="highlight-title">Ferramentas</h3>
+                    <ul>
+                        <li><a href="#">Whois</a></li>
+                        <li><a href="#">Meu IP</a></li>
+                        <li><a href="#">Ping</a></li>
+                        <li><a href="#">+ Ferramentas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Servidores</h3>
+                    <ul>
+                        <li><a href="#">Servidor VPS</a></li>
+                        <li><a href="#">Servidor Dedicado</a></li>
+                        <li><a href="#">Gerenciamento</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>A CyberNet</h3>
+                    <ul>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Infraestrutura</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Termos e Políticas</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna Newsletter / Pagamentos / Social -->
+                <div class="footer-column newsletter-col">
+                    <h3>Newsletter</h3>
+                    <p>Receba informações e ofertas especiais em seu e-mail</p>
+                    <div class="cyber-form">
+                        <input type="text" class="cyber-input" placeholder="Seu nome...">
+                        <div class="newsletter-btn-wrapper">
+                            <input type="email" class="cyber-input" placeholder="seu e-mail...">
+                            <button class="cyber-submit-btn">Assine Já!</button>
+                        </div>
+                    </div>
+
+                    <h3>Aceitamos</h3>
+                    <div class="payment-methods">
+                        <span class="pay-badge">BOLETO</span>
+                        <span class="pay-badge">PIX</span>
+                        <span class="pay-badge">VISA</span>
+                        <span class="pay-badge">MCARD</span>
+                        <span class="pay-badge crypto">BITCOIN</span>
+                    </div>
+
+                    <h3>Siga-nos</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rodapé Inferior: Copyright & Dados Fictícios -->
+            <div class="footer-bottom">
+                <div class="container bottom-container">
+                    <div class="company-info">
+                        <div class="cyber-logo-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="company-text">
+                            <p>Ditcom Internet Ltda. - 05.253.967/0001-07</p>
+                            <p>Av. Paulista, 1636, Sala 1105/588 - São Paulo, SP - 01310-200</p>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        &copy; 2002-2026 CyberNet - Todos os direitos reservados.
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                abaAtiva: 'WebSite',
+                abas: ['WebSite', 'Lojas Online', 'Portais']
+            }
+        });
+    </script>
+</body>
+
+</html>

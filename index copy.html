@@ -1,42 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <style>
-        .lista-limpa {
-            list-style: none; /* Remove as bolinhas padrão */
-            padding: 0;
-            max-width: 300px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 - GoDaddy Style</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <style>
+  .secao-branca {
+  background-color: #ffffff;
+  color: #000;
+  padding: 50px 20px;
+}
 
-        .lista-limpa li {
-            background: #ffffff; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
+/* Faixa intermediária */
+.transicao-branco-preto {
+  height: 80px; /* Ajuste a altura para controlar a suavidade da transição */
+  background: linear-gradient(to bottom, #ffffff, #000000);
+}
 
-        /* Adiciona um ícone antes do texto usando CSS */
-        .lista-limpa li::before {
-            content: "•";
-            color: #3498db;
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-
-       
-    </style>
+.secao-preta {
+  background-color: #000000;
+  color: #fff;
+  padding: 50px 20px;
+}
+  </style>
 </head>
 <body>
 
-    <ul class="lista-limpa">
-        <li>Item número um</li>
-        <li>Item número dois</li>
-        <li>Item número três</li>
-        <li>Item número quatro</li>
-    </ul>
+  <div id="app">
+ <section class="secao-branca">
+  <h2>Seção Branca</h2>
+</section>
 
+<!-- Elemento divisor com o gradiente -->
+<div class="transicao-branco-preto"></div>
+
+<section class="secao-preta">
+  <h2>Seção Preta</h2>
+</section>
+  </div>
+
+  <!-- Vue.js 2 (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        brandTitle: 'Email and Microsoft 365',
+        brandUrl: '/email-microsoft-365', // URL para a página principal
+        navItems: [
+          { label: 'All Email Options', url: '/email-options', active: false },
+          { label: 'Business Email', url: '/business-email', active: false },
+          { label: 'Microsoft 365', url: '/microsoft-365', active: true },
+          { label: 'GoDaddy App', url: '/godaddy-app', active: false },
+          { label: 'Email Security', url: '/email-security', active: false },
+          { label: 'More', url: '#', active: false, hasDropdown: true },
+        ],
+        heroImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+        infoText: 'Choose your plan, pick your email address, and create a sign-in to start using online and offline Microsoft tools. Our expert guides are here to help at',
+        supportPhone: '+353 1 653 5976.',
+        sectionTag: 'MICROSOFT® 365',
+        mainTitle: 'Collaborate, create and connect with Microsoft 365.',
+        features: [
+          { icon: 'bi bi-star', text: 'Office 365 apps like Word, Excel, and Teams.', underlined: true, url: '/office-apps' },
+          { icon: 'bi bi-envelope', text: 'Email that matches your domain.', underlined: true, url: '/domain-email' },
+          { icon: 'bi bi-list-task', text: 'Simple setup and expert customer support.', underlined: true, url: '/support' }
+        ],
+        ctaButtonText: 'See Plans and Pricing',
+        ctaUrl: '/plans-and-pricing', // URL do botão principal
+        ratingScore: '4.4',
+        ratingCount: '138,818',
+        reviewsUrl: '/customer-reviews' // URL do link "View All"
+      },
+      methods: {
+        setActive(selectedIndex) {
+          this.navItems.forEach((item, index) => {
+            item.active = index === selectedIndex;
+          });
+        }
+      }
+    });
+  </script>
 </body>
 </html>

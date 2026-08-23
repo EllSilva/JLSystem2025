@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Menu Vue.js 2 CDN</title>
+
+    <!-- Bootstrap CSS (necessário para as classes col-md-4, row, badge) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (para os ícones bi-window, bi-wordpress, etc.) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* --- SEU CSS ORIGINAL CONFIGURADO --- */
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .logo {
+            font-weight: bold;
+            color: black;
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+        }
+        
+        .mega-menu {
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 1200px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .menu-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #bcc2c7;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .menu-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            background: #eef3ff;
+            color: #b60101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        
+        .menu-text h6 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: #e7f1ff;
+        }
+        
+        .menu-text p {
+            margin: 3px 0 0;
+            font-size: 13px;
+            color: #6c757d;
+        }
+        
+        .badge-custom {
+            font-size: 10px;
+            background: #e7f1ff;
+            color: #0d6efd;
+            margin-left: 8px;
+        }
+        
+        .badge-orange {
+            background: #ffe5d0;
+            color: #ff6600;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+        
+        .highlight-box {
+            background: #eef3ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .highlight-box h5 {
+            font-weight: bold;
+        }
+        /* --- ESTILOS DO OVERLAY --- */
+        
+        .nav_jl {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: black;
+            padding: 2em;
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .close-button {
+            width: 25px;
+            float: right;
+            cursor: pointer;
+        }
+        /* --- CLASSES DE TRANSIÇÃO DO VUE 2 (Para animar o v-if) --- */
+        
+        .fade-menu-enter-active,
+        .fade-menu-leave-active {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        /* Estado inicial ao entrar e final ao sair */
+        
+        .fade-menu-enter,
+        .fade-menu-leave-to {
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTAINER PRINCIPAL DO VUE -->
+    <div id="app">
+
+        <!-- Botão para abrir o menu (Simulação da sua Navbar) -->
+        <div style="padding: 20px; background: #f8f9fa;">
+            <button class="menu-btn" @click="toggleMenu">
+                <i class="bi bi-list" style="font-size: 30px; color: black;"></i> Abrir Menu
+            </button>
+        </div>
+
+        <!-- Animação combinada com a remoção física do DOM usando v-if -->
+        <transition name="fade-menu">
+            <nav class="nav_jl" v-if="isOpen">
+                <!-- botão fechar -->
+                <svg class="close-button" @click="toggleMenu" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2"/>
+                </svg>
+
+                <div class="mega-menu">
+                    <div class="row">
+
+                        <!-- COLUNA 1 -->
+                        <div class="col-md-4">
+                            <div class="menu-title">Website / APPs</div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-window"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/website" @click="toggleMenu">
+                                        <h6>Criação de sites <span class="badge badge-custom">Planos</span></h6>
+                                        <p>Tenha um Site de alta performance para sua empresa.</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-wordpress"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/loja" @click="toggleMenu">
+                                        <h6>Loja Online <span class="badge badge-custom">Plano</span></h6>
+                                        <p>Faça sua empresa vender mais na internet.</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-diagram-3"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/sistemas" @click="toggleMenu">
+                                        <h6>Criação de Sistema e Apps</h6>
+                                        <p>Soluções web sob medida & Desenvolvimento de Software</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="highlight-box">
+                                <h5>Migre agora para HostGator</h5>
+                                <p>Migração 100% grátis e segura</p>
+                            </div>
+                        </div>
+
+                        <!-- COLUNA 2 -->
+                        <div class="col-md-4">
+                            <div class="menu-title">Email</div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-brush"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/email" @click="toggleMenu">
+                                        <h6>Email profissional <span class="badge badge-custom">Novo</span></h6>
+                                        <p>Crie endereços profissionais para construir a sua marca</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-title mt-4">Hospedagem / Dominio</div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-server"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/hospedagem" @click="toggleMenu">
+                                        <h6>Hospedagem <span class="badge badge-orange">Com cPanel</span></h6>
+                                        <p>Alta performance e segurança</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-windows"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/dominio" @click="toggleMenu">
+                                        <h6>Dominio</h6>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-title mt-4">Vendas</div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-layout-text-window"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/vendas" @click="toggleMenu">
+                                        <h6>Vendas de Apps e Sistema <span class="badge badge-orange">2026</span></h6>
+                                        <p>Soluções rápidas, seguras e prontas para o seu negócio crescer.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COLUNA 3 -->
+                        <div class="col-md-4">
+                            <div class="menu-title">VPS</div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-hdd-stack"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/vps" @click="toggleMenu">
+                                        <h6>Servidor VPS</h6>
+                                        <p>Performance e controle total</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-diagram-2"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/n8n" @click="toggleMenu">
+                                        <h6>VPS n8n</h6>
+                                        <p>Automação com IA</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-cpu"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/openclaw" @click="toggleMenu">
+                                        <h6>VPS OpenClaw <span class="badge badge-orange">Novo</span></h6>
+                                        <p>Assistente IA flexível</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-lightning"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/api" @click="toggleMenu">
+                                        <h6>VPS API <span class="badge badge-orange">Novo</span></h6>
+                                        <p>Integrações WhatsApp</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-icon"><i class="bi bi-star"></i></div>
+                                <div class="menu-text">
+                                    <a href="#/gatorclaw" @click="toggleMenu">
+                                        <h6>VPS GatorClaw <span class="badge badge-custom">Recomendado</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </transition>
+
+    </div>
+
+    <!-- CDN do Vue.js 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <!-- INSTÂNCIA DO VUE -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: function() {
+                return {
+                    isOpen: false // Estado reativo: falso por padrão para o v-if ocultar o menu
+                }
+            },
+            methods: {
+                toggleMenu: function() {
+                    this.isOpen = !this.isOpen; // Inverte o estado ao clicar
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

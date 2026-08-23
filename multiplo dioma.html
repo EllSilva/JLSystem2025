@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Empresa Multi Idioma</title>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <!-- Vue I18n -->
+    <script src="https://unpkg.com/vue-i18n@9"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: #1e293b;
+            color: white;
+        }
+        
+        header button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: #f1f5f9;
+        }
+        
+        .servicos {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .card {
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .contacto {
+            padding: 60px;
+            background: #e2e8f0;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- HEADER -->
+        <header>
+            <h2>DletroTech</h2>
+
+            <div>
+                <button @click="mudar('pt')">🇦🇴 PT</button>
+                <button @click="mudar('en')">🇺🇸 EN</button>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1>{{ $t('titulo') }}</h1>
+            <p>{{ $t('descricao') }}</p>
+        </section>
+
+        <!-- SERVIÇOS -->
+        <section class="servicos">
+            <h2>{{ $t('servicos') }}</h2>
+
+            <div class="cards">
+                <div class="card">{{ $t('web') }}</div>
+                <div class="card">{{ $t('seguranca') }}</div>
+                <div class="card">{{ $t('automacao') }}</div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="contacto">
+            <h2>{{ $t('contacto') }}</h2>
+            <p>Email: contacto@empresa.com</p>
+            <p>WhatsApp: +244 900 000 000</p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 DletroTech</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const {
+            createApp
+        } = Vue
+        const {
+            createI18n
+        } = VueI18n
+
+        // 🌍 Traduções
+        const messages = {
+            pt: {
+                titulo: "Bem-vindo à nossa empresa",
+                descricao: "Soluções em tecnologia, segurança e automação",
+                servicos: "Nossos Serviços",
+                web: "Criação de Websites",
+                seguranca: "Segurança Eletrónica",
+                automacao: "Automação Residencial",
+                contacto: "Fale Conosco"
+            },
+            en: {
+                titulo: "Welcome to our company",
+                descricao: "Solutions in technology, security and automation",
+                servicos: "Our Services",
+                web: "Website Development",
+                seguranca: "Electronic Security",
+                automacao: "Home Automation",
+                contacto: "Contact Us"
+            }
+        }
+
+        // 🔧 i18n
+        const i18n = createI18n({
+            locale: localStorage.getItem('lang') || 'pt',
+            fallbackLocale: 'en',
+            messages
+        })
+
+        // 🚀 App
+        const app = createApp({
+            methods: {
+                mudar(lang) {
+                    this.$i18n.locale = lang
+                    localStorage.setItem('lang', lang)
+                }
+            }
+        })
+
+        app.use(i18n)
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

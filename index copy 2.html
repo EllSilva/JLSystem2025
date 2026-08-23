@@ -1,228 +1,509 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semrush Slider - Infinite Loop</title>
+    <title>Hospedagem de Sites - HostGator</title>
+
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
-        :root {
-            --bg-dark: #02040a;
-            --card-bg: #0f111a;
-            --text-dim: #9ca3af;
-            --border: rgba(255, 255, 255, 0.08);
-            --gap: 24px;
-            --items-per-view: 3.3; 
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: white;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b111e;
+            color: #ffffff;
             margin: 0;
-            padding: 60px 0;
-            overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .header h2 { font-size: 2.5rem; font-weight: 500; margin: 0; }
-
-        .nav-btns { display: flex; gap: 12px; }
-        .nav-btns button {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: white; width: 52px; height: 52px;
-            border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: 0.3s;
-        }
-
-        /* Estrutura do Slider */
-        .slider-area {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .slider-viewport { overflow: visible; }
-
-        .slider-track {
-            display: flex;
-            gap: var(--gap);
-            width: max-content;
-            /* A transição será controlada via JS para podermos desativá-la no "pulo" do loop */
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 40px;
-            box-sizing: border-box;
-            flex-shrink: 0;
-            width: calc((1200px - 40px - (var(--gap) * 3)) / 3.3);
-            display: flex;
-            flex-direction: column;
-        }
-
-        @media (max-width: 1200px) {
-            .card { width: calc((100vw - 40px - (var(--gap) * 3)) / 3.3); }
-        }
-
-        @media (max-width: 768px) {
-            .card { width: calc(85vw); }
-        }
-
-        /* Estilo Interno dos Cards */
-        .search-chip {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 8px 16px;
-            border-radius: 50px;
+        /* 1. TOP BAR */
+        
+        .top-bar {
+            background: linear-gradient(90deg, #101c36 0%, #080d1a 100%);
             font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 24px;
-            width: fit-content;
+            border-bottom: 1px solid #1a2947;
         }
-        .graphic-area {
-            background: linear-gradient(180deg, #1c212e 0%, #0d1117 100%);
-            height: 180px;
-            border-radius: 16px;
-            margin-top: auto;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+        
+        .badge-lancamento {
+            background-color: #ff6c22;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.75rem;
         }
-        h3 { font-size: 1.8rem; margin: 0 0 15px 0; }
-        p { color: var(--text-dim); line-height: 1.6; min-height: 80px; }
+        
+        .btn-topbar {
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            padding: 4px 15px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        /* 2. NAVBAR FIXA */
+        
+        .navbar {
+            background-color: #0b111e;
+            padding: 1.2rem 0;
+            transition: all 0.4s ease-in-out;
+            z-index: 1030;
+            position: relative;
+        }
+        
+        .navbar.navbar-scrolled {
+            background-color: #060a12 !important;
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #ffffff !important;
+        }
+        
+        .navbar-brand span {
+            color: #ff6c22;
+        }
+        
+        .nav-link {
+            color: #e2e8f0 !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover {
+            color: #ff6c22 !important;
+        }
+        /* 3. ESTRUTURA DO MEGA MENU (SOLUÇÕES) */
+        
+        .mega-menu-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #111a2e;
+            border-bottom: 3px solid #ff6c22;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 40px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        /* Ativado via Vue no clique */
+        
+        .mega-menu-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mega-menu-title {
+            color: #ff6c22;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-uppercase: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .mega-menu-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background 0.2s;
+        }
+        
+        .mega-menu-item:hover {
+            background-color: #1c2b47;
+            color: #ffffff;
+        }
+        
+        .mega-menu-icon {
+            background-color: #1e2f4f;
+            color: #ff6c22;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .mega-menu-text h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+        }
+        
+        .mega-menu-text p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+        /* Ícones da direita */
+        
+        .nav-icons .btn-icon {
+            background: none;
+            border: none;
+            color: #ffffff;
+            margin-left: 18px;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        /* 4. HERO SECTION */
+        
+        .hero-section {
+            position: relative;
+            padding: 120px 0 100px 0;
+            background-image: url('fundo-escritorio.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 75% 50%, rgba(11, 17, 30, 0.4) 0%, rgba(11, 17, 30, 0.85) 60%, #0b111e 90%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-tagline {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ff6c22;
+        }
+        
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        .hero-title span {
+            color: #ff6c22;
+        }
+        
+        .btn-yellow {
+            background-color: #ffc107;
+            color: #0b111e;
+            font-weight: 800;
+            padding: 16px 36px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-yellow:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+        }
+        
+        .price-text {
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+        
+        .price-highlight {
+            font-weight: 800;
+            color: #ff6c22;
+            font-size: 1.6rem;
+        }
+        
+        .hero-artwork-container {
+            position: relative;
+            text-align: right;
+        }
+        
+        .img-jacare-principal {
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .art-discount-badge {
+            position: absolute;
+            top: -30px;
+            left: 15%;
+            background: linear-gradient(135deg, #ff4d00 0%, #ff7b00 100%);
+            padding: 12px 25px;
+            border-radius: 8px;
+            transform: rotate(-10deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffffff;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .art-discount-badge .num {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #ffffff;
+        }
+        
+        .dummy-section {
+            padding: 100px 0;
+            background-color: #0e1626;
+            text-align: center;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="header">
-        <h2>todas as equipes</h2>
-        <div class="nav-btns">
-            <button id="prevBtn">&#8592;</button>
-            <button id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-</div>
-
-<div class="slider-area">
-    <div class="slider-viewport">
-        <div id="sliderTrack" class="slider-track">
-            <div class="card">
-                <div class="search-chip">🔍 Marketing</div>
-                <h3>Marketing</h3>
-                <p>Estratégia completa de marketing dos concorrentes.</p>
-                <div class="graphic-area"></div>
-            </div>
-            <div class="card">
-                <div class="search-chip">🔍 SEO</div>
-                <h3>Equipes de SEO</h3>
-                <p>Melhore sua visibilidade com o kit completo de SEO.</p>
-                <div class="graphic-area"></div>
-            </div>
-            <div class="card">
-                <div class="search-chip">🔍 Research</div>
-                <h3>Research</h3>
-                <p>Monitore mudanças do mercado e insights do público.</p>
-                <div class="graphic-area"></div>
-            </div>
-            <div class="card">
-                <div class="search-chip">🔍 PPC</div>
-                <h3>PPC</h3>
-                <p>Revele lacunas em anúncios dos concorrentes.</p>
-                <div class="graphic-area"></div>
+    <div id="app">
+        <!-- 1. TOP BAR -->
+        <div v-if="showTopBar" class="top-bar py-2 text-white">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge-lancamento">Lançamento</span>
+                    <span><strong>{{ topBar.title }}</strong> — {{ topBar.subtitle }}</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#" class="btn-topbar" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
+                    <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
+                </div>
             </div>
         </div>
+
+        <!-- 2. NAVBAR (Contém o gatilho para o Mega Menu) -->
+        <nav :class="['navbar', 'navbar-expand-lg', 'navbar-dark', 'sticky-top', isScrolled ? 'navbar-scrolled' : '']">
+            <div class="container">
+                <a class="navbar-brand" href="#" @click.prevent="navegar('Home')">Host<span>Gator</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" @click="navegar('Domínios')">Domínios</a></li>
+                        <li class="nav-item"><a class="nav-link" @click="navegar('Hospedagem')">Hospedagem e Sites</a></li>
+                        <li class="nav-item"><a class="nav-link" @click="navegar('Email')">Email</a></li>
+
+                        <!-- Item com ativação do Mega Menu no Clique -->
+                        <li class="nav-item position-static">
+                            <a class="nav-link dropdown-toggle" @click.stop="toggleMegaMenu">
+                            Soluções
+                        </a>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" @click="navegar('AllPass')">AllPass</a></li>
+                    </ul>
+
+                    <div class="nav-icons d-flex align-items-center">
+                        <div :class="['search-box', showSearch ? 'active' : '']">
+                            <input type="text" class="form-control form-control-sm" placeholder="O que procura?" v-model="searchQuery" @keyup.enter="executarBusca">
+                        </div>
+                        <button class="btn-icon" @click="showSearch = !showSearch"><i class="bi bi-search"></i></button>
+                        <button class="btn-icon" @click="verNotificacoes">
+                        <i class="bi bi-bell"></i>
+                        <span v-if="notificacoes > 0" class="badge-notif">{{ notificacoes }}</span>
+                    </button>
+                        <button class="btn-icon" @click="abrirLogin"><i class="bi bi-person"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REPARTIÇÃO: O MEGA MENU INTERNO -->
+            <div :class="['mega-menu-container', showMegaMenu ? 'active' : '']" @click.stop>
+                <div class="container">
+                    <div class="row">
+                        <!-- Coluna 1 -->
+                        <div class="col-md-4">
+                            <div class="mega-menu-title">Para Crescer Online</div>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('Criador de Sites')">
+                                <div class="mega-menu-icon"><i class="bi bi-magic"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Criador de Sites com IA</h5>
+                                    <p>Crie seu site do seu jeito em minutos.</p>
+                                </div>
+                            </a>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('WordPress')">
+                                <div class="mega-menu-icon"><i class="bi bi-wordpress"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Hospedagem WordPress</h5>
+                                    <p>Plataforma otimizada com alta performance.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Coluna 2 -->
+                        <div class="col-md-4">
+                            <div class="mega-menu-title">Infraestrutura Avançada</div>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('Servidores VPS')">
+                                <div class="mega-menu-icon"><i class="bi bi-cpu"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Servidores VPS</h5>
+                                    <p>Controle total e recursos dedicados para o seu projeto.</p>
+                                </div>
+                            </a>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('Servidores Dedicados')">
+                                <div class="mega-menu-icon"><i class="bi bi-hdd-rack"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Servidores Dedicados</h5>
+                                    <p>Potência máxima isolada para grandes empresas.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Coluna 3 -->
+                        <div class="col-md-4">
+                            <div class="mega-menu-title">Parcerias e Segurança</div>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('Programa de Afiliados')">
+                                <div class="mega-menu-icon"><i class="bi bi-cash-coin"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Programa de Afiliados</h5>
+                                    <p>Indique a HostGator e ganhe comissões em dinheiro.</p>
+                                </div>
+                            </a>
+                            <a href="#" class="mega-menu-item" @click.prevent="navegar('Segurança SSL')">
+                                <div class="mega-menu-icon"><i class="bi bi-shield-lock"></i></div>
+                                <div class="mega-menu-text">
+                                    <h5>Segurança e SSL</h5>
+                                    <p>Proteja os dados dos seus clientes com cadeado de segurança.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 3. HERO SECTION -->
+        <section class="hero-section" @click="closeMegaMenu">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="row align-items-center gy-5">
+                    <div class="col-lg-7">
+                        <div class="hero-tagline mb-2 text-uppercase fw-bold">Até {{ hero.discount }}% OFF na hospedagem de sites</div>
+                        <h1 class="hero-title mb-4">Tudo para criar<br><span>seu site</span></h1>
+                        <div class="d-flex flex-wrap align-items-center gap-4 mb-4">
+                            <button class="btn btn-yellow text-uppercase" @click="aproveitarOferta">Aproveitar Oferta</button>
+                            <div class="price-text">a partir de <span class="price-highlight">R$ {{ hero.price }}/mês*</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="hero-artwork-container">
+                            <div class="art-discount-badge">
+                                <div class="num">{{ hero.discount }}%</div>
+                            </div>
+                            <img src="jacare-campeao.png" class="img-jacare-principal" alt="Temporada Campeã HostGator">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SEÇÕES EXTRAS -->
+        <div class="dummy-section" @click="closeMegaMenu">
+            <h3>Conteúdo Complementar</h3>
+            <p>Clique em qualquer lugar fora do menu para fechá-lo de forma limpa.</p>
+        </div>
     </div>
-</div>
 
-<script>
-    const track = document.getElementById('sliderTrack');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const originalCards = document.querySelectorAll('.card');
-    
-    // Configurações do Loop
-    const gap = 24;
-    let currentIndex = originalCards.length; // Começamos no meio (após os clones iniciais)
-    let isTransitioning = false;
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    // 1. Clonagem para Loop Infinito
-    originalCards.forEach(card => {
-        const cloneBefore = card.cloneNode(true);
-        const cloneAfter = card.cloneNode(true);
-        track.appendChild(cloneAfter); // Clones no fim
-        track.insertBefore(cloneBefore, track.firstChild); // Clones no início
-    });
-
-    const allCards = document.querySelectorAll('.card');
-
-    function updatePosition(transition = true) {
-        const cardWidth = originalCards[0].offsetWidth;
-        const moveAmount = (cardWidth + gap) * currentIndex;
-        
-        track.style.transition = transition ? 'transform 0.7s cubic-bezier(0.19, 1, 0.22, 1)' : 'none';
-        track.style.transform = `translateX(-${moveAmount}px)`;
-    }
-
-    // Inicializa na posição real (pulando os primeiros clones)
-    window.onload = () => {
-        updatePosition(false);
-    };
-
-    // 2. Lógica do "Salto" Silencioso
-    track.addEventListener('transitionend', () => {
-        isTransitioning = false;
-        
-        // Se chegou nos clones do fim, pula para o início real
-        if (currentIndex >= allCards.length - (originalCards.length)) {
-            currentIndex = originalCards.length;
-            updatePosition(false);
-        }
-        // Se chegou nos clones do início, pula para o fim real
-        if (currentIndex < originalCards.length) {
-            // Ajuste específico para manter a lógica de 3.3
-            if(currentIndex === 0) {
-               currentIndex = originalCards.length;
-               updatePosition(false);
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                showTopBar: true,
+                showSearch: false,
+                isScrolled: false,
+                showMegaMenu: false, // Controla se o mega menu está aberto ou fechado
+                searchQuery: '',
+                notificacoes: 3,
+                topBar: {
+                    title: 'JLSYSTEM AllPass',
+                    subtitle: 'As IAs mais poderosas do mercado em uma única assinatura'
+                },
+                hero: {
+                    discount: 79,
+                    price: '10,09'
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+                // Fecha o menu se clicar fora do escopo do aplicativo
+                document.addEventListener('click', this.closeMegaMenu);
+            },
+            destroyed() {
+                window.removeEventListener('scroll', this.handleScroll);
+                document.removeEventListener('click', this.closeMegaMenu);
+            },
+            methods: {
+                handleScroll() {
+                    this.isScrolled = window.scrollY > 50;
+                },
+                toggleMegaMenu() {
+                    // Inverte o estado de abertura (Abre/Fecha no clique)
+                    this.showMegaMenu = !this.showMegaMenu;
+                },
+                closeMegaMenu() {
+                    // Fecha o menu de forma segura
+                    this.showMegaMenu = false;
+                },
+                navegar(item) {
+                    this.closeMegaMenu();
+                    alert(`🚀 Redirecionando para a seção: "${item}"`);
+                },
+                aproveitarOferta() {
+                    alert(`🛒 Item adicionado ao carrinho!`);
+                },
+                executarBusca() {
+                    if (this.searchQuery.trim() !== '') {
+                        alert(`🔍 Buscando: "${this.searchQuery}"`);
+                        this.searchQuery = '';
+                        this.showSearch = false;
+                    }
+                },
+                verNotificacoes() {
+                    if (this.notificacoes > 0) {
+                        alert(`🔔 Notificações limpas.`);
+                        this.notificacoes = 0;
+                    }
+                },
+                abrirLogin() {
+                    alert("👤 Redirecionando para Central do Cliente.");
+                }
             }
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex++;
-        updatePosition();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex--;
-        updatePosition();
-    });
-
-    // Ajuste no Resize
-    window.addEventListener('resize', () => {
-        updatePosition(false);
-    });
-</script>
-
+        });
+    </script>
 </body>
+
 </html>

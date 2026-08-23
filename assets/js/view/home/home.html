@@ -1,168 +1,598 @@
-<div  >
- 
- 
-  <!-- Call To Action Section -->
-  <section class="dark-background">
-    <main id="tecnolog">
+<div>
 
-      <div class="col-12 text-center">
 
-        <div class="titulo-container">
-          <h2 class="text-white">Desenvolvimento <span> seguro </span> e <span> eficaz </span> </h2>
-          <div class="underline"></div>
-          <p class="text-white" style="font-size: larger;">
-            Mas sem nos limitar às tecnologias
-          </p>
+    <!-- features Criativ HERO SECTION (Fundo com Vídeo / Frente com Animate.css) Perguntas Frequentes -->
+    <section class="hero-section">
+
+        <!-- VÍDEO DE FUNDO (Substitua './assets/video/bg-video.mp4' pelo caminho real ou uma URL de teste) -->
+        <video autoplay loop muted playsinline class="hero-video-bg">
+                <source src="./assets/img/3141211-hd_1920_1080_25fps.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+
+        <!-- O overlay continua aqui para escurecer o vídeo e garantir contraste -->
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <div class="row align-items-center gy-5">
+
+                <!-- Conteúdo Textual (Vindo da esquerda) -->
+                <div class="col-lg-7 animate__animated animate__fadeInLeft">
+                    <div class="hero-tagline mb-2 text-uppercase fw-bold">
+                        Até {{ hero.discount }}% OFF na hospedagem de sites
+                    </div>
+                    <h1 class="hero-title mb-4">
+                        Tudo para criar<br><span>{{ displayedText }}</span>
+                    </h1>
+
+                    <div class="hero-features row mb-5">
+                        <div class="col-md-6" v-for="feat in hero.features" :key="feat">
+                            <i class="bi bi-check-lg me-2"></i> {{ feat }}
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-nowrap align-items-center gap-3 gap-md-4 mb-4">
+                        <button class="btn btn-yellow animate__animated animate__pulse animate__infinite animate__slow" @click="aproveitarOferta">
+                        Aproveitar Oferta
+                      </button>
+
+                        <div class="price-text lh-sm">
+                            a partir de
+                            <span class="price-highlight d-block">R$ {{ hero.price }}/mês*</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lado Visual (Vindo da direita) -->
+                <div class="col-lg-5 animate__animated animate__fadeInRight">
+                    <div class="hero-artwork-container">
+                        <div class="art-discount-badge animate__animated animate__bounceIn animate__delay-1s">
+                            <span class="ate">Até</span>
+                            <div class="num">{{ hero.discount }}%</div>
+                            <span class="off">OFF</span>
+                        </div>
+                        <img src="./assets/img/robo.png" class="img-jacare-principal" alt="Temporada Campeã HostGator">
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="swiper ">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-joomla-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-vue.js-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-nodejs-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-javascript-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-nuxt-js-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-express-js-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-adonis-js-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-java-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-postgresql-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-intellij-idea-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-mysql-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-sql-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-html-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-css-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-adobe-photoshop-100-2.png">
-          </div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-adobe-100-1.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-adobe-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-canva-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-elementor-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-mariadb-100.png"></div>
-          <div class="swiper-slide"><img src="./assets/assets/img/tecnologia/icons8-json-100.png"></div>
+
+
+    <!-- SERVICES SECTION -->
+    <section id="servicos" class="services-section container ">
+
+        <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+            <div class="col-lg-7 animate__animated animate__fadeInLeft pt-5">
+                <h5 class="fonte-h2">Nossos Serviços</h5>
+                <h1 class="hero-title-2  ">
+                    Sua evolução em cada solução <span> estão aqui</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="grid-services">
+            <div class="service-card">
+                <div class="service-top">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Inteligência de Vendas</h3>
+                    <p>Prospecção, qualificação e engajamento com seus clientes ideais.</p>
+                </div>
+                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-top">
+                    <i class="fas fa-mobile-screen-button"></i>
+                    <h3>Criação de Apps</h3>
+                    <p>Desenvolvemos plataformas e sistemas digitais personalizadas e sob medida.</p>
+                </div>
+                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-top">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Criação de Website</h3>
+                    <p>Desbloqueie oportunidades com a criação de um site, conecte com o público em qualquer lugar.</p>
+                </div>
+                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-top">
+                    <i class="fas fa-palette"></i>
+                    <h3>Design Gráfico</h3>
+                    <p>Criamos a identidade visual da sua marca, garante que sua empresa se destaque e transmita profissionalismo.</p>
+                </div>
+                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container mb-5 pt-xl-5">
+
+        <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+            <div class="col-lg-7 animate__animated animate__fadeInLeft">
+                <h5 class="fonte-h2">Nossos Planos Kombo</h5>
+                <h1 class="hero-title-2  ">
+                    Escolha o plano ideal para a <span>  sua empresa</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- PLANO START -->
+            <div class="price-card">
+                <h3 class="plan-name">Plano Start</h3>
+                <div class="price-wrapper">
+                    kz <span class="price-number">255.000</span> / único
+                </div>
+                <p>Indicado para empreendedores que estão a começar e precisam do mínimo para se apresentar de forma profissional.</p>
+                <div class="includes-title">Inclui:</div>
+
+                <ul class="features-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i> Logotipo profissional.
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i>Website institucional até 3 Página ou Página única (Landing Page).
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i> Hospedagem + domínio profissional por 6 meses.
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i> 1 e-mail personalizado .
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i> Cartão de visita digital & Pass PVC (5 artes personalizadas)
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i> Folder digital (1 dobra).
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i> 3 artes para redes sociais & QR-Code.
+                    </li>
+                </ul>
+
+                <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- PLANO STANDARD -->
+            <div class="price-card featured">
+                <div class="badge">Mais Popular</div>
+                <h3 class="plan-name">Plano Standard</h3>
+                <div class="price-wrapper">
+                    kz <span class="price-number">364.900</span> / único
+                </div>
+                <p class="description">
+                    Ideal para empresas que querem reforçar a credibilidade e já ter um site completo e materiais institucionais.
+                </p>
+
+                <h4>Inclui:</h4>
+                <ul class="features-list">
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Tudo do <b> Plano Start. </b>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Website institucional até 5 páginas .
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Hospedagem + domínio profissional por 1 ano.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> 3 e-mails corporativos.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Assinatura de e-mails.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Portfólio digital em PDF.
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Kit gráfico para redes sociais (capas + 5 artes personalizadas).
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Folder digital (2 dobra).
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Gestão de redes sociais por 15 dias de trafego pago.
+                    </li>
+                </ul>
+                <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- PLANO PREMIUM -->
+            <div class="price-card">
+                <h3 class="plan-name">Plano Premium</h3>
+                <div class="price-wrapper">
+                    kz <span class="price-number">500.000</span> / único
+                </div>
+                <p class="description">
+                    Pensado para empresas que querem presença digital completa, materiais avançados e marketing de impacto.
+                </p>
+
+                <h4>Inclui:</h4>
+                <ul class="features-list">
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Tudo do <b>Plano Standard.</b>
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Website completo até 10 páginas, com SEO avançado.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> 5 e-mails corporativos personalizados.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Manual completo de identidade visual (incluindo criações para uniforme, veículos e papelaria).
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Produção de vídeo publicitário (até 60s).
+                    </li>
+
+                    <li>
+                        <i class="bi bi-check-circle-fill"></i> Gestão de redes sociais por 1 mês de trafego pago.
+                    </li>
+                </ul>
+                <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+            </div>
+
 
         </div>
-         
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </main>
-
-  </section><!-- hero section dark-background /Call To Action Section -->
-
-  <main id="tecnolog">
-
-    <div class="col-12 text-center">
-
-      <div class="titulo-container">
-        <h2 class="text-black">Mais de 100 empresas <span> satisfeitas </span> </h2>
-        <div class="underline"></div>
-        <br>
-        <p class="text-black" style="font-size: larger;">
-          O bom relacionamento com a sua marca é um dos pilares <br> do nosso trabalho.
-        </p>
-      </div>
     </div>
 
-    <div class="swiper ">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-1.png" alt="1"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-2.png" alt="2"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-3.png" alt="3"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-4.png" alt="4"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-5.png" alt="5"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/client-6.png" alt="6"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo001.png" alt="7"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo002.png" alt="8"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo003.png" alt="9"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo004.png" alt="10"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo005.png" alt="11"></div>
-        <div class="swiper-slide"><img src="./assets/assets/img/clients/logo006.png" alt="12"></div>
+    <p-portfolio></p-portfolio>
 
-      </div>
 
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+    <!-- TECHNOLOGIES SECTION -->
+    <section id="tecnologias" class="tech-section container mb-5">
+
+        <div class="row align-items-center gy-5 mb-5 pt-xl-5 text-center">
+            <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5">
+                <h5 class="fonte-h2">Não Nos limitamos</h5>
+                <h1 class="hero-title-2  ">
+                    Tecnologias que <span> Usamos</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="tech-slider-container">
+            <div class="swiper techSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(tech, index) in tecnologiasList" :key="index">
+                        <div class="tech-card">
+                            <i :class="tech.icone"></i>
+                            <span>{{ tech.nome }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="hero-section ">
+        <!-- Binding reativo de estilo inline para o Zoom da imagem -->
+        <div class="hero-bg-image" :style="bgStyle">
+        </div>
+
+        <!-- Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Conteúdo -->
+        <div class="hero-container container pt-5">
+            <div class="col-lg-7 pt-5 animate__animated animate__fadeInLeft">
+                <h5 class="fonte-h2">Testemunho</h5>
+                <h1 class="hero-title-2  ">
+                    Transforme ideias em <span> resultados</span>
+                </h1>
+
+
+                <P>
+                    Do conceito ao projeto final, unimos criatividade, estratégia e tecnologia para transformar sua visão em soluções visuais que fortalecem sua marca e impulsionam seu negócio. Cada projeto é uma oportunidade de dar vida às suas ideias com criatividade,
+                    estratégia e excelência.
+                </P>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="depoimentos" class="testimonials-section container pt-5">
+
+        <div class="row align-items-center gy-5 mb-2 pt-5 pt-xl-5">
+            <div class="col-lg-7 animate__animated animate__fadeInLeft">
+                <h5 class="fonte-h2">Soluções Tecnologicas</h5>
+                <h1 class="hero-title-2  ">
+                    O que os nossos <span> Clientes Dizem</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(depoimento, index) in depoimentos" :key="index">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">{{ depoimento.texto }}</p>
+                            <div class="client-info">
+                                <img :src="depoimento.foto" :alt="depoimento.nome" class="client-avatar">
+                                <div class="client-details">
+                                    <h4>{{ depoimento.nome }}</h4>
+                                    <span>{{ depoimento.cargo }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (PERGUNTAS FREQUENTES) -->
+    <section id="faq" class="faq-section container">
+
+        <div class="row align-items-center gy-5 mb-5 pt-5 pt-xl-5">
+            <div class="col-lg-7 animate__animated animate__fadeInLeft pt-5">
+                <h5 class="fonte-h2">Alguma Duvida ? </h5>
+                <h1 class="hero-title-2  ">
+                    Perguntas<span> Frequentes</span>
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="container" data-aos-delay="100">
+            <div class="row gy-4 align-items-center justify-content-between">
+                <div class="col-xl-7" data-aos-delay="200">
+
+                    <div class="faq-container">
+                        <div v-for="(item, index) in faqs" :key="index" class="faq-item" :class="{ active: item.aberto }">
+                            <button class="faq-trigger" @click="toggleFaq(index)">
+                        <span>{{ item.pergunta }}</span>
+                        <i class="fas" :class="item.aberto ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                            <div class="faq-content" :style="item.aberto ? { maxHeight: '200px', paddingBottom: '20px' } : { maxHeight: '0px' }">
+                                <p>{{ item.resposta }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-5" data-aos-delay="300">
+                    <div class="image-wrapper">
+                        <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                            <img src="assets/img/robo-3.png" alt="Business Meeting" class="img-fluid main-image rounded-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Features 2 Section -->
+    <section id="features-2" class="features-2 section ">
+        <div class="container" data-aos-delay="100">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
+                        <div class="d-flex align-items-center justify-content-end gap-4">
+                            <div class="feature-content">
+                                <h4>Conecte-se ao Sucesso</h4>
+                                <p>
+                                    Aproximamos a sua marca dos clientes certos.</p>
+                            </div>
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-display"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+                    <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
+                        <div class="d-flex align-items-center justify-content-end gap-4">
+                            <div class="feature-content">
+                                <h4>Digital Sem Limites</h4>
+                                <p>
+                                    Soluções modernas para empresas que querem crescer. </p>
+                            </div>
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-feather"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+                    <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
+                        <div class="d-flex align-items-center justify-content-end gap-4">
+                            <div class="feature-content">
+                                <h4>Transforme a Sua Presença</h4>
+                                <p>
+                                    Destaque-se no mercado com inovação e estratégia. </p>
+                            </div>
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+                </div>
+
+                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="phone-mockup text-center">
+                        <img src="assets/img/progr.png" alt="Phone Mockup" class="img-fluid" />
+                    </div>
+                </div>
+                <!-- End Phone Mockup -->
+
+                <div class="col-lg-4">
+                    <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Ideias que Ganham Vida</h4>
+                                <p>
+                                    Desenvolvemos soluções feitas para o seu sucesso. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+                    <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Tecnologia para Crescer</h4>
+                                <p>
+                                    Ferramentas inteligentes para acelerar os seus resultados. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+                    <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-browser-chrome"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>A Evolução do Seu Negócio</h4>
+                                <p>
+                                    Transformação digital com foco em resultados.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Features 2 Section -->
+
+
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section" style="background-color: #fff; padding: 20px 0;">
+        <div class="container" data-aos-delay="100">
+
+            <div class="swiper" ref="swiperContainer">
+
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo001.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo007.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo002.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo010.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo005.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo009.jpg" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo006.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo004.png" class="img-fluid" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/img/clients/logo008.png" class="img-fluid" />
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+    </section>
+
+    <!-- /Clients Section -->
+
+
+    <!-- Call To Action 2 Section -->
+    <section id="call-to-action-2" class="call-to-action-2 section dark-background">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-xl-10">
+                    <div class="text-center">
+                        <h3>Mais Visibilidade, Mais Conversões, Mais Resultados</h3>
+                        <p>
+                            Nossa Missão é Gerar Resultados Todos os Dias para Seu Negócio, Gerando Muita Visibilidade, Facilidade e Muitas Conversões e Faturamento para Sua Empresa
+                        </p>
+                        <a class="cta-btn" href="#">Contacta-nos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Call To Action 2 Section -->
+
+
+
     </div>
-  </main>
-
-
-
-  <main id="tecnolog">
-
-    <div class="col-12 text-center">
-
-      <div class="titulo-container">
-        <h2 class="text-black"><span> Publicidade </span> </h2>
-        <div class="underline"></div>
-        <br>
-
-      </div>
-    </div>
-
-
-    <div id="gallery">
-
-      <div class="item">
-
-        <figure>
-          <img src="./assets/assets/img/flayer/0021.jpg">
-        </figure>
-        </a>
-      </div>
-
-      <div class="item">
-        <figure>
-          <img src="./assets/assets/img/flayer/0013.jpg">
-        </figure>
-        </a>
-      </div>
-
-      <div class="item">
-        <figure>
-          <img src="./assets/assets/img/flayer/0014.jpg">
-        </figure>
-        </a>
-      </div>
-      <div class="item">
-        <figure>
-          <img src="./assets/assets/img/flayer/0015.jpg">
-        </figure>
-        </a>
-      </div>
-
-      <div class="item">
-        <figure>
-          <img src="./assets/assets/img/flayer/0012.jpg">
-        </figure>
-        </a>
-      </div>
-      <div class="item">
-        <figure>
-          <img src="./assets/assets/img/flayer/0018.jpg">
-        </figure>
-        </a>
-      </div>
-      <div class="item">
-
-        <figure>
-          <img src="./assets/assets/img/flayer/008.jpg">
-        </figure>
-        </a>
-      </div>
-      <div class="item">
-
-        <figure>
-          <img src="./assets/assets/img/flayer/009.jpg">
-        </figure>
-        </a>
-      </div>
-    </div>
-
-
-
-  </main>
-
-
-
-</div>

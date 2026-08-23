@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Tecnológicos Cyberpunk</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIÁVEIS --- */
+        :root {
+            --bg-color: #0a0a12;
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --primary: #ff0055; /* Vermelho principal */
+            --secondary: #00ffcc; /* Neon ciano complementar */
+            --orange-neon: #ff6600; /* Laranja da imagem adaptado para o tema */
+            --text: #e2e8f0;
+            --dark-blue: #141423;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 102, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- CABEÇALHO DA SEÇÃO --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 span {
+            color: var(--orange-neon);
+            text-shadow: 0 0 15px var(--orange-neon);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            letter-spacing: 1px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- GRID DE RECURSOS --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- CARD ESTILIZADO CYBER --- */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Linha decorativa no topo do card ao passar o mouse */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--orange-neon), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 102, 0, 0.3);
+            box-shadow: 0 12px 30px rgba(255, 102, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Area do Ícone/Ilustração */
+        .feature-icon-wrapper {
+            font-size: 4rem;
+            color: var(--orange-neon);
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Textos do Card */
+        .feature-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover .feature-title {
+            color: var(--orange-neon);
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="container">
+        
+        <header class="section-header">
+            <h2>Criar um site <span>em Angola.</span></h2>
+            <p>Obtenha mais vendas com um website chave-na-mão, ou desenvolva um projeto à medida do seu negócio.</p>
+        </header>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3 class="feature-title">Website Chave-na-Mão</h3>
+                <p class="feature-desc">
+                    Website será desenvolvido pelos nossos especialistas e entregue totalmente funcional, responsivo e pronto para uso.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="feature-title">Construção Personalizada</h3>
+                <p class="feature-desc">
+                    Vamos criar o seu website à medida, reflectindo a visão da sua marca ou negócio garantindo uma presença online única.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="feature-title">Hospedagem Incluída</h3>
+                <p class="feature-desc">
+                    Incluímos uma hospedagem e certificado de segurança fiável para simplificar o lançamento e manutenção do site.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {}
+        });
+    </script>
+</body>
+</html>

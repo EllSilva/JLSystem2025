@@ -1,310 +1,419 @@
 <div>
-  <div>
-    <!-- end loader -->
-    <!-- top -->
-    <!-- header  -->
 
-    <!-- end header -->
-    <div class="full_bg_site">
-      <!-- header inner -->
-      <div class="section">
-        <!-- carousel code -->
-        <div id="banner1" class="pt-5">
+    <div class="submenu">
+        <!-- Sub-navegação Superior -->
+        <header class="border-bottom py-3">
+            <div class="container">
+                <div class="d-flex align-items-center flex-wrap gap-4">
+                    <!-- Link na Marca/Título Principal -->
+                    <a :href="brandUrl" class="subnav-brand me-3">{{ brandTitle }}</a>
 
-          <div class="carousel-inner">
-            <!-- first slide -->
-            <div class="carousel-item active">
-              <div class="carousel-caption cuplle">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-8">
-                      <div class="photog">
-                        <h1>Criação de <br><span>WebSites</span> </h1>
-                        <span class="sobtitulo">Tenha um Site de alta performance para sua empresa.</span>
-
-
-                        <div class="d-flex flex-row mb-3">
-                          <div class="p-2">
-                            <a class="read_more" href="javascript:void(0)"> <span class="p-2">Ver Planos</span></a>
-                          </div>
-                          <div class="p-2">
-                            a partir de
-                            <br>
-                            <div>
-                              <h3 class=""
-                                style="color: #b90000; padding: 0; font-size: 26px;  font-weight: bold; text-align: left; padding-bottom: 30px;">
-                                75.000 kz*
-                              </h3>
-
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                      </div>
+                    <div class="d-flex gap-4 align-items-center flex-grow-1 overflow-auto">
+                        <!-- Links do Menu -->
+                        <a v-for="(item, index) in navItems" :key="index" :href="item.url" class="subnav-link text-nowrap" :class="{ 'active': item.active }" @click="setActive(index)">
+                            {{ item.label }}
+                            <i v-if="item.hasDropdown" class="bi bi-chevron-down ms-1" style="font-size: 0.75rem;"></i>
+                        </a>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
+        </header>
 
+        <!-- Seção Conteúdo Principal -->
+        <main class="container py-5">
+            <div class="row align-items-center g-5">
 
-          </div>
-          <!-- controls -->
-
-        </div>
-      </div>
-    </div>
-    <!-- end banner -->
-    <!-- about -->
-    <div class="about">
-      <div class="container_width">
-        <nav class="menu-service">
-          <ul>
-            <li><a href="#/criacao-de-sites" class="active">WebSite</a></li>
-            <li><a href="#/criacao-de-loja-virtual">Loja Online</a></li>
-            <li><a href="#/app-web">Apps & Sistema Web </a></li>
-            <li><a href="#/">Dominio</a></li>
-            <li><a href="#/">Hospedagem</a></li>
-          </ul>
-        </nav>
-
-        <div class="row d_flex  pt-5">
-          <div class="col-md-7">
-            <div class="titlepage text_align_left">
-              <h2>Criação de Site Profissional! </h2>
-              <p>
-                Nos tempos modernos sua empresa precisa estar muito bem posicionada na internet.
-                <br>
-                Ter sua empresa conectada no mundo digital é uma necessidade para qualquer empresa que almeja ampliação
-                no mercado digital, a consolidação da Marca e o aumento da receitas com baixo custo.
-                <br>
-                Sua presença on-line é o que ajuda as empresas a crescer por ter alta visibilidade entre os clientes em
-                potencial. Qualquer negócio, grande ou pequeno, deve ter a expansão da presença on-line como parte
-                fundamental de sua estratégia de marketing on-line
-                <br>
-                <br>
-                Fale com nossa equipe, peça seu orçamento e seja mais um parceiro de alto nível da JLSySTEM.
-
-              </p>
-
-              <a class="read_more"
-                href="https://api.whatsapp.com/send/?phone=244952472527&text&type=phone_number&app_absent=0">
-                Entrar em contacto whatsapp</a>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="about_img text_align_center">
-              <figure><img src="./assets/images/about2.png" alt="#" /></figure>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!-- end about Coronavirus Cases -->
-
-
-
-
-    <div class="protect">
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="titlepage text_align_center blue-border text-center mrgb4x">
-              <h2>Nossos Planos para Voce </h2>
-              <p>
-                Escolha o plano ideal para a sua empresa
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class=" col-md-4">
-            <div class="planos">
-              <!-- Plano Start -->
-              <div class="plano">
-                <h3>Plano Start</h3>
-                <p class="preco"><small>kz</small> 109.900 <small>/ único</small></p>
-                <ul>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Até 5 (ver paginas)</span></li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Vídeo & Slide Show Dinâmico </span></li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Botão do whatsapp</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Localização Estatica</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Hospedagem / 1 Ano</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Domínio .com / 1 Ano</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> 3 E-Mails Corporativos</span> </li>
-                </ul>
-                <a href="#" class="btn">Solicitar ➝</a>
-              </div>
-            </div>
-          </div>
-          <div class=" col-md-4">
-            <div class="planos">
-              <div class="plano destacado">
-                <div class="most-popular">Most Popular</div>
-                <h3 class="pt-5">Plano Standard</h3>
-                <p class="preco"><small>kz</small> 159.900 <small>/ único</small></p>
-                <ul>
-
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Tudo do <b>Plano Start. </span></b></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Até 10 (ver paginas) </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Localização Dinâmica(Google Mapa) </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Formulário Personalizado </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Newsletter Formulário </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Página de Projeto/Portfolio </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> Área de Notícias/Blogs Estatica </span></li>
-                  <li><i class="ion--checkmark" style="background-color: #ffffff;"> </i> <span
-                      class="text-plano-destaque"> 5 E-Mails Corporativos </span></li>
-                </ul>
-                <a href="#" class="btn">Solicitar ➝</a>
-              </div>
-            </div>
-          </div>
-          <div class=" col-md-4">
-            <div class="planos">
-              <div class="plano">
-                <h3>Plano Premium</h3>
-                <p class="preco"><small>kz</small> 199.900 <small>/ único</small></p>
-                <ul>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Tudo do <b>Plano Standard.</b></span></li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Até 15 Subpáginas</span></li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano">Optimização de Site (SEO)</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano">Integração Google Analytics</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano">Área de Notícias/Blogs Dinâmico</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano"> Domínio .ao .com .net / 1 ano</span></li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano">10 E-Mails Corporativos</span> </li>
-                  <li class="d-flex"><span class="ion-plano"><i class="ion--checkmark"> </i></span> <span
-                      class="text-plano">Personalização por Solicitação</span> </li>
-
-                </ul>
-                <a href="#" class="btn">Solicitar ➝</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    <!-- end protect -->
-
-
-
-
-
-
-
-    <div class="port">
-
-
-      <div class="container-port">
-        <div class="header-port">
-          <h2>Portifolio</h2>
-          <div class="nav-btns-port">
-            <button id="prevBtn" disabled>&#8592;</button>
-            <button id="nextBtn">&#8594;</button>
-          </div>
-        </div>
-
-        <div class="slider-area-port">
-          <div class="slider-wrapper-port">
-            <div id="sliderTrack" class="slider-track-port">
-              <div class="card-port"> 
-                  <div class="gallery2">
-                    <div class="card2">
-                      <a data-fancybox="galeria"
-                        data-caption='<a href="https://meusite.com/projeto1" target="_blank">Ver Projeto 1</a>'
-                        href="https://picsum.photos/1920/1080?1">
-                        <img src="./assets/images/portifolio/site.jpg" alt="Projeto 1" />
-                      </a>
-                      <a href="https://meusite.com/projeto1" class="project-btn">Projeto 1</a>
+                <!-- Coluna da Esquerda: Imagem com Box Informativo -->
+                <div class="col-lg-6 position-relative">
+                    <div class="banner-card d-flex align-items-center justify-content-center p-3">
+                        <img :src="heroImage" alt="Microsoft 365 Preview" class="banner-img img-fluid rounded-3">
                     </div>
-                  </div>
-              </div>
-              <div class="card-port">
-   <div class="gallery2">
-<div class="card2">
-          <a data-fancybox="galeria"
-            data-caption='<a href="https://meusite.com/projeto1" target="_blank">Ver Projeto 1</a>'
-            href="https://picsum.photos/1920/1080?1">
-            <img src="./assets/images/portifolio/site.jpg" alt="Projeto 1" />
-          </a>
-          <a href="https://meusite.com/projeto1" class="project-btn">Projeto 1</a>
-        </div>
-   </div>
-              </div>
-              <div class="card-port">
-                  <div class="gallery2">
-      <div class="card2">
-          <a data-fancybox="galeria"
-            data-caption='<a href="https://meusite.com/projeto2" target="_blank">Ver Projeto 2</a>'
-            href="./assets/images/2149548139.jpg">
-            <img src="./assets/images/portifolio/site2.jpg" alt="Projeto 2" />
-          </a>
-          <a href="https://meusite.com/projeto2" class="project-btn">Projeto 2</a>
-        </div>
-   </div>
-              </div>
-              <div class="card-port">
-                   <div class="gallery2">
-      <div class="card2">
-          <a data-fancybox="galeria"
-            data-caption='<a href="https://meusite.com/projeto2" target="_blank">Ver Projeto 2</a>'
-            href="./assets/images/2149548139.jpg">
-            <img src="./assets/images/portifolio/site2.jpg" alt="Projeto 2" />
-          </a>
-          <a href="https://meusite.com/projeto2" class="project-btn">Projeto 2</a>
-        </div>
-   </div>
-              </div>
-              <div class="card-port">
-                  <div class="gallery2">
-      <div class="card2">
-          <a data-fancybox="galeria"
-            data-caption='<a href="https://meusite.com/projeto2" target="_blank">Ver Projeto 2</a>'
-            href="./assets/images/2149548139.jpg">
-            <img src="./assets/images/portifolio/site2.jpg" alt="Projeto 2" />
-          </a>
-          <a href="https://meusite.com/projeto2" class="project-btn">Projeto 2</a>
-        </div>
-   </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
+                    <!-- Caixa Informativa -->
+                    <div class="floating-info-box position-absolute bottom-0 end-0 translate-middle-y me-3 d-none d-md-block">
+                        <p class="m-0">
+                            {{ infoText }}
+                            <strong class="d-block mt-1">{{ supportPhone }}</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Coluna da Direita: Textos e CTA -->
+                <div class="col-lg-6 ps-lg-4">
+
+                    <div class="row">
+                        <div class="col-lg-12 animate__animated animate__fadeInLeft">
+                            <h5 class="fonte-h2"> {{ slides[index].title }}</h5>
+                            <h1 class="hero-title-2  ">
+                                Construindo sua presença <span>online </span>
+                            </h1>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Lista de Recursos com Ícones e Links Opcionais -->
+                    <ul class="feature-list mb-4">
+                        <li v-for="(feature, idx) in features" :key="idx">
+                            <i :class="feature.icon"></i>
+                            <span>
+                                <a v-if="feature.url" :href="feature.url" class="text-dark text-decoration-none">
+                                    <span :class="{ 'dashed-underline': feature.underlined }">
+                                        {{ feature.text }}
+                                    </span>
+                            </a>
+                            <span v-else :class="{ 'dashed-underline': feature.underlined }">
+                                    {{ feature.text }}
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <!-- Botão de Ação com Link (CTA) -->
+                    <div class="mb-4">
+                        <a :href="ctaUrl" class="btn btn-godaddy-blue">
+                            {{ ctaButtonText }}
+                        </a>
+                    </div>
+
+                    <!-- Rodapé com Link para Avaliações -->
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <div class="stars-badge">
+                            <i class="bi bi-star-fill text-white" v-for="n in 5" :key="n" style="font-size: 0.75rem;"></i>
+                        </div>
+                        <span class="rating-text">
+                            <strong>{{ ratingScore }}</strong> out of 5 stars based on {{ ratingCount }} reviews
+                            <a :href="reviewsUrl" class="text-dark fw-bold ms-1">View All</a>
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
     </div>
 
- 
-  </div>
+    <!-- Elemento divisor com o gradiente
+    <div class="transicao-branco-preto"></div>
+ -->
 
- 
+    <section>
+
+        <div class="container" style="padding: 5% 0;">
+
+            <header class="section-header inicio">
+
+                <p>Obtenha mais vendas com um website chave-na-mão, ou desenvolva um projeto à medida do seu negócio.
+                </p>
+            </header>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="feature-title">Website Chave-na-Mão</h3>
+                    <p class="feature-desc">
+                        Website será desenvolvido pelos nossos especialistas e entregue totalmente funcional, responsivo e pronto para uso.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="feature-title">Construção Personalizada</h3>
+                    <p class="feature-desc">
+                        Vamos criar o seu website à medida, reflectindo a visão da sua marca ou negócio garantindo uma presença online única.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="feature-title">Hospedagem Incluída</h3>
+                    <p class="feature-desc">
+                        Incluímos uma hospedagem e certificado de segurança fiável para simplificar o lançamento e manutenção do site.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
 
 
-</div>
-</div>
+        <div class="plano-fundo inicio pb-5">
+
+            <div class="container ">
+
+                <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+                    <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
+                        <h5 class="fonte-h2">Planos Website.</h5>
+                        <h1 class="hero-title-2  ">
+                            Encontre o plano de site ideal para si, ou <span> peça um orçamento personalizado. </span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button v-for="tab in abas" :key="tab" @click="abaAtiva = tab" :class="['tab-btn', { active: abaAtiva === tab }]">
+                            {{ tab }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pricing-grid">
+
+                    <div class="price-card" v-if="abaAtiva === 'WebSite'">
+                        <h3 class="plan-name">Plano Start</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">150.000</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Até 5 (ver páginas)</li>
+                            <li><i class="fas fa-check-circle"></i> Vídeo & Slide Show Dinâmico</li>
+                            <li><i class="fas fa-check-circle"></i> Botão do WhatsApp</li>
+                            <li><i class="fas fa-check-circle"></i> Localização Estática</li>
+                            <li><i class="fas fa-check-circle"></i> Hospedagem Anual</li>
+                            <li><i class="fas fa-check-circle"></i> Domínio .com Anual</li>
+                            <li><i class="fas fa-check-circle"></i> 3 E-Mails Corporativos</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                    <div class="price-card featured" v-if="abaAtiva === 'WebSite'">
+                        <div class="badge">Most Popular</div>
+                        <h3 class="plan-name">Plano Standard</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">234.900</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Tudo do Plano Start</li>
+                            <li><i class="fas fa-check-circle"></i> Até 10 (ver páginas)</li>
+                            <li><i class="fas fa-check-circle"></i> Localização Dinâmica</li>
+                            <li><i class="fas fa-check-circle"></i> Formulário Personalizado</li>
+                            <li><i class="fas fa-check-circle"></i> Página de Projeto / Portfólio</li>
+                            <li><i class="fas fa-check-circle"></i> Área de Notícias / Blogs Estática</li>
+                            <li><i class="fas fa-check-circle"></i> 5 E-Mails Corporativos</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                    <div class="price-card" v-if="abaAtiva === 'WebSite'">
+                        <h3 class="plan-name">Plano Premium</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">280.000</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Tudo do Plano Standard</li>
+                            <li><i class="fas fa-check-circle"></i> Até 15 Subpáginas</li>
+                            <li><i class="fas fa-check-circle"></i> Optimização de Site (SEO)</li>
+                            <li><i class="fas fa-check-circle"></i> Integração Google Analytics</li>
+                            <li><i class="fas fa-check-circle"></i> Área de Notícias / Blogs Dinâmica</li>
+                            <li><i class="fas fa-check-circle"></i> Domínio .ao .com .net / 1 ano</li>
+                            <li><i class="fas fa-check-circle"></i> 10 E-Mails Corporativos</li>
+                            <li><i class="fas fa-check-circle"></i> Personalização por Solicitação</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+
+                    <div class="price-card" v-if="abaAtiva === 'Lojas Online'">
+                        <h3 class="plan-name">E-Commerce Start</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">350.000</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Cadastro de até 50 produtos</li>
+                            <li><i class="fas fa-check-circle"></i> Integração de Pagamentos</li>
+                            <li><i class="fas fa-check-circle"></i> Carrinho Inteligente</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                    <div class="price-card featured" v-if="abaAtiva === 'Lojas Online'">
+                        <div class="badge">Recomendado</div>
+                        <h3 class="plan-name">E-Commerce Pro</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">490.000</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Produtos Ilimitados</li>
+                            <li><i class="fas fa-check-circle"></i> Gestão de Stock e Envios</li>
+                            <li><i class="fas fa-check-circle"></i> Relatórios de Vendas</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+
+                    <div class="price-card" v-if="abaAtiva === 'Portais'">
+                        <h3 class="plan-name">Portal Corporate</h3>
+                        <div class="price-wrapper">
+                            kz <span class="price-number">750.000</span> / único
+                        </div>
+                        <div class="includes-title">Inclui:</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Sistema de Login multi-nível</li>
+                            <li><i class="fas fa-check-circle"></i> Banco de Dados Dedicado</li>
+                            <li><i class="fas fa-check-circle"></i> Painel Administrativo Total</li>
+                        </ul>
+                        <button class="action-btn">Solicitar <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Features Cards Section -->
+        <section id="features-cards" class="features-cards section" style="padding: 5% 0;">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="feature-box red">
+
+                            <h4>Suporte personalizado</h4>
+                            <p>
+                                Focamos em entender o seu negócio e as sua necessidade para oferecer um suporte único, com soluções que se adaptam perfeitamente às suas necessidades.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Feature Borx-->
+
+                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="feature-box red">
+
+                            <h4>Orientação ao cliente</h4>
+                            <p>
+                                Vamos além da consultoria: somos seu parceiro. Escutamos suas necessidades, resolvemos seus desafios e caminhamos juntos para o seu crescimento.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Feature Borx-->
+
+                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="feature-box red">
+
+                            <h4>Tranquilidade e Confiança</h4>
+                            <p>
+                                Nossa Missão é entregar soluções certa e confiáveis. Utilizamos as melhores práticas nas criação para proteger seus dados e garantir a integridade dos seus projecto.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Feature Borx-->
+
+                </div>
+
+        </section>
+        <!-- /Features Cards Section -->
+
+        <p-portfolio></p-portfolio>
+
+        <!-- Features 2 Section -->
+        <section id="features-2" class="features-2 section " style="padding: 5% 0;">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row align-items-center">
+
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class=" text-center">
+                            <img src="assets/img/dica.png" alt="Phone Mockup" class="img-fluid" />
+                        </div>
+                    </div>
+                    <!-- End Phone Mockup -->
+
+                    <div class="col-lg-6">
+                        <div class="mb-2" data-aos="fade-right" data-aos-delay="200">
+                            <div class="d-flex align-items-center  gap-4">
+                                <div class="feature-icon flex-shrink-0">
+                                    <i class="bi bi-display"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Use em qualquer dispositivo</h3>
+                                    <p>
+                                        Nossas soluções são desenvolvidas para funcionarem perfeitamente em computadores, tablets e smartphones, garantindo acesso em qualquer luga.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .-->
+
+                        <div class="  mb-2" data-aos="fade-right" data-aos-delay="300">
+                            <div class="d-flex align-items-center  gap-4">
+                                <div class="feature-icon flex-shrink-0">
+                                    <i class="bi bi-feather"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Design Moderno e Intuitivo</h3>
+                                    <p>
+                                        Criamos interfaces visuais que não são apenas bonitas, mas também fáceis de usar, proporcionando a melhor experiência para o seu cliente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .-->
+
+                        <div class="mb-2" data-aos="fade-right" data-aos-delay="400">
+                            <div class="d-flex align-items-center  gap-4">
+                                <div class="feature-icon flex-shrink-0">
+                                    <i class="bi bi-eye"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Soluções Sob Medida</h3>
+                                    <p>
+                                        Cada projeto é desenvolvido para atender às necessidades específicas do seu negócio, sem soluções genéricas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .-->
+                        <!-- End .-->
+
+                        <div class="mb-2" data-aos="fade-left" data-aos-delay="300">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="feature-icon flex-shrink-0">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Responsividade</h3>
+                                    <p>
+                                        Garantimos que o seu website ou sistema se adapte perfeitamente a qualquer tela, oferecendo a melhor experiência de uso em computadores, tablets e celulares.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .-->
+
+                        <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="feature-icon flex-shrink-0">
+                                    <i class="bi bi-browser-chrome"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Estratégias Conectadas</h3>
+                                    <p>
+                                        Nosso trabalho une sua marca ao público, criando uma conexão autêntica e duradoura.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Features 2 Section -->
+
+    </section>
+
+
+
+    </div>

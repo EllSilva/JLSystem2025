@@ -2,37 +2,21 @@ import Vue from './vendor/vue.js'
 import Router from './vendor/vue-router.js'
 
 import get_template from './components/get_template.js'
- 
 
 import page_menu from './components/menu/home.js'
-Vue.component('c-menu', page_menu)
+Vue.component('p-menu', page_menu)
 
 import page_footer from './components/footer/home.js'
-Vue.component('c-footer', page_footer)
+Vue.component('p-footer', page_footer)
 
-import page_form_contact from './components/form/home.js'
-Vue.component('c-form_contact', page_form_contact)
+import page_portfolio from './components/portfolio/home.js'
+Vue.component('p-portfolio', page_portfolio)
 
-import page_slider_principal from './components/jls/slider_principal.js'
-Vue.component('c-slider_principal', page_slider_principal)
 
-import page_planos from './components/jls/planos.js'
-Vue.component('c-planos', page_planos)
 
-import page_planos_site from './components/jls/planos/website.js'
-Vue.component('c-planos_site', page_planos_site)
 
-import page_planos_hosp from './components/jls/planos/hospedagem.js'
-Vue.component('c-planos_hosp', page_planos_hosp)
 
-import page_planos_email from './components/jls/planos/email.js'
-Vue.component('c-planos_email', page_planos_email)
 
-import page_planos_domin from './components/jls/planos/dominio.js'
-Vue.component('c-planos_domin', page_planos_domin)
-
-import page_cliente from './components/jls/cliente.js'
-Vue.component('c-cliente', page_cliente)
 
 
 
@@ -87,7 +71,7 @@ Vue.component('p-link_patrocinado', page_link_patrocinado)
 import page_identidade from './view/servicos/identidade.js'
 Vue.component('p-identidade', page_identidade)
 
- 
+
 
 
 import page_servicos from './view/servicos/home.js'
@@ -101,20 +85,27 @@ Vue.component('p-galeria', page_galeria)
 
 import page_contato from './view/contato/home.js'
 Vue.component('p-contato', page_contato)
- 
+
+
+
+
+
+
+
 
 Vue.use(Router)
 
- 
+page_servicos
+
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
     { path: '/hospedagem', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
-   
-    { path: '/criacao-de-sites', component: { template: '<p-servicos_website></p-servicos_website>' } },
+
+    { path: '/website', component: { template: '<p-servicos_website></p-servicos_website>' } },
     { path: '/app-web', component: { template: '<p-servicos_app></p-servicos_app>' } },
-     { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
-   
+    { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
+
     { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
     { path: '/criacao-de-cartoes', component: { template: '<p-cartoes></p-cartoes>' } },
     { path: '/papelaria', component: { template: '<p-papelaria></p-papelaria>' } },
@@ -124,19 +115,20 @@ const routes = [
     { path: '/assinatura-de-email', component: { template: '<p-assinatura></p-assinatura>' } },
     { path: '/email-profissional', component: { template: '<p-email></p-email>' } },
     { path: '/gestao-de-redes-sociais', component: { template: '<p-gestao_redes_social></p-gestao_redes_social>' } },
-   { path: '/link-patrocinado', component: { template: '<p-link_patrocinado></p-link_patrocinado>' } },
-   
+    { path: '/link-patrocinado', component: { template: '<p-link_patrocinado></p-link_patrocinado>' } },
+
     { path: '/email-marketing', component: { template: '<p-email_marketig></p-email_marketig>' } },
-   
-     
+
+
     { path: '/criacao-visual', component: { template: '<p-identidade></p-identidade>' } },
-     
+
     { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
     { path: '/galeria', component: { template: '<p-galeria></p-galeria>' } },
 
     { path: '/contato', component: { template: '<p-contato></p-contato>' } },
- 
+
 ]
+
 
 const router = new Router({ routes })
 
@@ -145,4 +137,5 @@ new Vue({
     data: {}
 }).$mount('#app')
 
-;(async () => { })()
+;
+(async() => {})()

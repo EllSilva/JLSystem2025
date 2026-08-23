@@ -1,0 +1,71 @@
+<div class="portfolio inicio pt-5">
+    <div class="container">
+
+
+        <div class="row align-items-center gy-5 mb-5 pt-xl-5 center-contente">
+            <div class="col-lg-12 animate__animated animate__fadeInLeft">
+                <h5 class="fonte-h2">Laboratório Criativo</h5>
+                <h1 class="hero-title-2  ">
+                    Últimos Projecto <span>  Desenvolvidos. </span>
+                </h1>
+            </div>
+        </div>
+        <!-- Filtros -->
+        <div class="filters">
+            <button v-for="category in categories" :key="category" @click="changeFilter(category)" :class="['filter-btn', { active: currentFilter === category }]">
+                {{ category }}
+            </button>
+        </div>
+
+        <!-- Slider de Alta Performance -->
+        <div class="slider-wrapper" v-if="filteredProjects.length > 0">
+
+            <!-- Seta Esquerda -->
+            <button class="slider-arrow prev" @click="prevSlide" v-if="filteredProjects.length > cardsPerView">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <!-- Janela de Visualização -->
+            <div class="slider-container">
+                <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * (100 / cardsPerView)}%)` }">
+
+                    <div class="slider-item" v-for="project in filteredProjects" :key="project.id">
+                        <div class="project-card">
+                            <div class="card-img-wrapper">
+                                <img :src="project.image" :alt="project.title">
+
+                                <div class="card-overlay">
+                                    <a :href="project.link" target="_blank" class="view-btn">
+                                        <i class="fas fa-bolt"></i> Inspecionar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <span class="project-tag">{{ project.category }}</span>
+                                <h3 class="project-title">{{ project.title }}</h3>
+                                <p class="project-desc">{{ project.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Seta Direita -->
+            <button class="slider-arrow next" @click="nextSlide" v-if="filteredProjects.length > cardsPerView">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Dots Estilo Pílula Fluida -->
+            <div class="slider-dots" v-if="maxSteps > 0">
+                <span v-for="index in (maxSteps + 1)" :key="'dot-' + index" :class="['dot', { active: (index - 1) === currentSlide }]" @click="currentSlide = (index - 1)"></span>
+            </div>
+
+        </div>
+
+        <div v-else style="text-align: center; color: var(--secondary); font-weight: bold;">
+            NENHUM PROJETO ENCONTRADO NO BANCO DE DADOS.
+        </div>
+
+    </div>
+</div>

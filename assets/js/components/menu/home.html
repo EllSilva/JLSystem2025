@@ -1,131 +1,217 @@
-<div>
-  
-  <!-- header start  -->
-  <header class="header">
-    <div class="container ">
-      <div class="row v-center " style="padding: 5px 20px;">
-        <div class="header-item item-left">
-          <div class="logo">
-            <a href="#"><img style="width: 100px;" src="./assets/images/logo.png" alt=""></a>
-          </div>
-        </div>
-        <!-- menu start here -->
-        <div class="header-item item-center">
-          <div class="menu-overlay">
-          </div>
-          <nav class="menu">
-            <div class="mobile-menu-head">
-              <div class="go-back"><i class="fa fa-angle-left"></i></div>
-              <div class="current-menu-title"></div>
-              <div class="mobile-menu-close">&times;</div>
+<div class="">
+    <div v-if="showTopBar" class="top-bar py-2 text-white animate__animated animate__fadeInDown">
+        <div class="container">
+
+            <div class="d-none d-md-flex justify-content-between align-items-center gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge-lancamento animate__animated animate__pulse animate__infinite">Lançamento</span>
+                    <span><strong>{{ topBar.title }}</strong> — {{ topBar.subtitle }}</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#" class="btn-topbar" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
+                    <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
+                </div>
             </div>
-            <ul class="menu-main">
-              <li>
-                <a href="#/">Home</a>
-              </li>
 
-              <li class="menu-item-has-children">
-                <a href="#">Apps / Sites <i class="fas fa-angle-down"></i></a>
-                <div class="sub-menu single-column-menu">
-                  <ul>
-                    <li><a href="#/criacao-de-sites">
-                        <div class="fluent--globe-desktop-filled"></div>Criação de WebSite
-                      </a></li>
-                    <li><a href="#/criacao-de-loja-virtual">
-                        <div class="solar--shop-minimalistic-bold-duotone"></div>Loja Virtual
-                      </a></li>
-                    <li><a href="#/app-web">
-                        <div class="fluent--phone-desktop-filled"></div>Apps & Sistema Web
-                      </a></li>
-                    <li><a href="#/criacao-flyer-folder">
-                        <div class="tabler--world-www"></div>Dominio & Hospedagem
-                      </a></li>
+            <div class="d-flex d-md-none justify-content-between align-items-center gap-2">
+                <span class="small text-truncate"><strong>{{ topBar.title }}</strong></span>
 
-                  </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <a href="#" class="btn-topbar btn-topbar-mobile" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
+                    <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
                 </div>
-              </li>
+            </div>
 
-              <li>
-                <a href="#/criacao-de-logotipo">Design Gráfico</a>
-              </li>
-
-            
-              <li class="menu-item-has-children">
-                <a href="#">Marketing Digital <i class="fas fa-angle-down"></i></a>
-                <div class="sub-menu single-column-menu">
-                  <ul>
-                    <li><a href="#/gestao-de-redes-sociais">Gestão de Mídias Sociais</a></li>
-                    <li><a href="#/email-marketing">Email Marketing</a></li>
-                    <li><a href="#">Links Patrocinado</a></li>
-                    <li><a href="#">Video Marketing</a></li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="menu-item-has-children">
-                <a href="#">Cursos <i class="fa fa-angle-down"></i></a>
-                <div class="sub-menu mega-menu mega-menu-column-4">
-                  <div class="list-item">
-                    <h4 class="title">Programação</h4>
-                    <ul>
-                      <li><a href="#">Programação Básica (Iniciantes)</a></li>
-                      <li><a href="#">Lógica de Programação</a></li>
-                      <li><a href="#">Scratch (para crianças e iniciantes)</a></li>
-                      <li><a href="#">Desenvolvimento Web</a></li>
-                      <li><a href="#">Desenvolvimento de Aplicativos</a></li>
-
-                      <li><a href="#">Ciência de Dados e Inteligência Artificial</a></li>
-                      <li><a href="#">SQL para Bancos de Dados</a></li>
-
-                    </ul>
-                  </div>
-                  <div class="list-item">
-                    <h4 class="title">Design Gráfico</h4>
-                    <ul>
-                      <li><a href="#">Design Gráfico Básico</a></li>
-                      <li><a href="#">Adobe Photoshop</a></li>
-                      <li><a href="#">Adobe Illustrator</a></li>
-                      <li><a href="#">Canva para Design Simples e Rápido</a></li>
-                    </ul>
-
-                  </div>
-                  <div class="list-item">
-                    <h4 class="title">Marketing</h4>
-                    <ul>
-                      <li><a href="#">Marketing de Mídias Sociais</a></li>
-                      <li><a href="#">Google Ads e Facebook Ads</a></li>
-                      <li><a href="#">E-mail Marketing</a></li>
-                      <li><a href="#">Gestão de Relacionamento com o Cliente (CRM)</a></li>
-                      <li><a href="#">Estratégias de Vendas Online</a></li>
-                      <li><a href="#">Marketing de Influência</a></li>
-                      <li><a href="#">Marketing de Afiliados</a></li>
-                      <li><a href="#">Marketing Tradicional</a></li>
-                      <li><a href="#">Marketing de Produto</a></li>
-                    </ul>
-                  </div>
-                  <div class="list-item">
-                    <img src="img/shop1.jpg" alt="shop">
-                  </div>
-                </div>
-              </li>
- 
-            </ul>
-          </nav>
         </div>
-        <!-- menu end here -->
-        <div class="header-item item-right">
-          <a href="#"><i class="fas fa-search"></i></a>
-          <a href="#"><i class="far fa-heart"></i></a>
-          <a href="#"><i class="fas fa-shopping-cart"></i></a>
-          <!-- mobile menu trigger -->
-          <div class="mobile-menu-trigger">
-            <span></span>
+    </div>
+    <!-- NAVBAR CONFIGURADA COM O BIND DE SCROLL DO VUE -->
+    <!-- 2. NAVBAR 
+Servidor VPS -->
+    <!-- NAVBAR CONFIGURADA COM O BIND DE SCROLL DO VUE -->
+    <nav :class="['navbar', 'navbar-expand-lg', 'navbar-dark', isScrolled ? 'navbar-scrolled' : '', 'animate__animated', 'animate__fadeIn']">
+
+        <div class="container">
+            <a class="navbar-brand" href="#/"><img class="logotipo" src="./assets/img/logo.png" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li v-for="item in menuItems" :key="item.text" :class="['nav-item', item.hasDropdown ? 'dropdown' : '', item.text === 'Soluções' ? 'position-static' : '']">
+                        <!-- Item Principal com Dropdown -->
+                        <a v-if="item.hasDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ item.text }}
+            </a>
+
+                        <!-- MEGA MENU -->
+                        <div v-if="item.hasDropdown && item.text === 'Soluções'" class="dropdown-menu w-100 p-4 mega-menu-container animate__animated animate__fadeIn animate__fast">
+                            <div class="container">
+                                <div class="row g-4">
+                                    <!-- Coluna 1: Parcerias -->
+                                    <div class="col-md-4 border-end border-secondary border-opacity-25">
+                                        <h6 class="text-uppercase tracking-wider fw-bold mb-3" style="color: #de0e12; font-size: 0.8rem">
+                                            <i class="bi bi-people-fill me-2"></i> Website / APPs
+                                        </h6>
+                                        <div class="d-flex flex-column gap-2">
+                                            <a :href="item.megaMenu?.afiliados || '#'" class="mega-menu-link" @click="navegar('Programa de Afiliados')">
+                                                <div class="mega-menu-icon">
+                                                    <i class="bi bi-window"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-white small">
+                                                        Criação de sites
+                                                    </div>
+                                                    <div class=" extra-small" style="font-size: 0.75rem">
+                                                        Tenha um Site de alta performance.
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a :href="item.megaMenu?.revenda || '#'" class="mega-menu-link" @click="navegar('Revenda de Hospedagem')">
+                                                <div class="mega-menu-icon">
+                                                    <i class="bi bi-layers"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-white small">
+                                                        Revenda de Hospedagem
+                                                    </div>
+                                                    <div class=" extra-small" style="font-size: 0.75rem">
+                                                        Crie sua própria agência de hosting.
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Coluna 2: Segurança e Infra -->
+                                    <div class="col-md-4 border-end border-secondary border-opacity-25">
+                                        <h6 class="text-uppercase tracking-wider fw-bold mb-3" style="color: #de0e12; font-size: 0.8rem">
+                                            <i class="bi bi-shield-lock-fill me-2"></i> Proteção e Performance
+                                        </h6>
+                                        <div class="d-flex flex-column gap-2">
+                                            <a :href="item.megaMenu?.ssl || '#'" class="mega-menu-link" @click="navegar('Certificado SSL')">
+                                                <div class="mega-menu-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-white small">
+                                                        Certificado SSL
+                                                    </div>
+                                                    <div class=" extra-small" style="font-size: 0.75rem">
+                                                        Criptografia e segurança para seu site.
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a :href="item.megaMenu?.vps || '#'" class="mega-menu-link" @click="navegar('Servidores VPS')">
+                                                <div class="mega-menu-icon">
+                                                    <i class="bi bi-cpu"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-white small">
+                                                        Servidores VPS
+                                                    </div>
+                                                    <div class=" extra-small" style="font-size: 0.75rem">
+                                                        Poder, controle e recursos dedicados.
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Coluna 3: Card de Destaque -->
+                                    <div class="col-md-4">
+                                        <div class="mega-menu-cta p-4 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <span class="badge bg-warning text-dark fw-bold mb-2 small">NOVIDADE</span
+                        >
+                        <h6 class="fw-bold text-white mb-2">
+                          Precisa de um projeto sob medida?
+                        </h6>
+                        <p
+                          class=" mb-3"
+                          style="font-size: 0.8rem; line-height: 1.4"
+                        >
+                          Nossa equipe de especialistas cria, configura e
+                          gerencia a infraestrutura ideal para o seu negócio.
+                        </p>
+                      </div>
+                      <a
+                        :href="item.megaMenu?.consultor || '#'"
+                        class="btn btn-yellow text-uppercase btn-sm w-100 py-2.5 fw-bold"
+                        style="font-size: 0.85rem; border-radius: 8px"
+                        @click="navegar('Falar com Consultor')"
+                      >
+                        Falar com Especialista
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DROPDOWN PADRÃO -->
+            <ul
+              v-if="item.hasDropdown && item.text !== 'Soluções'"
+              class="dropdown-menu animate__animated animate__fadeIn animate__fast"
+            >
+              <li v-for="sub in item.dropdownItems" :key="sub.text">
+                <a
+                  class="dropdown-item"
+                  :href="sub.link"
+                  @click="navegar(sub.text)"
+                  >{{ sub.text }}</a
+                >
+              </li>
+            </ul>
+
+            <!-- LINK SIMPLES -->
+            <a
+              v-if="!item.hasDropdown"
+              class="nav-link"
+              :href="item.link"
+              @click="navegar(item.text)"
+            >
+              {{ item.text }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Ícones Extras -->
+        <div class="nav-icons d-flex align-items-center">
+          <div :class="['search-box', showSearch ? 'active' : '']">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="O que procura?"
+              v-model="searchQuery"
+              @keyup.enter="executarBusca"
+            />
           </div>
+          <button class="btn-icon" @click="showSearch = !showSearch">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon" @click="verNotificacoes">
+            <i class="bi bi-bell"></i>
+            <span v-if="notificacoes > 0" class="badge-notif"
+              >{{ notificacoes }}</span
+            >
+          </button>
+          <button class="btn-icon" @click="abrirLogin">
+            <i class="bi bi-person"></i>
+          </button>
         </div>
       </div>
     </div>
-  </header>
-  <!-- header end -->
+  </nav>
 
-</div>
-<!-- Navbar End -->
+  <!-- MENU -->
+  <!-- CONTAINER PRINCIPAL DO VUE -->
+  <div>
+    <router-view></router-view>
+
+    <!-- Animação combinada com a remoção física do DOM usando v-if -->
+   
+                            </div>
+
+                            <!-- HEADER -->
+                </div>
