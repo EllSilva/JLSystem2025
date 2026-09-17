@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Projetos Cyberpunk</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIÁVEIS --- */
+        
+         :root {
+            --bg-color: #0a0a12;
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --primary: #00ffcc;
+            --secondary: #ff007f;
+            --text: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 20% 30%, rgba(0, 255, 204, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.05) 0%, transparent 40%);
+        }
+        /* --- LAYOUT & HEADER --- */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            margin-bottom: 10px;
+        }
+        /* --- FILTROS (VUE-DRIVEN) --- */
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--primary);
+            transform: translateY(-3px);
+        }
+        /* --- GRID DA GALERIA --- */
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        /* --- CARD --- */
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: transparent;
+            box-shadow: 0 15px 30px rgba(0, 255, 204, 0.2);
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        /* Container da Imagem */
+        
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .project-card:hover .card-img-wrapper img {
+            transform: scale(1.15) rotate(2deg);
+        }
+        /* Overlay */
+        
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 18, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+        
+        .view-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .project-card:hover .view-btn {
+            transform: translateY(0);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+        /* Conteúdo do Card */
+        
+        .card-content {
+            padding: 25px;
+            background: var(--card-bg);
+        }
+        
+        .project-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .project-desc {
+            font-size: 0.95rem;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+        /* --- MODAL DA GALERIA (TELA INTEIRA) --- */
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 5, 10, 0.96);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-container {
+            background: rgba(15, 15, 28, 0.98);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px var(--primary);
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* BARRA DE AÇÕES SUPERIOR DIREITA */
+        
+        .modal-controls {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1010;
+        }
+        
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--secondary);
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: transform 0.2s, color 0.2s;
+        }
+        
+        .modal-close:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        
+        .modal-header {
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            padding-right: 200px;
+            /* Espaço para os botões não se sobreporem ao título */
+        }
+        
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #fff;
+        }
+        
+        .modal-body {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .modal-img-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        }
+        
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+        /* --- ANIMAÇÕES --- */
+        
+        .gallery-enter {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+        
+        .gallery-leave-to {
+            opacity: 0;
+            transform: translateY(-30px) scale(0.9);
+        }
+        
+        .gallery-leave-active {
+            position: absolute;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app" class="container">
+        <header>
+            <h1>Creative Lab</h1>
+            <p style="color: var(--primary); letter-spacing: 2px;">GALERIA DE PROJETOS DO FUTURO</p>
+        </header>
+
+        <div class="filters">
+            <button v-for="category in categories" :key="category" @click="currentFilter = category" :class="['filter-btn', { active: currentFilter === category }]">
+                {{ category }}
+            </button>
+        </div>
+
+        <transition-group name="gallery" tag="div" class="gallery-grid">
+            <div class="project-card" v-for="project in filteredProjects" :key="project.id" @click="handleProjectClick(project)" style="transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+                <div class="card-img-wrapper">
+                    <img :src="project.image" :alt="project.title">
+                    <div class="card-overlay">
+                        <button class="view-btn">
+                            <i :class="project.category === 'Websites' ? 'fas fa-external-link-alt' : 'fas fa-images'"></i>
+                            {{ project.category === 'Websites' ? 'Acessar Site' : 'Ver Galeria' }}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <span class="project-tag">{{ project.category }}</span>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-desc">{{ project.description }}</p>
+                </div>
+            </div>
+        </transition-group>
+
+        <!-- MODAL PARA DESIGNER E PORTIFOLIO (TELA INTEIRA) -->
+        <div class="modal-overlay" v-if="selectedProject" @click.self="closeModal">
+            <div class="modal-container">
+                <!-- CONTROLES SUPERIORES DIREITOS (BOTÕES NAV + FECHAR) -->
+                <div class="modal-controls">
+                    <button class="nav-btn prev" v-if="selectedProject.gallery.length > 1" @click="prevPhoto" title="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn next" v-if="selectedProject.gallery.length > 1" @click="nextPhoto" title="Próximo">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="modal-close" @click="closeModal" title="Fechar">&times;</button>
+                </div>
+
+                <div class="modal-header">
+                    <span class="project-tag">{{ selectedProject.category }}</span>
+                    <h2 class="modal-title">{{ selectedProject.title }}</h2>
+                </div>
+
+                <div class="modal-body">
+                    <div class="modal-img-wrapper">
+                        <img :src="selectedProject.gallery[currentPhotoIndex]" :alt="selectedProject.title">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <p>{{ selectedProject.description }}</p>
+                    <span v-if="selectedProject.gallery.length > 1">
+                        {{ currentPhotoIndex + 1 }} / {{ selectedProject.gallery.length }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentFilter: 'Todos',
+                categories: ['Todos', 'Websites', 'Designer', 'Portifolio'],
+                selectedProject: null,
+                currentPhotoIndex: 0,
+                projects: [{
+                    id: 1,
+                    title: 'Hyperion Portal',
+                    category: 'Websites',
+                    description: 'Interface web descentralizada com renderização 3D em tempo real.',
+                    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
+                    link: 'https://google.com'
+                }, {
+                    id: 2,
+                    title: 'Identidade Cyberpunk',
+                    category: 'Designer',
+                    description: 'Conjunto de conceitos visuais e assets de design futuristas.',
+                    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
+                    gallery: [
+                        'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80',
+                        'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80',
+                        'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1000&q=80'
+                    ]
+                }, {
+                    id: 3,
+                    title: 'Portfólio Pessoal VR',
+                    category: 'Portifolio',
+                    description: 'Showcase de projetos interativos em ambiente 3D imersivo.',
+                    image: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80',
+                    gallery: [
+                        'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1000&q=80',
+                        'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1000&q=80'
+                    ]
+                }, {
+                    id: 4,
+                    title: 'Aether HUD Website',
+                    category: 'Websites',
+                    description: 'Painel de controle futurista acessível diretamente pelo navegador.',
+                    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=600&q=80',
+                    link: 'https://github.com'
+                }, {
+                    id: 5,
+                    title: 'UI Kit UI/UX Futurista',
+                    category: 'Designer',
+                    description: 'Interface e prototipação de componentes em Neon e Glassmorphism.',
+                    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80',
+                    gallery: [
+                        'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=80',
+                        'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80'
+                    ]
+                }, {
+                    id: 6,
+                    title: 'Coleção de Obras Synth',
+                    category: 'Portifolio',
+                    description: 'Coleção de artes digitais generativas e renderizações.',
+                    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80',
+                    gallery: [
+                        'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1000&q=80'
+                    ]
+                }]
+            },
+            computed: {
+                filteredProjects() {
+                    if (this.currentFilter === 'Todos') {
+                        return this.projects;
+                    }
+                    return this.projects.filter(project => project.category === this.currentFilter);
+                }
+            },
+            methods: {
+                handleProjectClick(project) {
+                    if (project.category === 'Websites') {
+                        if (project.link) {
+                            window.open(project.link, '_blank');
+                        }
+                    } else {
+                        this.selectedProject = project;
+                        this.currentPhotoIndex = 0;
+                    }
+                },
+                closeModal() {
+                    this.selectedProject = null;
+                },
+                nextPhoto() {
+                    if (this.selectedProject) {
+                        this.currentPhotoIndex = (this.currentPhotoIndex + 1) % this.selectedProject.gallery.length;
+                    }
+                },
+                prevPhoto() {
+                    if (this.selectedProject) {
+                        this.currentPhotoIndex = (this.currentPhotoIndex - 1 + this.selectedProject.gallery.length) % this.selectedProject.gallery.length;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

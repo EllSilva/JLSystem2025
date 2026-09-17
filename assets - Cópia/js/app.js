@@ -33,7 +33,7 @@ const routes = [
     { path: '/servicos', component: { template: '<p-servicos></p-servicos>' } },
     { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
     { path: '/portfolio', component: { template: '<p-galeria></p-galeria>' } },
-
+    { path: '/email-profissional', component: { template: '<p-servicos></p-servicos>' } },
     { path: '/contato', component: { template: '<p-contato></p-contato>' } }
 ]
 

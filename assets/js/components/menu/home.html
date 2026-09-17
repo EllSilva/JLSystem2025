@@ -1,14 +1,15 @@
 <div class="">
+
     <div v-if="showTopBar" class="top-bar py-2 text-white animate__animated animate__fadeInDown">
         <div class="container">
 
             <div class="d-none d-md-flex justify-content-between align-items-center gap-2">
                 <div class="d-flex align-items-center gap-2">
-                    <span class="badge-lancamento animate__animated animate__pulse animate__infinite">Lançamento</span>
+                    <span class="badge-lancamento animate__animated animate__pulse animate__infinite">Promoção</span>
                     <span><strong>{{ topBar.title }}</strong> — {{ topBar.subtitle }}</span>
                 </div>
                 <div class="d-flex align-items-center gap-3">
-                    <a href="#" class="btn-topbar" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
+                    <a href="#" class="btn-topbar" @click.prevent="navegar(topBar.title)">A partir de 110.000 kz</a>
                     <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
                 </div>
             </div>
@@ -17,7 +18,7 @@
                 <span class="small text-truncate"><strong>{{ topBar.title }}</strong></span>
 
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
-                    <a href="#" class="btn-topbar btn-topbar-mobile" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
+                    <a href="#" class="btn-topbar btn-topbar-mobile" @click.prevent="navegar(topBar.title)">A partir de 110.000 kz</a>
                     <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
                 </div>
             </div>
@@ -54,7 +55,7 @@ Servidor VPS -->
                                             <i class="bi bi-people-fill me-2"></i> Website / APPs
                                         </h6>
                                         <div class="d-flex flex-column gap-2">
-                                            <a :href="item.megaMenu?.afiliados || '#'" class="mega-menu-link" @click="navegar('Programa de Afiliados')">
+                                            <a href="#/website" class="mega-menu-link">
                                                 <div class="mega-menu-icon">
                                                     <i class="bi bi-window"></i>
                                                 </div>
@@ -67,13 +68,27 @@ Servidor VPS -->
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a :href="item.megaMenu?.revenda || '#'" class="mega-menu-link" @click="navegar('Revenda de Hospedagem')">
+                                            <a href="#/hospedagem-de-sites" class="mega-menu-link">
                                                 <div class="mega-menu-icon">
                                                     <i class="bi bi-layers"></i>
                                                 </div>
                                                 <div>
                                                     <div class="fw-bold text-white small">
-                                                        Revenda de Hospedagem
+                                                        Hospedagem de Site
+                                                    </div>
+                                                    <div class=" extra-small" style="font-size: 0.75rem">
+                                                        Planos de Hospedagem alta performance,
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="#/email-profissional" class="mega-menu-link">
+                                                <div class="mega-menu-icon">
+                                                    <i class="bi bi-envelope"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-white small">
+                                                        E-mail Profissionais
                                                     </div>
                                                     <div class=" extra-small" style="font-size: 0.75rem">
                                                         Crie sua própria agência de hosting.
@@ -86,35 +101,39 @@ Servidor VPS -->
                                     <!-- Coluna 2: Segurança e Infra -->
                                     <div class="col-md-4 border-end border-secondary border-opacity-25">
                                         <h6 class="text-uppercase tracking-wider fw-bold mb-3" style="color: #de0e12; font-size: 0.8rem">
-                                            <i class="bi bi-shield-lock-fill me-2"></i> Proteção e Performance
+                                            <i class="bi bi-shield-lock-fill me-2"></i>Design Gráfico
                                         </h6>
                                         <div class="d-flex flex-column gap-2">
-                                            <a :href="item.megaMenu?.ssl || '#'" class="mega-menu-link" @click="navegar('Certificado SSL')">
+
+                                            <a href="#/designer-grafico" class="mega-menu-link">
                                                 <div class="mega-menu-icon">
-                                                    <i class="bi bi-lock"></i>
+                                                    <i class="bi bi-palette"></i>
                                                 </div>
                                                 <div>
                                                     <div class="fw-bold text-white small">
-                                                        Certificado SSL
+                                                        Designer Gráfico
                                                     </div>
                                                     <div class=" extra-small" style="font-size: 0.75rem">
-                                                        Criptografia e segurança para seu site.
+                                                        Desenvolvemos soluções visuais estratégicas
                                                     </div>
                                                 </div>
                                             </a>
                                             <a :href="item.megaMenu?.vps || '#'" class="mega-menu-link" @click="navegar('Servidores VPS')">
                                                 <div class="mega-menu-icon">
-                                                    <i class="bi bi-cpu"></i>
+                                                    <i class="bi bi-briefcase"></i>
                                                 </div>
                                                 <div>
                                                     <div class="fw-bold text-white small">
-                                                        Servidores VPS
+                                                        Portfólio
                                                     </div>
                                                     <div class=" extra-small" style="font-size: 0.75rem">
-                                                        Poder, controle e recursos dedicados.
+                                                        Criação de apresentação profissional
                                                     </div>
                                                 </div>
                                             </a>
+
+
+
                                         </div>
                                     </div>
 
@@ -129,16 +148,16 @@ Servidor VPS -->
                         </h6>
                         <p
                           class=" mb-3"
-                          style="font-size: 0.8rem; line-height: 1.4"
+                          style="font-size: 0.8rem; line-height: 1.4; color: rgb(255, 180, 180);"
                         >
                           Nossa equipe de especialistas cria, configura e
                           gerencia a infraestrutura ideal para o seu negócio.
                         </p>
                       </div>
                       <a
-                        :href="item.megaMenu?.consultor || '#'"
+                        href=""
                         class="btn btn-yellow text-uppercase btn-sm w-100 py-2.5 fw-bold"
-                        style="font-size: 0.85rem; border-radius: 8px"
+                        style="font-size: 0.75rem; border-radius: 8px"
                         @click="navegar('Falar com Consultor')"
                       >
                         Falar com Especialista
@@ -209,9 +228,10 @@ Servidor VPS -->
   <div>
     <router-view></router-view>
 
-    <!-- Animação combinada com a remoção física do DOM usando v-if -->
-   
-                            </div>
+                       </div>
 
-                            <!-- HEADER -->
-                </div>
+            <div class="sphere-container d-none d-xl-block">
+                <div class="ring-3d"></div>
+                <div class="sphere-3d"></div>
+            </div>
+  </div>

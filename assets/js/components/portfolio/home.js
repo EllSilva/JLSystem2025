@@ -1,14 +1,13 @@
 import get_template from '../../components/get_template.js'
 
 export default {
-    data: function () {
+    data: function() {
         return {
             currentFilter: 'Todos',
             currentSlide: 0,
             cardsPerView: 3,
             categories: ['Todos', 'Web', 'Mobile', 'AI & Cyber'],
-            projects: [
-                {
+            projects: [{
                     id: 1,
                     title: 'Maison Mary Avantguarde',
                     category: 'Web',
@@ -62,7 +61,30 @@ export default {
                     description: 'Algoritmo preditivo de arte generativa que lê e interpreta dados meteorológicos mundiais.',
                     image: './assets/img/portfolio/website001.jpeg'
                 }
-            ]
+            ],
+
+            animated: false,
+            stats: [{
+                icon: 'bi-box-seam',
+                value: 280,
+                currentValue: 0,
+                label: 'Projectos'
+            }, {
+                icon: 'bi-award',
+                value: 115,
+                currentValue: 0,
+                label: 'Logotipos'
+            }, {
+                icon: 'bi-person-badge',
+                value: 150,
+                currentValue: 0,
+                label: 'Cartões Visita'
+            }, {
+                icon: 'bi-card-image',
+                value: 90,
+                currentValue: 0,
+                label: 'Imagens Corporativa'
+            }]
         }
     },
 
@@ -96,9 +118,54 @@ export default {
         changeFilter(category) {
             this.currentFilter = category;
             this.currentSlide = 0;
+        },
+
+
+
+
+
+
+        initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !this.animated) {
+                        this.animated = true;
+                        this.animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+
+            if (this.$refs.statsSection) {
+                observer.observe(this.$refs.statsSection);
+            }
+        },
+        animateNumbers() {
+            const duration = 2000;
+            const steps = 60;
+            const intervalTime = duration / steps;
+
+            this.stats.forEach(stat => {
+                const increment = stat.value / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.value) {
+                        stat.currentValue = stat.value;
+                        clearInterval(timer);
+                    } else {
+                        stat.currentValue = Math.floor(current);
+                    }
+                }, intervalTime);
+            });
         }
+
     },
     mounted() {
+        this.initScrollObserver();
         const updateCardsPerView = () => {
             if (window.innerWidth <= 650) this.cardsPerView = 1;
             else if (window.innerWidth <= 992) this.cardsPerView = 2;

@@ -1,207 +1,353 @@
 <div>
-  <!-- Page Header Start -->
-  <div class="container-fluid page-dominio mb-1 py-5">
-    <div class="container">
-      <h1 class="display-3 text-white mb-3 animated slideInDown">Domínios </h1>
-      <nav aria-label="breadcrumb animated slideInDown">
-        <ol class="breadcrumb text-uppercase">
-          <li class="breadcrumb-item text-white">Registre Domínios Nacionais e Internacionais</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  <!-- Page Header End -->
 
+    <div>
+        <!-- SEÇÃO 1: Domínios em Destaque -->
+        <section class="container my-5">
+            <h2 class="text-center title-main mb-4">Grandes ideias precisam dos melhores domínios</h2>
 
-  <div class="container-kk fadeInUp py-3" data-wow-delay="0.1s">
-    <div class="overlay2 "></div>
-    <div class="text11 container">
-
-      <div class="row justify-content-center ">
-        <div class="col-lg-12">
-          <div class="text-center ">
-            <form>
-              <p style="padding: 0px;">
-                Escolha o nome perfeito para o seu negocio e garanta a visibilidade e posicionamentos nos motores de
-                busca da Google!
-              </p>
-              <p style="padding: 0px;">
-                Um nome de domínio ou simplesmente domínio, é semelhante a um endereço residencial na vida real. É como
-                as pessoas encontram o seu site online - introduzem o domínio num browser ou motor de pesquisa.
-              </p>
-              <p style="padding: 0px;">
-                jlsystem.ao é um domínio, assim como Google.com e Facebook.com. Idealmente, um domínio deve ser
-                registado com o mesmo nome da marca que representa.
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Service Start Explore Explore  -->
-  <div class="container-fluid py-6 px-4 px-lg-0">
-    <div class="row g-0">
-
-
-      <div class="col-md-12 col-lg-12">
-        <div class="ms-lg-5 ps-lg-5">
-          <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-secondary text-uppercase">Os melhores preços do mercado</h6>
-            <h1 class="mb-5">REGISTRO DE DOMÍNIOS
-              <br>
-              PARA O SEU NEGÓCIO
-            </h1>
-          </div>
-
-          <c-planos_domin></c-planos_domin>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <div class="container-kk py-7 fadeInUp" data-wow-delay="0.1s">
-
-    <div class="img"></div>
-    <div class="overlay3"></div>
-
-    <div class="text11 container">
-
-      <!-- Service Start -->
-      <div class="container-fluid  px-4 px-lg-0">
-
-        <div class="text-center text-lg-start wow fadeInUp py-3" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">Garante a identidade do seu negocio na web e consequentemente uma
-            melhor interação com os seus clientes.</h6>
-          <h1 class="mb-0">PORQUE TER UM DOMINIO PRIVADO ?</h1>
-        </div>
-
-        <div class="row g-0 ">
-          <div class="col-md-12 col-lg-12">
-            <div class="row g-0 ">
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Visibilidade online</h4>
-                  <p>Os buscadores Google, Yahoo e Bing costumam dar prioridade para sites com domínio próprio, uma vez
-                    que a URL amigável contribui para uma melhor experiência do usuário.</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="domain in featuredDomains" :key="domain.name">
+                    <div class="domain-card text-center">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <div class="domain-name">
+                                <i :class="domain.icon" v-if="domain.icon" class="me-1 text-primary" style="font-size: 1.2rem;"></i> {{ domain.name }}
+                            </div>
+                            <div class="domain-price">
+                                <small>R$</small>
+                                <span class="amount">{{ domain.price.split(',')[0] }}</span>,<span class="cents">{{ domain.price.split(',')[1] }}</span>
+                                <small class="text-secondary">*</small>
+                            </div>
+                            <div class="renewal-price mt-1">
+                                Renovação {{ domain.renewal }}
+                            </div>
+                        </div>
+                        <button class="btn-register">Registrar</button>
+                    </div>
                 </div>
-              </div>
-
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Estamos sempre online</h4>
-                  <p>Aqui você jamais ficará na mão. Nossa equipe de suporte técnico está à disposição 24 horas por dia,
-                    inclusive aos finais de semana e feriados.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>E-mail personalizado</h4>
-                  <p>O e-mail personalizado passa mais credibilidade do que um e-mail oriundo de um endereço pessoal que
-                    o destinatário não conhece, e isso também dependerá, é claro, do tipo de relacionamento que você
-                    quer construir com seus leads e clientes.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Custos incomparáveis</h4>
-                  <p>Queremos fazer parte do seu sucesso, pois acreditamos que a Internet hoje é um dos melhores
-                    caminhos e por isso, oferecemos o que há de melhor em hospedagem por um preço acessível.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>INTEGRAÇÃO COM CAIXA DE EMAIL</h4>
-                  <p>Quando registar um domínio angolano, você pode associar o seu domínio a caixas de email, se comprar
-                    um plano hospedagem, sem se preocupar em configurar o DNS do domínio.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-4">
-                <div class="p-4">
-                  <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2"
-                      style="width: 45px; height: 45px;">
-                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>SEO</h4>
-                  <p>Por fim, ao ter um domínio próprio, fica mais fácil configurar as técnicas de otimização de buscas
-                    (SEO) e monitorar o tráfego de seu site ao utilizar ferramentas como o Google Analytics.</p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- Service End -->
+        </section>
+
+        <!-- SEÇÃO 2: Benefícios -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="text-center benefits-title mb-2">Benefícios</h2>
+                <p class="text-center benefits-subtitle mb-5">Veja alguns benefícios em escolher a HostMídia para registrar o seu domínio!</p>
+
+                <div class="row align-items-center">
+                    <!-- Coluna da Esquerda: Lista de Benefícios -->
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-md-6" v-for="benefit in benefits" :key="benefit.title">
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i :class="benefit.icon"></i>
+                                    </div>
+                                    <div class="benefit-content">
+                                        <h5>{{ benefit.title }}</h5>
+                                        <p>{{ benefit.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Direita: Imagem Decorativa -->
+                    <div class="col-lg-5 text-center d-none d-lg-block">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Suporte Hostmidia" class="benefits-bg-img shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: Tabela de Valores Dinâmica -->
+        <section class="container my-5">
+            <h2 class="text-center title-main mb-4">Valores</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="table-card">
+
+                        <!-- BARRA DE PESQUISA E FILTROS DINÂMICOS -->
+                        <div class="row g-3 mb-4 align-items-center">
+                            <!-- Campo de busca por extensão -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                                    <input type="text" class="form-control border-start-0" placeholder="Buscar extensão (ex: .com, .br, .tech)..." v-model="searchQuery">
+                                    <button v-if="searchQuery" class="btn btn-outline-secondary" type="button" @click="searchQuery = ''">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Filtros rápidos de categoria -->
+                            <div class="col-md-6 text-md-end">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'all' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'all'">Todos</button>
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'nacionais' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'nacionais'">Nacionais (.br)</button>
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'internacionais' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'internacionais'">Internacionais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TABELA DE RESULTADOS -->
+                        <div class="table-responsive">
+                            <table class="table custom-table">
+                                <thead>
+                                    <tr>
+                                        <!-- Clique para ordenar por Extensão -->
+                                        <th class="sortable-header" @click="setSort('extension')">
+                                            Extensões
+                                            <i class="fas" :class="getSortIcon('extension')"></i>
+                                        </th>
+                                        <!-- Clique para ordenar por Preço de Registro -->
+                                        <th class="sortable-header" @click="setSort('registerNum')">
+                                            Registro *
+                                            <i class="fas" :class="getSortIcon('registerNum')"></i>
+                                        </th>
+                                        <!-- Clique para ordenar por Preço de Renovação -->
+                                        <th class="sortable-header" @click="setSort('renewalNum')">
+                                            Renovação
+                                            <i class="fas" :class="getSortIcon('renewalNum')"></i>
+                                        </th>
+                                        <th>Transferência</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Renderização das linhas filtradas -->
+                                    <tr v-for="item in filteredAndSortedList" :key="item.extension">
+                                        <td><strong>{{ item.extension }}</strong></td>
+                                        <td>
+                                            <div v-if="item.oldPrice" class="price-badge">{{ item.oldPrice }}</div>
+                                            <div><strong>{{ item.registerPrice }}</strong></div>
+                                        </td>
+                                        <td>{{ item.renewalPrice }}</td>
+                                        <td>{{ item.transferPrice }}</td>
+                                    </tr>
+
+                                    <!-- Mensagem caso nada seja encontrado -->
+                                    <tr v-if="filteredAndSortedList.length === 0">
+                                        <td colspan="4" class="text-center py-4 text-muted">
+                                            <i class="fas fa-search me-2"></i>Nenhuma extensão encontrada com a sua busca.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Rodapé com contagem de itens visíveis -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="text-muted small">Exibindo {{ filteredAndSortedList.length }} de {{ priceList.length }} extensões</span>
+                        </div>
+                    </div>
+
+                    <p class="disclaimer mt-3 text-center text-lg-start">
+                        * Desconto de 10% válido ao registrar o domínio por 2 anos ou mais.
+                    </p>
+                </div>
+            </div>
+        </section>
     </div>
-  </div>
-  <!-- Service End -->
 
 
 
-  <!-- About End -->
-  <!-- Service Start -->
-  <div class="container-xxl py-5">
-    <div class="container">
-      <div class="row g-4">
 
-        <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">NOSSOS PLANOS</h6>
-          <h1 class="mb-5">Podes precissar Também </h1>
+
+
+
+
+
+
+
+
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-dominio mb-1 py-5">
+        <div class="container">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Domínios </h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item text-white">Registre Domínios Nacionais e Internacionais</li>
+                </ol>
+            </nav>
         </div>
-
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_hospedagem.webp" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Hospedagem de Sites</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_dominios.jpg" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Domínio</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_email.png" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">
-              E-mail profissional</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Service End -->
+    <!-- Page Header End -->
+
+
+    <div class="container-kk fadeInUp py-3" data-wow-delay="0.1s">
+        <div class="overlay2 "></div>
+        <div class="text11 container">
+
+            <div class="row justify-content-center ">
+                <div class="col-lg-12">
+                    <div class="text-center ">
+                        <form>
+                            <p style="padding: 0px;">
+                                Escolha o nome perfeito para o seu negocio e garanta a visibilidade e posicionamentos nos motores de busca da Google!
+                            </p>
+                            <p style="padding: 0px;">
+                                Um nome de domínio ou simplesmente domínio, é semelhante a um endereço residencial na vida real. É como as pessoas encontram o seu site online - introduzem o domínio num browser ou motor de pesquisa.
+                            </p>
+                            <p style="padding: 0px;">
+                                jlsystem.ao é um domínio, assim como Google.com e Facebook.com. Idealmente, um domínio deve ser registado com o mesmo nome da marca que representa.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Service Start Explore Explore  -->
+    <div class="container-fluid py-6 px-4 px-lg-0">
+        <div class="row g-0">
+
+
+            <div class="col-md-12 col-lg-12">
+                <div class="ms-lg-5 ps-lg-5">
+                    <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="text-secondary text-uppercase">Os melhores preços do mercado</h6>
+                        <h1 class="mb-5">REGISTRO DE DOMÍNIOS
+                            <br> PARA O SEU NEGÓCIO
+                        </h1>
+                    </div>
+
+                    <c-planos_domin></c-planos_domin>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container-kk py-7 fadeInUp" data-wow-delay="0.1s">
+
+        <div class="img"></div>
+        <div class="overlay3"></div>
+
+        <div class="text11 container">
+
+            <!-- Service Start -->
+            <div class="container-fluid  px-4 px-lg-0">
+
+                <div class="text-center text-lg-start wow fadeInUp py-3" data-wow-delay="0.1s">
+                    <h6 class="text-secondary text-uppercase">Garante a identidade do seu negocio na web e consequentemente uma melhor interação com os seus clientes.</h6>
+                    <h1 class="mb-0">PORQUE TER UM DOMINIO PRIVADO ?</h1>
+                </div>
+
+                <div class="row g-0 ">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="row g-0 ">
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Visibilidade online</h4>
+                                    <p>Os buscadores Google, Yahoo e Bing costumam dar prioridade para sites com domínio próprio, uma vez que a URL amigável contribui para uma melhor experiência do usuário.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Estamos sempre online</h4>
+                                    <p>Aqui você jamais ficará na mão. Nossa equipe de suporte técnico está à disposição 24 horas por dia, inclusive aos finais de semana e feriados.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>E-mail personalizado</h4>
+                                    <p>O e-mail personalizado passa mais credibilidade do que um e-mail oriundo de um endereço pessoal que o destinatário não conhece, e isso também dependerá, é claro, do tipo de relacionamento que você quer construir com
+                                        seus leads e clientes.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>Custos incomparáveis</h4>
+                                    <p>Queremos fazer parte do seu sucesso, pois acreditamos que a Internet hoje é um dos melhores caminhos e por isso, oferecemos o que há de melhor em hospedagem por um preço acessível.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>INTEGRAÇÃO COM CAIXA DE EMAIL</h4>
+                                    <p>Quando registar um domínio angolano, você pode associar o seu domínio a caixas de email, se comprar um plano hospedagem, sem se preocupar em configurar o DNS do domínio.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4">
+                                <div class="p-4">
+                                    <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
+                      <i class="fa fa-water fa-1x text-primary p-2"></i></span>SEO</h4>
+                                    <p>Por fim, ao ter um domínio próprio, fica mais fácil configurar as técnicas de otimização de buscas (SEO) e monitorar o tráfego de seu site ao utilizar ferramentas como o Google Analytics.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Service End -->
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+    <!-- About End -->
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="text-secondary text-uppercase">NOSSOS PLANOS</h6>
+                    <h1 class="mb-5">Podes precissar Também </h1>
+                </div>
+
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_hospedagem.webp" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">Hospedagem de Sites</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_dominios.jpg" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">Domínio</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_email.png" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">
+                            E-mail profissional</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
 
 

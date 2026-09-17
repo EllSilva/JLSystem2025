@@ -5,351 +5,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospedagem de Sites - HostGator</title>
-
-    <!-- Bootstrap 5.3 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0b111e;
-            color: #ffffff;
+        * {
             margin: 0;
-        }
-        /* 1. TOP BAR */
-        
-        .top-bar {
-            background: linear-gradient(90deg, #101c36 0%, #080d1a 100%);
-            font-size: 0.85rem;
-            border-bottom: 1px solid #1a2947;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
         
-        .badge-lancamento {
-            background-color: #ff6c22;
-            color: #fff;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.75rem;
-        }
-        
-        .btn-topbar {
-            background-color: #007bff;
-            color: white;
-            border-radius: 4px;
-            padding: 4px 15px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.8rem;
-        }
-        /* 2. NAVBAR FIXA COM TRANSIÇÃO DE COR */
-        
-        .navbar {
-            background-color: #0b111e;
-            padding: 1.2rem 0;
-            transition: all 0.4s ease-in-out;
-            z-index: 1030;
-            /* Garante que fique por cima de tudo */
-        }
-        /* Classe ativada via Vue quando houver Scroll */
-        
-        .navbar.navbar-scrolled {
-            background-color: #060a12 !important;
-            /* Cor mais escura no scroll */
-            padding: 0.8rem 0;
-            /* Menu fica ligeiramente mais compacto */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid #1e293b;
-        }
-        
-        .navbar-brand {
-            font-weight: 900;
-            font-size: 1.8rem;
-            color: #ffffff !important;
-        }
-        
-        .navbar-brand span {
-            color: #ff6c22;
-        }
-        
-        .nav-link {
-            color: #e2e8f0 !important;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        
-        .nav-link:hover {
-            color: #ff6c22 !important;
-        }
-        
-        .dropdown-menu {
-            background-color: #121d33;
-            border: 1px solid #1e2f52;
-        }
-        
-        .dropdown-item {
-            color: #cbd5e1;
-            font-weight: 600;
-        }
-        
-        .dropdown-item:hover {
-            background-color: #ff6c22;
-            color: white;
-        }
-        
-        .nav-icons .btn-icon {
-            background: none;
-            border: none;
+        body {
+            background-color: #0b0c10;
             color: #ffffff;
-            margin-left: 18px;
-            font-size: 1.2rem;
+            overflow-x: hidden;
+        }
+        /* Hero Section com Fundo Dinâmico */
+        
+        .hero-container {
             position: relative;
-        }
-        
-        .nav-icons .badge-notif {
-            position: absolute;
-            top: -4px;
-            right: -6px;
-            background-color: #ff4747;
-            color: white;
-            border-radius: 50%;
-            padding: 2px 5px;
-            font-size: 0.6rem;
-        }
-        
-        .search-box {
-            max-width: 0;
+            width: 100%;
+            min-height: 520px;
+            padding: 60px 8%;
+            background: linear-gradient(135deg, rgba(10, 12, 20, 0.92), rgba(18, 22, 36, 0.88)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
             overflow: hidden;
-            transition: max-width 0.4s ease;
-            display: inline-block;
         }
+        /* Animação de Rede/Grelha Tecnológica ao fundo */
         
-        .search-box.active {
-            max-width: 180px;
-            margin-left: 10px;
-        }
-        /* 3. HERO SECTION */
-        
-        .hero-section {
-            position: relative;
-            padding: 120px 0 100px 0;
-            background-image: url('./assets/img/desenv2.jpg');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-        }
-        
-        .hero-overlay {
+        .hero-container::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 75% 50%, rgba(11, 17, 30, 0.4) 0%, rgba(11, 17, 30, 0.85) 60%, #0b111e 90%);
-            z-index: 1;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(rgba(255, 92, 0, 0.15) 1px, transparent 0), linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px, 40px 40px, 40px 40px;
+            animation: techGrid 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes techGrid {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-50px, -50px);
+            }
         }
         
         .hero-content {
-            position: relative;
+            max-width: 650px;
             z-index: 2;
         }
+        /* Tagline com Efeito Neon */
         
-        .hero-tagline {
-            font-size: 0.95rem;
+        .tagline {
+            color: #ff5c00;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #ff6c22;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px rgba(255, 92, 0, 0.5);
         }
+        /* Efeito de Digitação Tech no Título */
         
-        .hero-title {
-            font-size: 4.2rem;
+        .title {
+            font-size: 3.2rem;
             font-weight: 900;
             line-height: 1.1;
+            margin-bottom: 35px;
         }
         
-        .hero-title span {
-            color: #ff6c22;
+        .typing-text {
+            border-right: 3px solid #ff5c00;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 2.5s steps(20, end), blink 0.75s step-end infinite;
         }
         
-        .hero-features {
-            font-size: 1.05rem;
-            color: #cbd5e1;
+        .title span {
+            color: #ff5c00;
+            display: block;
+            text-shadow: 0 0 15px rgba(255, 92, 0, 0.4);
         }
         
-        .hero-features i {
-            color: #ff6c22;
+        @keyframes typing {
+            from {
+                width: 0
+            }
+            to {
+                width: 100%
+            }
         }
         
-        .btn-yellow {
-            background-color: #ffc107;
-            color: #0b111e;
-            font-weight: 800;
-            padding: 16px 36px;
-            border-radius: 30px;
-            border: none;
-            font-size: 1.1rem;
-            transition: all 0.2s;
+        @keyframes blink {
+            from,
+            to {
+                border-color: transparent
+            }
+            50% {
+                border-color: #ff5c00;
+            }
+        }
+        /* Grid de Benefícios Interativo */
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 24px;
         }
         
-        .btn-yellow:hover {
-            background-color: #e0a800;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #d1d5db;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
         }
         
-        .price-text {
-            font-size: 1.2rem;
-            color: #94a3b8;
+        .feature-item:hover {
+            background: rgba(255, 92, 0, 0.1);
+            border-color: rgba(255, 92, 0, 0.4);
+            transform: translateX(6px);
+            box-shadow: 0 4px 15px rgba(255, 92, 0, 0.2);
         }
         
-        .price-highlight {
-            font-weight: 800;
-            color: #ff6c22;
-            font-size: 1.6rem;
-        }
-        /* 4. ÁREA DA IMAGEM */
-        
-        .hero-artwork-container {
-            position: relative;
-            text-align: right;
+        .checkmark {
+            color: #ff5c00;
+            font-weight: bold;
+            transition: transform 0.3s ease;
         }
         
-        .img-jacare-principal {
-            max-width: 100%;
-            height: auto;
-            position: relative;
-            z-index: 2;
+        .feature-item:hover .checkmark {
+            transform: scale(1.3) rotate(10deg);
         }
+        /* Badge Promocional Futurista com Pulso Neon */
         
-        .art-discount-badge {
+        .badge-discount {
             position: absolute;
-            top: -30px;
-            left: 15%;
-            background: linear-gradient(135deg, #ff4d00 0%, #ff7b00 100%);
-            padding: 12px 25px;
-            border-radius: 8px;
-            transform: rotate(-10deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border: 2px solid #ffffff;
-            z-index: 10;
+            right: 15%;
+            bottom: 40px;
+            background: linear-gradient(135deg, #ff6a00, #ff2a00);
+            color: #ffffff;
+            padding: 22px 28px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
             text-align: center;
+            transform: rotate(10deg);
+            z-index: 3;
+            animation: floatPulse 3s ease-in-out infinite alternate;
         }
         
-        .art-discount-badge .ate {
+        @keyframes floatPulse {
+            0% {
+                transform: rotate(10deg) translateY(0px);
+                box-shadow: 0 0 15px rgba(255, 92, 0, 0.4), 0 0 30px rgba(255, 92, 0, 0.2);
+            }
+            100% {
+                transform: rotate(7deg) translateY(-12px);
+                box-shadow: 0 0 25px rgba(255, 92, 0, 0.8), 0 0 50px rgba(255, 92, 0, 0.4);
+            }
+        }
+        
+        .badge-discount .small-text {
             font-size: 0.75rem;
             font-weight: 800;
+            letter-spacing: 1.5px;
             display: block;
-            text-transform: uppercase;
-            color: #fff;
         }
         
-        .art-discount-badge .num {
-            font-size: 3.5rem;
+        .badge-discount .percentage {
+            font-size: 3rem;
             font-weight: 900;
-            line-height: 1;
-            color: #ffffff;
-            text-shadow: 2px 2px 0px #331200;
+            line-height: 0.85;
+            margin: 6px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        .art-discount-badge .off {
-            font-size: 1.6rem;
+        .badge-discount .off-text {
+            font-size: 1.2rem;
             font-weight: 900;
-            color: #ffffff;
-            display: block;
-            margin-top: -5px;
-        }
-        /* ESPAÇO EXTRA APENAS PARA CRIAR ROLAGEM DE PÁGINA (SCROLL) */
-        
-        .dummy-section {
-            padding: 100px 0;
-            background-color: #0e1626;
-            text-align: center;
-            color: #475569;
-            border-top: 1px solid #1e293b;
-        }
-        /* 5. MEGA MENU ATRAENTE */
-        
-        .navbar .position-static {
-            position: relative;
-        }
-        /* Customizações para o container do Mega Menu */
-        
-        .mega-menu-container {
-            background-color: #111a2e !important;
-            border: 1px solid #1e2e4d !important;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            margin-top: 10px;
-            /* Descolar levemente da barra */
-        }
-        /* Links internos do mega menu transformados em Cards interativos */
-        
-        .mega-menu-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 12px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #cbd5e1 !important;
-            transition: all 0.25s ease-in-out;
-            background: transparent;
+            letter-spacing: 2px;
         }
         
-        .mega-menu-link:hover {
-            background: rgba(255, 108, 34, 0.08);
-            /* Fundo sutil com a cor laranja */
-            color: #ffffff !important;
-            transform: translateX(5px);
-        }
-        /* Ícones destacados dentro do menu */
-        
-        .mega-menu-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ff6c22;
-            font-size: 1.25rem;
-            transition: all 0.25s ease;
-        }
-        
-        .mega-menu-link:hover .mega-menu-icon {
-            background-color: #ff6c22;
-            color: #ffffff;
-            box-shadow: 0 0 12px rgba(255, 108, 34, 0.4);
-        }
-        /* Card de Destaque / CTA */
-        
-        .mega-menu-cta {
-            background: linear-gradient(135deg, #162542 0%, #0d1629 100%);
-            border: 1px solid #22375e;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @media (max-width: 991.98px) {
-            .hero-title {
-                font-size: 3.2rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
             }
-            .hero-artwork-container {
-                text-align: center;
-                margin-top: 60px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .art-discount-badge {
-                left: 50%;
-                transform: translateX(-50%) rotate(-10deg);
-                top: -50px;
+        }
+        /* Responsividade */
+        
+        @media (max-width: 900px) {
+            .hero-container {
+                padding-bottom: 140px;
+            }
+            .badge-discount {
+                right: 8%;
+                bottom: 20px;
+            }
+            .typing-text {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -357,281 +238,43 @@
 
 <body>
 
-    <div id="app">
-        <!-- 1. TOP BAR -->
-        <div v-if="showTopBar" class="top-bar py-2 text-white">
-            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <div class="d-flex align-items-center gap-2">
-                    <span class="badge-lancamento">Lançamento</span>
-                    <span><strong>{{ topBar.title }}</strong> — {{ topBar.subtitle }}</span>
+    <section class="hero-container">
+        <div class="hero-content">
+            <p class="tagline">&#9889; ATÉ 79% OFF NA HOSPEDAGEM DE SITES</p>
+
+            <h1 class="title">
+                <span class="typing-text">Tudo para criar</span>
+                <span>seu site</span>
+            </h1>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Ferramentas com IA para criar sites</span>
                 </div>
-                <div class="d-flex align-items-center gap-3">
-                    <a href="#" class="btn-topbar" @click.prevent="navegar(topBar.title)">A partir de R$ 89,99</a>
-                    <button type="button" class="btn-close btn-close-white btn-sm" @click="showTopBar = false"></button>
+                <div class="feature-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Migração de sites grátis</span>
+                </div>
+                <div class="feature-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Suporte em português 24h</span>
+                </div>
+                <div class="feature-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Até 3 domínios grátis</span>
                 </div>
             </div>
         </div>
 
-        <!-- 2. NAVBAR -->
-        <!-- 2. NAVBAR -->
-        <nav :class="['navbar', 'navbar-expand-lg', 'navbar-dark', 'sticky-top', isScrolled ? 'navbar-scrolled' : '']">
-            <div class="container">
-                <a class="navbar-brand" href="#" @click.prevent="navegan('Home')">Host<span>Gator</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li v-for="item in menuItems" :key="item.text" :class="['nav-item', item.hasDropdown ? 'dropdown' : '', item.text === 'Soluções' ? 'position-static' : '']">
-
-                            <a v-if="item.hasDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ item.text }}
-                            </a>
-
-                            <!-- NOVO MEGA MENU ATRAENTE (Apenas para Soluções) -->
-                            <div v-if="item.hasDropdown && item.text === 'Soluções'" class="dropdown-menu w-100 p-4 mega-menu-container">
-                                <div class="container">
-                                    <div class="row g-4">
-
-                                        <!-- Coluna 1: Parcerias -->
-                                        <div class="col-md-4 border-end border-secondary border-opacity-25">
-                                            <h6 class="text-uppercase tracking-wider fw-bold mb-3" style="color: #ff6c22; font-size: 0.8rem;">
-                                                <i class="bi bi-people-fill me-2"></i> Cresça Conosco
-                                            </h6>
-                                            <div class="d-flex flex-column gap-2">
-                                                <a href="#" class="mega-menu-link" @click.prevent="navegar('Programa de Afiliados')">
-                                                    <div class="mega-menu-icon"><i class="bi bi-award"></i></div>
-                                                    <div>
-                                                        <div class="fw-bold text-white small">Programa de Afiliados</div>
-                                                        <div class="text-muted extra-small" style="font-size: 0.75rem;">Indique e fature comissões altas.</div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="mega-menu-link" @click.prevent="navegar('Revenda de Hospedagem')">
-                                                    <div class="mega-menu-icon"><i class="bi bi-layers"></i></div>
-                                                    <div>
-                                                        <div class="fw-bold text-white small">Revenda de Hospedagem</div>
-                                                        <div class="text-muted extra-small" style="font-size: 0.75rem;">Crie sua própria agência de hosting.</div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Coluna 2: Segurança e Infra -->
-                                        <div class="col-md-4 border-end border-secondary border-opacity-25">
-                                            <h6 class="text-uppercase tracking-wider fw-bold mb-3" style="color: #ff6c22; font-size: 0.8rem;">
-                                                <i class="bi bi-shield-lock-fill me-2"></i> Proteção e Performance
-                                            </h6>
-                                            <div class="d-flex flex-column gap-2">
-                                                <a href="#" class="mega-menu-link" @click.prevent="navegar('Certificado SSL')">
-                                                    <div class="mega-menu-icon"><i class="bi bi-lock"></i></div>
-                                                    <div>
-                                                        <div class="fw-bold text-white small">Certificado SSL</div>
-                                                        <div class="text-muted extra-small" style="font-size: 0.75rem;">Criptografia e segurança para seu site.</div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="mega-menu-link" @click.prevent="navegar('Servidores VPS')">
-                                                    <div class="mega-menu-icon"><i class="bi bi-cpu"></i></div>
-                                                    <div>
-                                                        <div class="fw-bold text-white small">Servidores VPS</div>
-                                                        <div class="text-muted extra-small" style="font-size: 0.75rem;">Poder, controle e recursos dedicados.</div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Coluna 3: Card de Destaque -->
-                                        <div class="col-md-4">
-                                            <div class="mega-menu-cta p-4 h-100 d-flex flex-column justify-content-between">
-                                                <div>
-                                                    <span class="badge bg-warning text-dark fw-bold mb-2 small">NOVIDADE</span>
-                                                    <h6 class="fw-bold text-white mb-2">Precisa de um projeto sob medida?</h6>
-                                                    <p class="text-muted mb-3" style="font-size: 0.8rem; line-height: 1.4;">
-                                                        Nossa equipe de especialistas cria, configura e gerencia a infraestrutura ideal para o seu negócio.
-                                                    </p>
-                                                </div>
-                                                <a href="#" class="btn btn-yellow text-uppercase btn-sm w-100 py-2.5 fw-bold" style="font-size: 0.85rem; border-radius: 8px;" @click.prevent="navegar('Falar com Consultor')">
-                                                    Falar com Especialista
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- DROPDOWN PADRÃO (Para outros itens) -->
-                            <ul v-if="item.hasDropdown && item.text !== 'Soluções'" class="dropdown-menu">
-                                <li v-for="sub in item.dropdownItems" :key="sub">
-                                    <a class="dropdown-item" href="#" @click.prevent="navegar(sub)">{{ sub }}</a>
-                                </li>
-                            </ul>
-
-                            <a v-if="!item.hasDropdown" class="nav-link" href="#" @click.prevent="navegar(item.text)">
-                                {{ item.text }}
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- Ícones de Busca/Notificações (Mantidos) -->
-                    <div class="nav-icons d-flex align-items-center">
-                        <div :class="['search-box', showSearch ? 'active' : '']">
-                            <input type="text" class="form-control form-control-sm" placeholder="O que procura?" v-model="searchQuery" @keyup.enter="executarBusca">
-                        </div>
-                        <button class="btn-icon" @click="showSearch = !showSearch"><i class="bi bi-search"></i></button>
-                        <button class="btn-icon" @click="verNotificacoes">
-                            <i class="bi bi-bell"></i>
-                            <span v-if="notificacoes > 0" class="badge-notif">{{ notificacoes }}</span>
-                        </button>
-                        <button class="btn-icon" @click="abrirLogin"><i class="bi bi-person"></i></button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- 3. HERO SECTION -->
-        <section class="hero-section">
-            <div class="hero-overlay"></div>
-
-            <div class="container hero-content">
-                <div class="row align-items-center gy-5">
-                    <div class="col-lg-7">
-                        <div class="hero-tagline mb-2 text-uppercase fw-bold">
-                            Até {{ hero.discount }}% OFF na hospedagem de sites
-                        </div>
-                        <h1 class="hero-title mb-4">
-                            Tudo para criar<br><span>seu site</span>
-                        </h1>
-
-                        <div class="hero-features row g-3 mb-5">
-                            <div class="col-md-6" v-for="feat in hero.features" :key="feat">
-                                <i class="bi bi-check-lg me-2"></i> {{ feat }}
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-wrap align-items-center gap-4 mb-4">
-                            <button class="btn btn-yellow text-uppercase" @click="aproveitarOferta">
-                            Aproveitar Oferta
-                        </button>
-                            <div class="price-text">
-                                a partir de <span class="price-highlight">R$ {{ hero.price }}/mês*</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-5">
-                        <div class="hero-artwork-container">
-                            <div class="art-discount-badge">
-                                <span class="ate">Até</span>
-                                <div class="num">{{ hero.discount }}%</div>
-                                <span class="off">OFF</span>
-                            </div>
-                            <img src="jacare-campeao.png" class="img-jacare-principal" alt="Temporada Campeã HostGator">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. SEÇÕES EXTRAS PARA FORÇAR SCROLL -->
-        <div class="dummy-section">
-            <h3>Role a página para baixo para ver a barra mudar de cor</h3>
-            <p>Mais conteúdo técnico simulado...</p>
+        <!-- Badge Promocional Animado -->
+        <div class="badge-discount">
+            <span class="small-text">ATÉ</span>
+            <div class="percentage">79%</div>
+            <span class="off-text">OFF</span>
         </div>
-        <div class="dummy-section" style="height: 800px;">
-            <p>Fim da página demo.</p>
-        </div>
-    </div>
+    </section>
 
-    <!-- Vue.js 2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <!-- Bootstrap 5 Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                showTopBar: true,
-                showSearch: false,
-                isScrolled: false, // Controla se a página foi rolada
-                searchQuery: '',
-                notificacoes: 3,
-                topBar: {
-                    title: 'HostGator AllPass',
-                    subtitle: 'As IAs mais poderosas do mercado em uma única assinatura'
-                },
-                menuItems: [{
-                    text: 'Domínios',
-                    hasDropdown: false
-                }, {
-                    text: 'Hospedagem e Sites',
-                    hasDropdown: true,
-                    dropdownItems: ['Hospedagem de Sites', 'Criador de Sites', 'Servidores VPS', 'Hospedagem WordPress']
-                }, {
-                    text: 'Email',
-                    hasDropdown: false
-                }, {
-                    text: 'Soluções',
-                    hasDropdown: true,
-                    dropdownItems: ['Programa de Afiliados', 'Revenda de Hospedagem', 'Certificado SSL']
-                }, {
-                    text: 'AllPass',
-                    hasDropdown: false
-                }],
-                hero: {
-                    discount: 79,
-                    price: '10,09',
-                    features: [
-                        'Ferramentas com IA para criar sites',
-                        'Migração de sites grátis',
-                        'Suporte em português 24h',
-                        'Até 3 domínios grátis'
-                    ]
-                }
-            },
-            mounted() {
-                // Monitora o evento de scroll da janela do navegador
-                window.addEventListener('scroll', this.handleScroll);
-            },
-            destroyed() {
-                // Remove o monitor para evitar vazamento de memória
-                window.removeEventListener('scroll', this.handleScroll);
-            },
-            methods: {
-                handleScroll() {
-                    // Se rolar mais de 50px para baixo, ativa a classe de mudança de cor
-                    if (window.scrollY > 50) {
-                        this.isScrolled = true;
-                    } else {
-                        this.isScrolled = false;
-                    }
-                },
-                navegar(item) {
-                    alert(`🚀 Direcionando para: "${item}"`);
-                },
-                aproveitarOferta() {
-                    alert(`🛒 Plano adicionado ao carrinho!`);
-                },
-                executarBusca() {
-                    if (this.searchQuery.trim() !== '') {
-                        alert(`🔍 Pesquisando por: "${this.searchQuery}"`);
-                        this.searchQuery = '';
-                        this.showSearch = false;
-                    }
-                },
-                verNotificacoes() {
-                    if (this.notificacoes > 0) {
-                        alert(`🔔 Alertas visualizados.`);
-                        this.notificacoes = 0;
-                    }
-                },
-                abrirLogin() {
-                    alert("👤 Abrindo Área do Cliente.");
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>

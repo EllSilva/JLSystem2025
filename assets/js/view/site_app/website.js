@@ -1,34 +1,37 @@
 import get_template from '../../components/get_template.js'
 
 export default {
-    data: function () {
+    data: function() {
         return {
- 
+
             brandTitle: 'Hospedagens e sites',
             brandUrl: '#/website', // URL para a página principal
             navItems: [
-                { label: 'Criação de Sites', url: '#/website', active: true }, 
+                { label: 'Criação de Sites', url: '#/website', active: true },
                 { label: ' Sistema e Apps', url: '/', active: false },
-                { label: 'Email Corporativo', url: '/', active: false },
-                { label: 'Hospedagem', url: '/', active: false },
-                
+                { label: 'Email Corporativo', url: '#/email-profissional', active: false },
+                { label: 'Hospedagem', url: '#/hospedagem-de-sites', active: false },
+
                 { label: 'Dominio', url: '/', active: false },
             ],
-            heroImage: 'assets/img/servico.png',
-            infoText: 'Hoje em dia, podemos afirmar que é fundamental ter um site profissional para vender online seus produtos e serviços, além de contextualizar o público sobre a sua empresa.',
+
+            heroImage: 'assets/img/servico-3.png',
+            infoText: 'Quer vender ou posicionar sua empresa no mercado digital? Comece com um site profissional',
             supportPhone: '+244 952 472 527.',
             sectionTag: 'MICROSOFT® 365',
             mainTitle: 'Construindo sua presença online com design excepcional..',
             features: [
-                { icon: 'bi bi-star', text: 'Office 365 apps like Word, Excel, and Teams.', underlined: true, url: '/office-apps' },
-                { icon: 'bi bi-envelope', text: 'Email that matches your domain.', underlined: true, url: '/domain-email' },
-                { icon: 'bi bi-list-task', text: 'Simple setup and expert customer support.', underlined: true, url: '/support' }
+                { icon: 'bi bi-star', text: 'Sites Institucionais e Sub Medida.', underlined: true, url: '/office-apps' },
+                { icon: 'bi bi-envelope', text: 'E-mail compatível com seu domínio.', underlined: true, url: '/domain-email' },
+                { icon: 'bi bi-list-task', text: 'Configuração simples e suporte ao cliente especializado.', underlined: true, url: '/support' }
             ],
-            ctaButtonText: 'See Plans and Pricing',
+            ctaButtonText: 'Veja os planos e preços.',
             ctaUrl: '/plans-and-pricing', // URL do botão principal
-            ratingScore: '4.4',
-            ratingCount: '138,818',
-            reviewsUrl: '/customer-reviews', // URL do link "View All"
+
+
+
+
+
 
 
             abaAtiva: 'WebSite',
@@ -52,8 +55,7 @@ export default {
             }],
 
             categories: ['Todos', 'Web', 'Mobile', 'AI & Cyber'],
-            projects: [
-                {
+            projects: [{
                     id: 1,
                     title: 'Maison Mary Avantguarde',
                     category: 'Web',

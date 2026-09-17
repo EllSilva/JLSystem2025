@@ -1,0 +1,400 @@
+<div class="fundo_designer">
+
+    <div class="bg-dark text-white">
+
+        <!-- Secção Hero -->
+        <section class="hero-section-designer d-flex align-items-center">
+            <div class="container py-5">
+                <div class="row align-items-center gy-5">
+
+
+                    <!-- Coluna da Direita: Textos e CTA -->
+                    <div class="col-lg-7 ps-lg-4">
+
+                        <h1 class="hero-title  ">
+                            Design Gráfico <span>Profissional</span>
+                        </h1>
+
+                        <!-- Lista de Recursos com Ícones e Links Opcionais -->
+                        <ul class="feature-list mb-4">
+                            <li>
+                                <i class="feature.icon"></i>
+                                <span class=" dashed-underline feature.underlined ">
+                                     Criamos visuais marcantes para o seu negócio, eventos e redes sociais.
+                                </span>
+
+                            </li>
+                        </ul>
+
+                        <!-- Botão de Ação com Link (CTA) -->
+                        <div class="mb-4">
+                            <a class="btn btn-godaddy-blue">
+                            Começar já
+                        </a>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+
+    <section class="pillars-section hero-section fundo_branco">
+        <div class="container position-relative">
+
+            <div class="row align-items-center gy-5 mb-5 pt-xl-5 center-contente">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft">
+                    <h5 class="fonte-h2">3 Motivos </h5>
+                    <h1 class="hero-title-2  ">
+
+                        Para nos <span>  Escolher. </span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center align-items-start pe-lg-5">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="number-badge">1</div>
+                        <div>
+                            <h3 class="pillar-title">Criatividade</h3>
+                            <p class="pillar-text">
+                                A criatividade é o nosso forte, tentamos sempre surpreender o cliente e 95% dos casos conseguimos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="number-badge">2</div>
+                        <div>
+                            <h3 class="pillar-title">Estratégia</h3>
+                            <p class="pillar-text">
+                                Tudo deve ser feito com um propósito, <strong>um objectivo em concreto</strong>, é esse o nosso foco.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="number-badge">3</div>
+                        <div>
+                            <h3 class="pillar-title">Experiência</h3>
+                            <p class="pillar-text">
+                                Estes mais de 15 anos de actividade deram-nos o "know how". Fizemos uma selecção cuidada de colaboradores e parceiros.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="py-5">
+        <div class="container">
+
+            <div class="row align-items-center gy-5 mb-5 pt-xl-5 center-contente">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft">
+
+                    <h1 class="hero-title-2  ">
+                        <h5 class="fonte-h2">serviços de</h5>
+                        Designer <span>  Gráfico. </span>
+                    </h1>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="tab-container">
+                <div class="tabs">
+                    <button v-for="tab in abas" :key="tab" @click="abaAtiva = tab" :class="['tab-btn', { active: abaAtiva === tab }]">
+                            {{ tab }}
+                        </button>
+                </div>
+            </div>
+
+
+
+            <div class=" " v-if="abaAtiva === 'Identidade Visual'">
+
+                <div class="row g-4 justify-content-center">
+
+                    <!-- Campo 1: Logotipo -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-warning display-5">
+                                <i class="bi bi-vector-pen"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Logotipo</h4>
+                                <div class="service-price">A partir de 150 €</div>
+                                <p class="service-text">
+                                    Criação e rebranding de logotipos profissionais e exclusivos. Construímos a identidade visual ideal para destacar a sua marca no mercado e transmitir credibilidade.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo 2: Vetorização -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-danger display-5">
+                                <i class="bi bi-bezier2"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Vetorização</h4>
+                                <div class="service-price">A partir de 45 €</div>
+                                <p class="service-text">
+                                    Conversão de imagens e logotipos para formato vetorial de alta definição, garantindo qualidade máxima de impressão e escalabilidade sem perda de resolução.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo 3: Cartão de visita -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-primary display-5">
+                                <i class="bi bi-credit-card-2-front"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Cartão de visita</h4>
+                                <div class="service-price">A partir de 60 €</div>
+                                <p class="service-text">
+                                    Design elegante e profissional para cartões de visita. Garanta uma excelente primeira impressão junto aos seus parceiros e potenciais clientes.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo 4: Papel timbrado -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-success display-5">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Papel timbrado</h4>
+                                <div class="service-price">A partir de 50 €</div>
+                                <p class="service-text">
+                                    Padronização de documentos corporativos, envelopes e cartas formais, reforçando a imagem profissional em todas as comunicações da sua empresa.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Campo 5: Portfólio -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box icon-circle display-5">
+                                <i class="bi bi-journal-bookmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Portfólio</h4>
+                                <div class="service-price">A partir de 200 €</div>
+                                <p class="service-text">
+                                    Elaboração de brochuras, catálogos digitais e impressos para apresentar os seus produtos, serviços e projetos com um design envolvente e corporativo.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class=" " v-if="abaAtiva === 'Material publicitario'">
+
+
+                <div class="row g-4 justify-content-center">
+
+                    <!-- Campo 1: Logotipo -->
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="service-card-designer d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-warning display-5">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Folder</h4>
+                                <div class="service-price">A partir de 150 €</div>
+                                <p class="service-text">
+                                    Design de folhetos dobráveis (2 ou 3 dobras) organizados e informativos, perfeitos para apresentar a sua empresa, serviços e promoções com detalhe.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo 2: Vetorização -->
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="service-card-designer d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+
+                            <div class="icon-box icon-circle display-5">
+                                <i class="bi bi-layers"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Panfleto / Flyer</h4>
+                                <div class="service-price">A partir de 40 €</div>
+                                <p class="service-text">
+                                    Criação de flyers de divulgação rápida de alto impacto visual. A solução ideal para a promoção de eventos, ofertas especiais e campanhas publicitárias.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Campo 3: Cartão de visita -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-card-designer d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-dark display-5">
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Passe</h4>
+                                <div class="service-price">A partir de 35 €</div>
+                                <p class="service-text">
+                                    Design personalizado de crachás e credenciais para equipas corporativas, eventos e feiras, garantindo fácil identificação e segurança com visual profissional.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Campo 4: Papel timbrado -->
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="service-card-designer d-flex flex-column align-items-center text-center flex-md-row align-items-md-start text-md-start gap-3">
+                            <div class="icon-box text-success display-5">
+                                <i class="bi bi-aspect-ratio"></i>
+                            </div>
+                            <div>
+                                <h4 class="service-title text-uppercase">Roll-up</h4>
+                                <div class="service-price">A partir de 90 €</div>
+                                <p class="service-text">
+                                    Design para banners retráteis de grande formato. Destaque a sua marca em apresentações, feiras, pontos de venda e eventos com alta visibilidade.
+                                </p>
+                                <a href="#" class="btn btn-solicitar">Solicitar agora</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Campo 5: Portfólio -->
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- Como Podem Criar um Design em 3 Passos -->
+    <section class="py-5 bg-white">
+        <div class="container py-4">
+
+            <div class="row align-items-center gy-5 pt-xl-5 center-contente">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft">
+                    <h5 class="fonte-h2">Criação em 3 Passos.</h5>
+                    <h1 class="hero-title-2  text-dark">
+                        Como Funciona <span> o Processo </span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="design-steps-section">
+                <div class="container">
+                    <div class="row align-items-center g-4 g-lg-5">
+
+                        <!-- Lado Esquerdo: Imagem / Mockup -->
+                        <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                            <div class=" ">
+                                <img src="./assets/img/robo-2.png" alt="Interface DesignCap" class="img-fluid  ">
+
+                            </div>
+                        </div>
+
+                        <!-- Lado Direito: Linha do Tempo de Passos -->
+                        <div class="col-lg-7">
+                            <div class="timeline-container">
+
+                                <!-- Passo 1 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="bi bi-newspaper"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3 class="timeline-title">1. Briefing e Diagnóstico (Coleta de Informações)</h3>
+                                        <p class="timeline-text">
+                                            Recolhemos todas as informações importantes sobre o seu negócio- (logotipo, sobre, cores, estilo, etc.). Esse é o momento de alinhar ideias e definir o estilo .
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Passo 2 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="bi bi-sliders"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3 class="timeline-title">2. Desenvolvimento da Arte</h3>
+                                        <p class="timeline-text">
+                                            Com base no briefing, desenvolvemos o design do seu Projecto. Escolhemos cores, fontes, imagens e criamos um layout visualmente atrativo, sempre respeitando a identidade da sua marca.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Passo 3 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="bi bi-folder-symlink"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3 class="timeline-title">3. Revisão e Entrega</h3>
+                                        <p class="timeline-text">
+                                            Enviamos a prévia do material para sua aprovação. Após o seu feedback, fazemos os ajustes necessários e entregamos o arquivo final pronto para impressão ou uso digital. ( formatos como PDF, PNG ou JPG).
+                                        </p>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

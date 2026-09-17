@@ -1,7 +1,7 @@
 <div>
 
     <div class="submenu">
-        <!-- Sub-navegação Superior -->
+        <!-- Sub-navegação Superior  container py-5 -->
         <header class="border-bottom py-3">
             <div class="container">
                 <div class="d-flex align-items-center flex-wrap gap-4">
@@ -19,13 +19,15 @@
             </div>
         </header>
 
+
+
         <!-- Seção Conteúdo Principal -->
-        <main class="container py-5">
+        <main class="container py-3">
             <div class="row align-items-center g-5">
 
                 <!-- Coluna da Esquerda: Imagem com Box Informativo -->
                 <div class="col-lg-6 position-relative">
-                    <div class="banner-card d-flex align-items-center justify-content-center p-3">
+                    <div class="banner-card d-flex align-items-center justify-content-center pt-2 pb-2">
                         <img :src="heroImage" alt="Microsoft 365 Preview" class="banner-img img-fluid rounded-3">
                     </div>
 
@@ -44,7 +46,7 @@
                     <div class="row">
                         <div class="col-lg-12 animate__animated animate__fadeInLeft">
                             <h5 class="fonte-h2"> {{ slides[index].title }}</h5>
-                            <h1 class="hero-title-2  ">
+                            <h1 class="hero-title-2  text-dark">
                                 Construindo sua presença <span>online </span>
                             </h1>
                         </div>
@@ -76,16 +78,7 @@
                         </a>
                     </div>
 
-                    <!-- Rodapé com Link para Avaliações -->
-                    <div class="d-flex align-items-center gap-2 flex-wrap">
-                        <div class="stars-badge">
-                            <i class="bi bi-star-fill text-white" v-for="n in 5" :key="n" style="font-size: 0.75rem;"></i>
-                        </div>
-                        <span class="rating-text">
-                            <strong>{{ ratingScore }}</strong> out of 5 stars based on {{ ratingCount }} reviews
-                            <a :href="reviewsUrl" class="text-dark fw-bold ms-1">View All</a>
-                        </span>
-                    </div>
+
 
                 </div>
 
@@ -99,49 +92,6 @@
 
     <section>
 
-        <div class="container" style="padding: 5% 0;">
-
-            <header class="section-header inicio">
-
-                <p>Obtenha mais vendas com um website chave-na-mão, ou desenvolva um projeto à medida do seu negócio.
-                </p>
-            </header>
-
-            <div class="features-grid">
-
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <h3 class="feature-title">Website Chave-na-Mão</h3>
-                    <p class="feature-desc">
-                        Website será desenvolvido pelos nossos especialistas e entregue totalmente funcional, responsivo e pronto para uso.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="feature-title">Construção Personalizada</h3>
-                    <p class="feature-desc">
-                        Vamos criar o seu website à medida, reflectindo a visão da sua marca ou negócio garantindo uma presença online única.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 class="feature-title">Hospedagem Incluída</h3>
-                    <p class="feature-desc">
-                        Incluímos uma hospedagem e certificado de segurança fiável para simplificar o lançamento e manutenção do site.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
 
 
         <div class="plano-fundo inicio pb-5">
@@ -152,8 +102,11 @@
                     <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
                         <h5 class="fonte-h2">Planos Website.</h5>
                         <h1 class="hero-title-2  ">
-                            Encontre o plano de site ideal para si, ou <span> peça um orçamento personalizado. </span>
+                            Plano <span> Kombo Site. </span>
                         </h1>
+                        <p class="">
+                            Encontre o plano de site ideal para si, ou <span> peça um orçamento personalizado. </span>
+                        </p>
                     </div>
                 </div>
 
@@ -273,11 +226,60 @@
 
         </div>
 
+
+
+
+        <div class="container" style="padding: 5% 0;">
+
+            <header class="section-header inicio">
+
+                <p>Obtenha mais vendas com um website chave-na-mão, ou desenvolva um projeto à medida do seu negócio.
+                </p>
+            </header>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="feature-title">Website Chave-na-Mão</h3>
+                    <p class="feature-desc">
+                        Website será desenvolvido pelos nossos especialistas e entregue totalmente funcional, responsivo e pronto para uso.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="feature-title">Construção Personalizada</h3>
+                    <p class="feature-desc">
+                        Vamos criar o seu website à medida, reflectindo a visão da sua marca ou negócio garantindo uma presença online única.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="feature-title">Hospedagem Incluída</h3>
+                    <p class="feature-desc">
+                        Incluímos uma hospedagem e certificado de segurança fiável para simplificar o lançamento e manutenção do site.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section" style="padding: 5% 0;">
             <div class="container">
                 <div class="row gy-4">
-                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-4 col-md-4">
                         <div class="feature-box red">
 
                             <h4>Suporte personalizado</h4>
@@ -288,7 +290,7 @@
                     </div>
                     <!-- End Feature Borx-->
 
-                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-xl-4 col-md-4">
                         <div class="feature-box red">
 
                             <h4>Orientação ao cliente</h4>
@@ -299,7 +301,7 @@
                     </div>
                     <!-- End Feature Borx-->
 
-                    <div class="col-xl-4 col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="col-xl-4 col-md-4">
                         <div class="feature-box red">
 
                             <h4>Tranquilidade e Confiança</h4>
@@ -319,11 +321,11 @@
 
         <!-- Features 2 Section -->
         <section id="features-2" class="features-2 section " style="padding: 5% 0;">
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="container">
                 <div class="row align-items-center">
 
 
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-lg-6">
                         <div class=" text-center">
                             <img src="assets/img/dica.png" alt="Phone Mockup" class="img-fluid" />
                         </div>
@@ -331,7 +333,7 @@
                     <!-- End Phone Mockup -->
 
                     <div class="col-lg-6">
-                        <div class="mb-2" data-aos="fade-right" data-aos-delay="200">
+                        <div class="mb-2">
                             <div class="d-flex align-items-center  gap-4">
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-display"></i>
@@ -346,7 +348,7 @@
                         </div>
                         <!-- End .-->
 
-                        <div class="  mb-2" data-aos="fade-right" data-aos-delay="300">
+                        <div class="  mb-2">
                             <div class="d-flex align-items-center  gap-4">
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-feather"></i>
@@ -361,7 +363,7 @@
                         </div>
                         <!-- End .-->
 
-                        <div class="mb-2" data-aos="fade-right" data-aos-delay="400">
+                        <div class="mb-2">
                             <div class="d-flex align-items-center  gap-4">
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-eye"></i>
@@ -377,7 +379,7 @@
                         <!-- End .-->
                         <!-- End .-->
 
-                        <div class="mb-2" data-aos="fade-left" data-aos-delay="300">
+                        <div class="mb-2">
                             <div class="d-flex align-items-center gap-4">
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-phone"></i>
@@ -392,7 +394,7 @@
                         </div>
                         <!-- End .-->
 
-                        <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+                        <div class="feature-item">
                             <div class="d-flex align-items-center gap-4">
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-browser-chrome"></i>

@@ -1,0 +1,124 @@
+<div class="">
+
+
+    <!-- Barra social -->
+    <div class="top-bar">
+        <div class="social">
+            <a href="#">Instagram</a> / <a href="#">Facebook</a> /
+            <a href="#">LinkedIn</a>
+        </div>
+
+        <!-- Ícones sociais para mobile -->
+        <div class="social-icons">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+
+        <div class="lang"><a href="#">EN</a> <a href="#">PT</a></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img style="height: 65px" src="./assets/img/logo.png" alt="JLSystem Logo" />
+        </div>
+
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+        </ul>
+
+        <ul id="menu">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/#" @click="irParaOutroSite">A JLSystem</a></li>
+            <li>
+                <a href="#" @click.prevent="toggleMenuJL"> Serviços
+                   <i class="fas fa-chevron-down arrow" :class="{ rotate: open }"></i>
+                </a>
+            </li>
+
+            <li><a href="#/portfolio">Portfólio</a></li>
+            <li><a href="#/contato">Contacto</a></li>
+        </ul>
+
+
+
+        <nav class="navbarJL">
+            <div class="menuJL">
+
+                <div class="megaJL">
+
+
+
+                    <div class="megaJL-menuJL" :class="{ active: open }">
+
+                        <div class="column">
+                            <h4><i class="fas fa-building"></i> Apps / Sites </h4>
+                            <a href="#">Criação de WebSite</a>
+                            <a href="#">Apps & Sistema Web</a>
+                            <a href="#">Loja Virtual</a>
+                            <a href="#">Dominio & Hospedagem</a>
+                        </div>
+
+                        <div class="column">
+                            <h4><i class="fas fa-server"></i> Serviços</h4>
+                            <a href="#">Alojamento de Sites</a>
+                            <a href="#">Email Profissional</a>
+                            <a href="#">Proteção do Site</a>
+                            <a href="#">Servidor Dedicado</a>
+                            <a href="#">Revenda</a>
+                        </div>
+
+                        <div class="column">
+                            <h4><i class="fas fa-globe"></i> Domínios</h4>
+                            <a href="#">Registrar Domínio</a>
+                            <a href="#">Transferir Domínio</a>
+                            <a href="#">Gestão DNS</a>
+                            <a href="#">Proteção de Identidade</a>
+                        </div>
+
+                        <div class="column">
+                            <h4><i class="fas fa-puzzle-piece"></i> Complementos</h4>
+                            <a href="#">Certificado SSL</a>
+                            <a href="#">Segurança do Site</a>
+                            <a href="#">IP Dedicado</a>
+                            <a href="#">VPN</a>
+                        </div>
+
+                        <div class="column">
+                            <h4><i class="fas fa-ellipsis-h"></i> Outros</h4>
+                            <a href="#">Google Workspace</a>
+                            <a href="#">Bitdefender</a>
+                            <a href="#">Solicitar Cotação</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+        <div>
+            <!-- Botão -->
+
+            <!-- Loader -->
+            <div v-if="loading" class="loader-overlay">
+                <div class="spinner"></div>
+                <p>A carregar...</p>
+            </div>
+        </div>
+        <!-- Ações à direita -->
+        <div class="actions">
+            <div class="hero-buttons">
+                <a href="" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                    <i class="bi bi-whatsapp me-1" style="font-size: 30px"></i>
+                    <span class="escoder">Fale com um Especialista</span>
+                </a>
+            </div>
+            <div class="dots">⋮⋮⋮</div>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </div>
+    </nav>
+</div>

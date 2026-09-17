@@ -1,709 +1,361 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberDev - Soluções Web Avançadas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Registro de Domínio - HostMídia</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (Ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Swiper CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+
     <style>
-        /* --- RESET & VARIÁVEIS --- */
-        :root {
-            --bg-color: #0a0a12;
-            --card-bg: rgba(20, 20, 35, 0.7);
-            --primary: #ff0055; 
-            --secondary: #00ffcc; 
-            --text: #e2e8f0;
-            --dark-blue: #141423;
-            --grid-line: rgba(0, 255, 204, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Rajdhani', sans-serif;
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text);
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 40px 40px, 40px 40px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- HEADER & NAV --- */
-        header {
-            border-bottom: 1px solid rgba(255, 0, 85, 0.2);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 18, 0.8);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px var(--primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--secondary);
-            text-shadow: 0 0 10px var(--secondary);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--secondary);
-            text-shadow: 0 0 8px var(--secondary);
-        }
-
-        /* --- HERO SECTION COM VÍDEO E LAYOUT DIVIDIDO --- */
-        .hero {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .video-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(10, 10, 18, 0.7) 0%, rgba(10, 10, 18, 0.95) 100%);
-        }
-
-        .hero-layout {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .col-esquerda {
-            text-align: left;
-        }
-
-        .glitch-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #fff;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .glitch-title span {
-            color: transparent;
-            -webkit-text-stroke: 1px var(--primary);
-            filter: drop-shadow(0 0 5px var(--primary));
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #a0aec0;
-            margin-bottom: 40px;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn {
-            font-family: 'Orbitron', sans-serif;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: #ff3377;
-            box-shadow: 0 0 25px var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--secondary);
-            border: 1px solid var(--secondary);
-            box-shadow: inset 0 0 5px rgba(0, 255, 204, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 255, 204, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .col-direita {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-        }
-
-        /* --- SEÇÃO DE RECURSOS / DIFERENCIAIS --- */
-        .features-section {
-            padding: 100px 0 60px 0;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title span {
-            color: var(--secondary);
-        }
-
-        .grid-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--secondary);
-            padding: 40px 30px;
-            border-radius: 4px;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-        }
-
-        .feature-box:hover {
-            border-left-color: var(--primary);
-            transform: scale(1.02);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .feature-box:hover .feature-icon {
-            color: var(--primary);
-            filter: drop-shadow(0 0 8px var(--primary));
-        }
-
-        .feature-box h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .feature-box p {
-            color: #a0aec0;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        /* --- SEÇÃO DE SERVIÇOS --- */
-        .services-section {
-            padding: 60px 0;
-        }
-
-        .grid-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .service-card {
-            background: rgba(15, 15, 28, 0.85);
-            border: 1px solid rgba(255, 0, 85, 0.1);
-            padding: 35px 25px;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: rgba(255, 0, 85, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 0, 85, 0.15);
-        }
-
-        .service-card:hover::after {
-            width: 100%;
-        }
-
-        .service-top i {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .service-card p {
-            color: #a0aec0;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
-
-        .service-link {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: gap 0.2s;
-            margin-top: auto;
-        }
-
-        .service-link:hover {
-            color: #fff;
-            text-shadow: 0 0 8px var(--secondary);
-            gap: 12px;
-        }
-
-        /* --- SEÇÃO DE TECNOLOGIAS (NOVO SLIDER AUTOPLAY CONTINUO) --- */
-        .tech-section {
-            padding: 60px 0;
-            overflow: hidden;
-        }
-
-        .tech-slider-container {
-            width: 100%;
-            padding: 20px 0;
-        }
-
-        /* Ajuste para fazer a transição do carrossel ser perfeitamente contínua e suave */
-        .techSwiper .swiper-wrapper {
-            transition-timing-function: linear !important;
-        }
-
-        .tech-card {
-            background: rgba(20, 20, 35, 0.4);
-            border: 1px solid rgba(0, 255, 204, 0.1);
-            border-radius: 8px;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .tech-card:hover {
-            border-color: var(--secondary);
-            background: rgba(20, 20, 35, 0.8);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .tech-card i {
-            font-size: 3rem;
-            transition: transform 0.3s ease;
-        }
-
-        /* Cores temáticas para cada ícone de tecnologia */
-        .tech-card .fa-vuejs { color: #42b883; }
-        .tech-card .fa-react { color: #61dafb; }
-        .tech-card .fa-node-js { color: #68a063; }
-        .tech-card .fa-js { color: #f7df1e; }
-        .tech-card .fa-html5 { color: #e34f26; }
-        .tech-card .fa-css3-alt { color: #1572b6; }
-        .tech-card .fa-python { color: #3776ab; }
-        .tech-card .fa-database { color: #00758f; }
-
-        .tech-card span {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        /* --- SEÇÃO DE DEPOIMENTOS (SLIDER) --- */
-        .testimonials-section {
-            padding: 60px 0 140px 0;
-        }
-
-        .slider-container {
-            padding: 20px;
-            position: relative;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            transition: border 0.3s ease;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 15px;
-            right: 30px;
-            font-size: 5rem;
-            color: rgba(255, 0, 85, 0.15);
-            font-family: 'Orbitron', sans-serif;
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            color: #e2e8f0;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .client-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--secondary);
-            object-fit: cover;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-        }
-
-        .client-details h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            color: #fff;
-        }
-
-        .client-details span {
-            font-size: 0.9rem;
-            color: var(--secondary);
-        }
-
-        /* Customização dos controles do Swiper de Depoimentos */
-        .testimonialSwiper .swiper-pagination-bullet {
-            background: #fff !important;
-            opacity: 0.3;
-        }
-
-        .testimonialSwiper .swiper-pagination-bullet-active {
-            background: var(--secondary) !important;
-            opacity: 1 !important;
-            box-shadow: 0 0 8px var(--secondary);
-        }
-
-        .testimonialSwiper .swiper-button-next, .testimonialSwiper .swiper-button-prev {
-            color: var(--primary) !important;
-            text-shadow: 0 0 8px var(--primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #444;
         }
         
-        .testimonialSwiper .swiper-button-next::after, .testimonialSwiper .swiper-button-prev::after {
-            font-size: 1.8rem !important;
+        .title-main {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #444;
         }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 992px) {
-            .hero-layout { grid-template-columns: 1fr; text-align: center; }
-            .col-esquerda { text-align: center; }
-            .cta-group { justify-content: center; }
-            .col-direita { margin-top: 30px; }
+        /* --- Estilos da Seção 1: Domínios Em Destaque --- */
+        
+        .domain-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
-
-        @media (max-width: 768px) {
-            .glitch-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.2rem; }
-            .cta-group { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; justify-content: center; }
-            .nav-menu { display: none; }
-            .slider-container { padding: 20px 0; }
+        
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .domain-card .card-body {
+            padding: 1.5rem 1rem;
+        }
+        
+        .domain-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .domain-price {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        .domain-price .amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .domain-price .cents {
+            font-size: 1rem;
+            vertical-align: super;
+        }
+        
+        .renewal-price {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        
+        .btn-register {
+            background-color: #0066ff;
+            color: white;
+            border-radius: 0 0 12px 12px;
+            font-weight: 500;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            border: none;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-register:hover {
+            background-color: #004ed5;
+            color: white;
+        }
+        /* --- Estilos da Seção 2: Benefícios --- */
+        
+        .benefits-section {
+            background: linear-gradient(135deg, #0052cc 0%, #0088ff 100%);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefits-title {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+        
+        .benefits-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .benefit-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .benefit-content h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .benefit-content p {
+            font-size: 0.82rem;
+            opacity: 0.85;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .benefits-bg-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            opacity: 0.85;
+        }
+        /* --- Estilos da Seção 3: Tabela Dinâmica --- */
+        
+        .table-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+        }
+        
+        .custom-table {
+            margin-bottom: 0;
+        }
+        
+        .custom-table th {
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding: 12px;
+            user-select: none;
+        }
+        
+        .sortable-header {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .sortable-header:hover {
+            color: #0066ff;
+        }
+        
+        .custom-table td {
+            vertical-align: middle;
+            padding: 12px;
+            font-size: 0.9rem;
+            color: #555;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .price-badge {
+            font-size: 0.7rem;
+            background-color: #e6f0ff;
+            color: #0066ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 2px;
+            text-decoration: line-through;
+        }
+        
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+        /* Animações e Transição da Tabela */
+        
+        .table-row-fade-enter-active,
+        .table-row-fade-leave-active {
+            transition: all 0.3s ease;
+        }
+        
+        .table-row-fade-enter,
+        .table-row-fade-leave-to {
+            opacity: 0;
+            transform: translateY(10px);
         }
     </style>
 </head>
+
 <body>
 
     <div id="app">
-        <!-- HEADER / NAVIGATION -->
-        <header>
-            <div class="container nav-container">
-                <a href="#" class="logo">CYBER<span>DEV</span></a>
-                <ul class="nav-menu">
-                    <li><a href="#" class="nav-link active">Início</a></li>
-                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                    <li><a href="#tecnologias" class="nav-link">Tecnologias</a></li>
-                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </div>
-        </header>
+        <!-- SEÇÃO 1: Domínios em Destaque -->
+        <section class="container my-5">
+            <h2 class="text-center title-main mb-4">Grandes ideias precisam dos melhores domínios</h2>
 
-        <!-- HERO SECTION COM VÍDEO E GRIDS LATERAIS -->
-        <section class="hero">
-            <div class="video-container">
-                <video autoplay loop muted playsinline class="video-bg">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32432-large.mp4" type="video/mp4">
-                </video>
-                <div class="video-overlay"></div>
-            </div>
-
-            <div class="container hero-layout">
-                <div class="col-esquerda">
-                    <h1 class="glitch-title">Construindo o Futuro <span>Digital</span></h1>
-                    <p class="hero-subtitle">
-                        Desenvolvemos websites de alta performance, lojas virtuais blindadas e portais corporativos com arquitetura cibernética de última geração.
-                    </p>
-                    <div class="cta-group">
-                        <a href="#contacto" class="btn btn-primary">Iniciar Projeto <i class="fas fa-code"></i></a>
-                        <a href="#servicos" class="btn btn-secondary">Nossos Recursos</a>
-                    </div>
-                </div>
-                
-                <div class="col-direita">
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600" alt="Interface Cyberpunk" class="hero-image">
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section class="features-section container">
-            <h2 class="section-title">Nossos <span>Diferenciais</span></h2>
-            <div class="grid-features">
-                <div class="feature-box">
-                    <i class="fas fa-bolt feature-icon"></i>
-                    <h3>Ultra Velocidade</h3>
-                    <p>Código limpo e otimizado para carregamento instantâneo em qualquer dispositivo ou rede.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3>Segurança Máxima</h3>
-                    <p>Implementação de protocolos modernos de criptografia para manter os seus dados impenetráveis.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-mobile-alt feature-icon"></i>
-                    <h3>100% Responsivo</h3>
-                    <p>Interface líquida adaptável para smartphones, tablets, desktops e displays gigantes.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICES SECTION -->
-        <section id="servicos" class="services-section container">
-            <h2 class="section-title">Nossos <span>Serviços</span></h2>
-            <div class="grid-services">
-                <div class="service-card">
-                    <div class="service-top">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Inteligência de Vendas</h3>
-                        <p>Prospecção, qualificação e engajamento com seus clientes ideais.</p>
-                    </div>
-                    <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-top">
-                        <i class="fas fa-mobile-screen-button"></i>
-                        <h3>Criação de Apps</h3>
-                        <p>Desenvolvemos plataformas e sistemas digitais personalizadas e sob medida.</p>
-                    </div>
-                    <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-top">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>Criação de Website</h3>
-                        <p>Desbloqueie oportunidades com a criação de um site, conecte com o público em qualquer lugar.</p>
-                    </div>
-                    <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-top">
-                        <i class="fas fa-palette"></i>
-                        <h3>Design Gráfico</h3>
-                        <p>Criamos a identidade visual da sua marca, garante que sua empresa se destaque e transmita profissionalismo.</p>
-                    </div>
-                    <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- TECHNOLOGIES SECTION (NOVO CARROSSEL SWIPER AUTOPLAY CONTINUO) -->
-        <section id="tecnologias" class="tech-section container">
-            <h2 class="section-title">Tecnologias que <span>Usamos</span></h2>
-            
-            <div class="tech-slider-container">
-                <div class="swiper techSwiper">
-                    <div class="swiper-wrapper">
-                        
-                        <!-- Cards das Tecnologias controlados dinamicamente pelo Vue -->
-                        <div class="swiper-slide" v-for="(tech, index) in tecnologiasList" :key="index">
-                            <div class="tech-card">
-                                <i :class="tech.icone"></i>
-                                <span>{{ tech.nome }}</span>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="domain in featuredDomains" :key="domain.name">
+                    <div class="domain-card text-center">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <div class="domain-name">
+                                <i :class="domain.icon" v-if="domain.icon" class="me-1 text-primary" style="font-size: 1.2rem;"></i> {{ domain.name }}
+                            </div>
+                            <div class="domain-price">
+                                <small>R$</small>
+                                <span class="amount">{{ domain.price.split(',')[0] }}</span>,<span class="cents">{{ domain.price.split(',')[1] }}</span>
+                                <small class="text-secondary">*</small>
+                            </div>
+                            <div class="renewal-price mt-1">
+                                Renovação {{ domain.renewal }}
                             </div>
                         </div>
-
+                        <button class="btn-register">Registrar</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TESTIMONIALS SECTION (SLIDER SWIPER + VUE) -->
-        <section id="depoimentos" class="testimonials-section container">
-            <h2 class="section-title">O que os nossos <span>Clientes Dizem</span></h2>
-            
-            <div class="slider-container">
-                <div class="swiper testimonialSwiper">
-                    <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide" v-for="(depoimento, index) in depoimentos" :key="index">
-                            <div class="testimonial-card">
-                                <p class="testimonial-text">{{ depoimento.texto }}</p>
-                                <div class="client-info">
-                                    <img :src="depoimento.foto" :alt="depoimento.nome" class="client-avatar">
-                                    <div class="client-details">
-                                        <h4>{{ depoimento.nome }}</h4>
-                                        <span>{{ depoimento.cargo }}</span>
+        <!-- SEÇÃO 2: Benefícios -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="text-center benefits-title mb-2">Benefícios</h2>
+                <p class="text-center benefits-subtitle mb-5">Veja alguns benefícios em escolher a HostMídia para registrar o seu domínio!</p>
+
+                <div class="row align-items-center">
+                    <!-- Coluna da Esquerda: Lista de Benefícios -->
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-md-6" v-for="benefit in benefits" :key="benefit.title">
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i :class="benefit.icon"></i>
+                                    </div>
+                                    <div class="benefit-content">
+                                        <h5>{{ benefit.title }}</h5>
+                                        <p>{{ benefit.description }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+
+                    <!-- Coluna da Direita: Imagem Decorativa -->
+                    <div class="col-lg-5 text-center d-none d-lg-block">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Suporte Hostmidia" class="benefits-bg-img shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: Tabela de Valores Dinâmica -->
+        <section class="container my-5">
+            <h2 class="text-center title-main mb-4">Valores</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="table-card">
+
+                        <!-- BARRA DE PESQUISA E FILTROS DINÂMICOS -->
+                        <div class="row g-3 mb-4 align-items-center">
+                            <!-- Campo de busca por extensão -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                                    <input type="text" class="form-control border-start-0" placeholder="Buscar extensão (ex: .com, .br, .tech)..." v-model="searchQuery">
+                                    <button v-if="searchQuery" class="btn btn-outline-secondary" type="button" @click="searchQuery = ''">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Filtros rápidos de categoria -->
+                            <div class="col-md-6 text-md-end">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'all' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'all'">Todos</button>
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'nacionais' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'nacionais'">Nacionais (.br)</button>
+                                    <button type="button" class="btn btn-sm" :class="selectedCategory === 'internacionais' ? 'btn-primary' : 'btn-outline-primary'" @click="selectedCategory = 'internacionais'">Internacionais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TABELA DE RESULTADOS -->
+                        <div class="table-responsive">
+                            <table class="table custom-table">
+                                <thead>
+                                    <tr>
+                                        <!-- Clique para ordenar por Extensão -->
+                                        <th class="sortable-header" @click="setSort('extension')">
+                                            Extensões
+                                            <i class="fas" :class="getSortIcon('extension')"></i>
+                                        </th>
+                                        <!-- Clique para ordenar por Preço de Registro -->
+                                        <th class="sortable-header" @click="setSort('registerNum')">
+                                            Registro *
+                                            <i class="fas" :class="getSortIcon('registerNum')"></i>
+                                        </th>
+                                        <!-- Clique para ordenar por Preço de Renovação -->
+                                        <th class="sortable-header" @click="setSort('renewalNum')">
+                                            Renovação
+                                            <i class="fas" :class="getSortIcon('renewalNum')"></i>
+                                        </th>
+                                        <th>Transferência</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Renderização das linhas filtradas -->
+                                    <tr v-for="item in filteredAndSortedList" :key="item.extension">
+                                        <td><strong>{{ item.extension }}</strong></td>
+                                        <td>
+                                            <div v-if="item.oldPrice" class="price-badge">{{ item.oldPrice }}</div>
+                                            <div><strong>{{ item.registerPrice }}</strong></div>
+                                        </td>
+                                        <td>{{ item.renewalPrice }}</td>
+                                        <td>{{ item.transferPrice }}</td>
+                                    </tr>
+
+                                    <!-- Mensagem caso nada seja encontrado -->
+                                    <tr v-if="filteredAndSortedList.length === 0">
+                                        <td colspan="4" class="text-center py-4 text-muted">
+                                            <i class="fas fa-search me-2"></i>Nenhuma extensão encontrada com a sua busca.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Rodapé com contagem de itens visíveis -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="text-muted small">Exibindo {{ filteredAndSortedList.length }} de {{ priceList.length }} extensões</span>
+                        </div>
+                    </div>
+
+                    <p class="disclaimer mt-3 text-center text-lg-start">
+                        * Desconto de 10% válido ao registrar o domínio por 2 anos ou mais.
+                    </p>
                 </div>
             </div>
         </section>
@@ -711,90 +363,183 @@
 
     <!-- Vue.js 2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <!-- Swiper JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <!-- Script Vue com lógica dinâmica -->
     <script>
         new Vue({
             el: '#app',
             data: {
-                // Lista de tecnologias para renderizar no carrossel contínuo
-                tecnologiasList: [
-                    { nome: "Vue.js", icone: "fab fa-vuejs" },
-                    { nome: "React", icone: "fab fa-react" },
-                    { nome: "Node.js", icone: "fab fa-node-js" },
-                    { nome: "JavaScript", icone: "fab fa-js" },
-                    { nome: "HTML5", icone: "fab fa-html5" },
-                    { nome: "CSS3", icone: "fab fa-css3-alt" },
-                    { nome: "Python", icone: "fab fa-python" },
-                    { nome: "SQL DB", icone: "fas fa-database" }
-                ],
-                depoimentos: [
-                    {
-                        nome: "Carlos Silva",
-                        cargo: "CEO da TecnoAngola",
-                        texto: "A CyberDev superou todas as expectativas. Nosso novo e-commerce carrega instantaneamente e o design futurista converteu muito mais clientes.",
-                        foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150"
-                    },
-                    {
-                        nome: "Amanda Costa",
-                        cargo: "Diretora de Marketing - Nexus",
-                        texto: "Excelente suporte e arquitetura impecável. A segurança do nosso portal corporativo foi elevada a outro nível após o desenvolvimento deles.",
-                        foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150"
-                    },
-                    {
-                        nome: "Ricardo Santos",
-                        cargo: "Fundador da Startup Vanguarda",
-                        texto: "Sistema 100% responsivo e limpo. A entrega foi antes do prazo e a interface cibernética encaixou perfeitamente com a proposta da nossa marca.",
-                        foto: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=150"
-                    }
-                ]
-            },
-            mounted() {
-                this.$nextTick(() => {
-                    // 1. Inicializa o Slider Contínuo de Tecnologias
-                    new Swiper(".techSwiper", {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                        loop: true,
-                        freeMode: true,
-                        speed: 4000, // Velocidade da transição contínua
-                        autoplay: {
-                            delay: 0, // Delay 0 faz ele rolar sem parar
-                            disableOnInteraction: false,
-                        },
-                        breakpoints: {
-                            576: { slidesPerView: 3 },
-                            768: { slidesPerView: 4 },
-                            1024: { slidesPerView: 5 }
-                        }
-                    });
+                searchQuery: '',
+                selectedCategory: 'all',
+                sortKey: 'extension',
+                sortAsc: true,
 
-                    // 2. Inicializa o Slider Padrão de Depoimentos
-                    new Swiper(".testimonialSwiper", {
-                        slidesPerView: 1,
-                        spaceBetween: 30,
-                        loop: true,
-                        autoplay: {
-                            delay: 5000,
-                            disableOnInteraction: false,
-                        },
-                        pagination: {
-                            el: ".swiper-pagination",
-                            clickable: true,
-                        },
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        },
-                        breakpoints: {
-                            768: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 }
-                        }
-                    });
-                });
+                featuredDomains: [{
+                    name: '.net',
+                    price: '79,99',
+                    renewal: 'R$ 119,00',
+                    icon: ''
+                }, {
+                    name: 'store',
+                    price: '369,99',
+                    renewal: 'R$ 399,00',
+                    icon: ''
+                }, {
+                    name: '.online',
+                    price: '239,99',
+                    renewal: 'R$ 269,00',
+                    icon: 'fas fa-at'
+                }, {
+                    name: '.site',
+                    price: '199,99',
+                    renewal: 'R$ 229,00',
+                    icon: 'fas fa-at'
+                }, {
+                    name: '.tech',
+                    price: '334,99',
+                    renewal: 'R$ 364,00',
+                    icon: ''
+                }, {
+                    name: '.website',
+                    price: '149,99',
+                    renewal: 'R$ 179,00',
+                    icon: 'fas fa-at'
+                }, {
+                    name: '.host',
+                    price: '619,99',
+                    renewal: 'R$ 649,00',
+                    icon: ''
+                }, {
+                    name: '.ong',
+                    price: '289,99',
+                    renewal: 'R$ 319,00',
+                    icon: 'fas fa-globe'
+                }],
+
+                benefits: [{
+                    icon: 'far fa-plus-square',
+                    title: 'Diversas extensões',
+                    description: 'Além das extensões populares, a HostMídia traz as novas opções para você escolher a extensão de domínio perfeita para movimentar sua ideia ou negócio.'
+                }, {
+                    icon: 'far fa-share-square',
+                    title: 'Estacione grátis',
+                    description: 'Seu site não está pronto e você não quer perder o seu tão valioso domínio? Após o registro a HostMídia estaciona o domínio em nossos servidores gratuitamente!'
+                }, {
+                    icon: 'fas fa-lock',
+                    title: 'Bloqueio de domínio',
+                    description: 'Seu domínio transferido sem sua autorização? Na HostMídia não! Com o nosso sistema de Bloqueio, seus domínios internacionais só podem ser transferidos com sua liberação.'
+                }, {
+                    icon: 'far fa-thumbs-up',
+                    title: '+ 85.000 registros',
+                    description: 'Isso mesmo, nesses 19 anos de existência, nós já registramos mais de 85 mil domínios e este número não para de crescer, graças aos nossos valores, tradição e confiança.'
+                }],
+
+                // Lista expandida com valores numéricos para ordenação precisa
+                priceList: [{
+                    extension: '.com',
+                    oldPrice: 'R$ 49,99',
+                    registerPrice: 'R$ 39,99',
+                    registerNum: 39.99,
+                    renewalPrice: 'R$ 79,99',
+                    renewalNum: 79.99,
+                    transferPrice: 'R$ 79,99 / ano',
+                    category: 'internacionais'
+                }, {
+                    extension: '.com.br',
+                    oldPrice: 'R$ 34,99',
+                    registerPrice: 'R$ 24,99',
+                    registerNum: 24.99,
+                    renewalPrice: 'R$ 59,99',
+                    renewalNum: 59.99,
+                    transferPrice: 'R$ 59,99 / ano',
+                    category: 'nacionais'
+                }, {
+                    extension: '.net',
+                    oldPrice: 'R$ 89,99',
+                    registerPrice: 'R$ 79,99',
+                    registerNum: 79.99,
+                    renewalPrice: 'R$ 99,99',
+                    renewalNum: 99.99,
+                    transferPrice: 'R$ 89,99 / ano',
+                    category: 'internacionais'
+                }, {
+                    extension: '.org',
+                    oldPrice: 'R$ 99,99',
+                    registerPrice: 'R$ 89,99',
+                    registerNum: 89.99,
+                    renewalPrice: 'R$ 89,99',
+                    renewalNum: 89.99,
+                    transferPrice: 'R$ 89,99 / ano',
+                    category: 'internacionais'
+                }, {
+                    extension: '.org.br',
+                    oldPrice: 'R$ 49,99',
+                    registerPrice: 'R$ 39,99',
+                    registerNum: 39.99,
+                    renewalPrice: 'R$ 59,99',
+                    renewalNum: 59.99,
+                    transferPrice: 'R$ 59,99 / ano',
+                    category: 'nacionais'
+                }, {
+                    extension: '.tech',
+                    oldPrice: '',
+                    registerPrice: 'R$ 334,99',
+                    registerNum: 334.99,
+                    renewalPrice: 'R$ 364,00',
+                    renewalNum: 364.00,
+                    transferPrice: 'R$ 364,00 / ano',
+                    category: 'internacionais'
+                }, {
+                    extension: '.site',
+                    oldPrice: '',
+                    registerPrice: 'R$ 199,99',
+                    registerNum: 199.99,
+                    renewalPrice: 'R$ 229,00',
+                    renewalNum: 229.00,
+                    transferPrice: 'R$ 229,00 / ano',
+                    category: 'internacionais'
+                }]
+            },
+            computed: {
+                // Computed Property que gerencia a filtragem e a ordenação em tempo real
+                filteredAndSortedList() {
+                    return this.priceList
+                        .filter(item => {
+                            // Filtro por termo de busca
+                            const matchesSearch = item.extension.toLowerCase().includes(this.searchQuery.toLowerCase());
+
+                            // Filtro por categoria
+                            const matchesCategory = this.selectedCategory === 'all' || item.category === this.selectedCategory;
+
+                            return matchesSearch && matchesCategory;
+                        })
+                        .sort((a, b) => {
+                            // Ordenação dinâmica
+                            let modifier = this.sortAsc ? 1 : -1;
+                            if (a[this.sortKey] < b[this.sortKey]) return -1 * modifier;
+                            if (a[this.sortKey] > b[this.sortKey]) return 1 * modifier;
+                            return 0;
+                        });
+                }
+            },
+            methods: {
+                // Alterna a direção da ordenação ou altera a coluna ativa
+                setSort(key) {
+                    if (this.sortKey === key) {
+                        this.sortAsc = !this.sortAsc;
+                    } else {
+                        this.sortKey = key;
+                        this.sortAsc = true;
+                    }
+                },
+                // Retorna a classe do ícone de seta para as colunas ordenáveis
+                getSortIcon(key) {
+                    if (this.sortKey !== key) return 'fa-sort text-muted ms-1';
+                    return this.sortAsc ? 'fa-sort-up text-primary ms-1' : 'fa-sort-down text-primary ms-1';
+                }
             }
         });
     </script>
 </body>
+
 </html>

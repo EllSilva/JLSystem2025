@@ -1,181 +1,296 @@
 <div>
 
-  <!-- Page Header Start -->
-  <div class="container-fluid page-emal mb-5 py-5">
-    <div class="container">
-      <h1 class="display-3 text-white mb-3 animated slideInDown">E-mail Profissionais</h1>
-      <nav aria-label="breadcrumb animated slideInDown">
-        <ol class="breadcrumb text-uppercase">
-          <li class="breadcrumb-item text-white">Uma solução única e robusta de e-mail projetada para todas as empresas </li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  <!-- Page Header End -->
- 
-  <!-- Service Start Explore Explore  -->
-  <div class="container-fluid py-5 px-4 px-lg-0">
-   
-        <div class="ms-lg-5 ps-lg-5">
-          <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-secondary text-uppercase">NOSSOS PLANOS ANUAL</h6>
-            <h1 class="mb-5">Escolha o Seu Plano de E-Mails Profissionais</h1>
-          </div>
-          <c-planos_email></c-planos_email>
-        </div>
-    
-  </div>
-  <!-- Service End -->
+    <!-- Sub-navegação Superior  container py-5 -->
+    <header class="border-bottom py-3 bg-white">
+        <div class="container">
+            <div class="d-flex align-items-center flex-wrap gap-4">
+                <!-- Link na Marca/Título Principal -->
+                <a :href="brandUrl" class="subnav-brand me-3">{{ brandTitle }}</a>
 
-
-
-  <div class="container-kk py-7 fadeInUp" data-wow-delay="0.1s">
-
-    <div class="img"></div>
-    <div class="overlay3"></div>
-
-    <div class="text11 container">
-
-      <!-- Service Start -->
-      <div class="container-fluid  px-4 px-lg-0">
-
-        <div class="text-center text-lg-start wow fadeInUp py-3" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">Por que ter um email corporativo é importante?</h6>
-          <h1 class="mb-0">Porque sua empresa precisa de um email corporativo?</h1>
-        </div>
-
-        <div class="row g-0 ">
-          <div class="col-md-12 col-lg-9">
-            <div class="row g-0 ">
-
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Produtividade e integração</h4>
-                  <p>O email profissional também contribui com a produtividade e a integração das equipes. através dele, é possível ter diversos usuários para o mesmo domínio. Dessa forma, cada equipe fica responsável pelo envio de um tipo de email, evitando a sobrecarga em um só departamento.</p>
+                <div class="d-flex gap-4 align-items-center flex-grow-1 overflow-auto">
+                    <!-- Links do Menu -->
+                    <a v-for="(item, index) in navItems" :key="index" :href="item.url" class="subnav-link text-nowrap" :class="{ 'active': item.active }" @click="setActive(index)">
+                            {{ item.label }}
+                            <i v-if="item.hasDropdown" class="bi bi-chevron-down ms-1" style="font-size: 0.75rem;"></i>
+                        </a>
                 </div>
-              </div>
-
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Informações centralizadas</h4>
-                  <p>Tudo em um único lugar: em suas mãos. É isso o que acontece quando a sua empresa utiliza emails corporativos.
-                    Cada sector ou cada funcionário poderá ter uma conta de email exclusiva. E mais, mesmo que um funcionário saia da empresa, o material não se perde.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                   <i class="fa fa-water fa-1x text-primary p-2"></i></span>Credibilidade e profissionalismo</h4>
-                  <p>Um email profissional traz mais credibilidade e autoridade para a sua marca, mostrando que você tem comprometimento com sua imagem e com sua comunicação e relação com o cliente.</p>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Email seguro com SSL</h4>
-                  <p>Você tem gratuitamente Certificados SSL para preservar mensagens enviadas e recebidas de serem interceptadas e violadas no caminho.</p>
-                </div>
-              </div>
-
             </div>
-          </div>
-
-          <div class="col-md-12 col-lg-3">
-            <div class="p-4 border border-5 border-white bg-light">
-              
-              <h6 class="text-secondary text-uppercase py-4">Recursos de E-mail Profissional</h6>
-         
-              <div class=" wow fadeInUp" data-wow-delay="0.1s">
-
-               
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Configuração Automática
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Segurança Avançada
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Registos Detalhados
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Gestão Intuitiva
-                </p>
-                
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Funções Automáticas
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Painel de Controle Webmail
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Gestão simplificada
-                </p>
-              
-              
-                
-              </div>
-
-            </div>
-          </div>
-
         </div>
-      </div>
-      <!-- Service End -->
+    </header>
 
 
+
+    <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+        <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
+            <h5 class="fonte-h2">Criação de</h5>
+            <h1 class="hero-title-2  ">
+                E-mail Profissionais </span>
+            </h1>
+            <P>Uma solução única e robusta de e-mail projetada para todas as empresas</P>
+        </div>
     </div>
-  </div>
- 
 
-  <!-- Service Start -->
-  <div class="container-xxl py-5">
+
     <div class="container">
-      <div class="row g-4">
 
-        <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">NOSSOS PLANOS</h6>
-          <h1 class="mb-5">Podes precissar Também </h1>
+
+        <div class="container my-auto">
+            <!-- Banner Superior com Ícone de Envelope -->
+            <div class="banner-titulo orbitron-font text-center text-uppercase fw-bold p-3 rounded mb-4 d-flex align-items-center justify-content-center gap-2">
+                <i class="fas fa-envelope-open-text"></i> Escolha abaixo o seu pacote de e-mails
+            </div>
+
+            <!-- Grid Responsivo do Bootstrap -->
+            <div class="row g-4 align-items-start">
+                <!-- Lado Esquerdo: Formulário com Ícones -->
+                <div class="col-12 col-md-8">
+                    <div class="cyber-card p-4 rounded">
+                        <div class="row g-3">
+                            <!-- Campo Domínio -->
+                            <div class="col-12 col-sm-6">
+                                <label for="dominio" class="form-label orbitron-font fs-6 d-flex align-items-center gap-2">
+                                <i class="fas fa-globe"></i> Escolha o domínio
+                            </label>
+                                <div class="select-wrapper">
+                                    <select id="dominio" class="form-select form-select-custom py-2 pe-5" v-model="dominioSelecionado">
+                                    <option v-for="d in dominios" :key="d.nome" :value="d">
+                                        {{ d.nome }}
+                                    </option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <!-- Campo Quantidade de E-mails -->
+                            <div class="col-12 col-sm-6">
+                                <label for="qtdEmail" class="form-label orbitron-font fs-6 d-flex align-items-center gap-2">
+                                <i class="fas fa-users"></i> Escolha o nº de emails
+                            </label>
+                                <div class="select-wrapper">
+                                    <select id="qtdEmail" class="form-select form-select-custom py-2 pe-5" v-model.number="qtdEmail">
+                                    <option v-for="qtd in [1, 5, 10, 15, 20, 25, 50]" :key="qtd" :value="qtd">
+                                        {{ qtd }}
+                                    </option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lado Direito: Resumo com Botão Solicitar -->
+                <div class="col-12 col-md-4">
+                    <div class="summary-card p-4 rounded shadow">
+                        <div class="d-flex justify-content-between align-items-center mb-3 text-secondary">
+                            <span>Subtotal</span>
+                            <span class="fw-bold text-white">{{ formatarPreco(valorTotal) }}</span>
+                        </div>
+
+                        <div class="summary-divider my-3"></div>
+
+                        <div class="d-flex justify-content-between align-items-center orbitron-font fs-6 text-white mb-4">
+                            <span>Total</span>
+                            <span class="summary-total-value fs-5 fw-bold">{{ formatarPreco(valorTotal) }}</span>
+                        </div>
+
+                        <button class="btn btn-cyber w-100 orbitron-font fw-bold py-2 text-uppercase d-flex align-items-center justify-content-center gap-2" @click="finalizarPedido">
+                        <i class="fas fa-paper-plane"></i> Solicitar
+                    </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_hospedagem.webp" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Hospedagem de Sites</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_dominios.jpg" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Domínio</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_email.png" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">
-              E-mail profissional</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Service End -->
+
+
+    <!-- FAQ SECTION (PERGUNTAS FREQUENTES) -->
+    <section id="faq" class="faq-section container">
+
+        <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+            <div class="col-lg-8 animate__animated animate__fadeInLeft pt-5">
+                <h5 class="fonte-h2">Beneficio de um email corporativo</h5>
+                <h1 class="hero-title-2  ">
+                    Porque sua empresa precisa de um <span> email corporativo?</span>
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="conteudo-principal">
+            <div class="grid-recursos">
+                <!-- Item 1: Antispam & Antivírus -->
+                <div class="item-recurso">
+                    <div class="item-recurso__marcador"><i class="fas fa-check"></i></div>
+                    <div class="item-recurso__circulo-icone">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="item-recurso__titulo">Antispam & Antivírus</h3>
+                    <p class="item-recurso__descricao">
+                        Actualização automática para bloquear arquivos e mensagens suspeitas.
+                    </p>
+                </div>
+
+                <!-- Item 2: Aplicativo Type App -->
+                <div class="item-recurso">
+                    <div class="item-recurso__marcador"><i class="fas fa-check"></i></div>
+                    <div class="item-recurso__circulo-icone">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3 class="item-recurso__titulo">Aplicativo Type App</h3>
+                    <p class="item-recurso__descricao">
+                        Acesse seu e-mail sem necessidade de configurações. Baixe pelo webmail.
+                    </p>
+                </div>
+
+                <!-- Item 3: Painel de Controle -->
+                <div class="item-recurso">
+                    <div class="item-recurso__marcador"><i class="fas fa-check"></i></div>
+                    <div class="item-recurso__circulo-icone">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3 class="item-recurso__titulo">Painel de Controle</h3>
+                    <p class="item-recurso__descricao">
+                        Interface amigável para administrar, criar e configurar facilmente suas contas.
+                    </p>
+                </div>
+
+                <!-- Item 4: Versão Mobile -->
+                <div class="item-recurso">
+                    <div class="item-recurso__marcador"><i class="fas fa-check"></i></div>
+                    <div class="item-recurso__circulo-icone">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3 class="item-recurso__titulo">Versão Mobile</h3>
+                    <p class="item-recurso__descricao">
+                        Acesse seus e-mails de onde estiver e por qualquer dispositivo móvel.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="hero-section mt-5">
+        <!-- Binding reativo de estilo inline para o Zoom da imagem -->
+        <div class="hero-bg-email" :style="bgStyle">
+        </div>
+
+        <!-- Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Conteúdo -->
+        <div class="hero-container container pt-5">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+                    <div class="feature-item mb-3">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                            <div class="feature-content">
+
+                                <h4 class="hero-title-5  ">
+                                    Produtividade e <span> integração</span>
+                                </h4>
+                                <p>
+                                    O e-mail profissional otimiza a produtividade e a integração da equipe ao permitir múltiplos endereços no mesmo domínio, distribuindo o envio de mensagens entre setores e evitando a sobrecarga de um único departamento.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+
+                    <div class="feature-item">
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="feature-icon flex-shrink-0">
+                                <i class="bi bi-browser-chrome"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="hero-title-5  ">
+                                    Credibilidade e <span> profissionalismo</span>
+                                </h4>
+                                <p>
+                                    Um email profissional traz mais credibilidade e autoridade para a sua marca, mostrando que você tem comprometimento com sua imagem e com sua comunicação e relação com o cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .feature-item -->
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- FAQ SECTION (PERGUNTAS FREQUENTES) -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="text-secondary text-uppercase">OUTROS SERVIÇOS</h6>
+                    <h1 class="mb-5">Podes precissar Também </h1>
+                </div>
+
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_hospedagem.webp" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">Hospedagem de Sites</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_dominios.jpg" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">Domínio</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid w-100 h-100" src="assets/img/sc_email.png" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                        <h5 class="text-truncate me-3 mb-0">
+                            E-mail profissional</h5>
+                        <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
+                class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
 
 
 

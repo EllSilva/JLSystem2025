@@ -6,13 +6,13 @@ export default {
             isScrolled: false,
             scrollY: 0,
             hero: {
-                discount: 79,
-                price: '10,09',
+                discount: 39,
+                price: '110.000',
                 features: [
-                    'Foco em Resultados',
-                    'Presença Online Forte',
-                    'Conexão com o Público',
-                    'Confiança e Credibilidade'
+                    'Estratégias Desenhadas para Vender',
+                    'Domine o Seu Mercado Digital',
+                    'Construa uma Marca Forte',
+                    'Encante e Fidelize seu Público'
                 ]
             },
 

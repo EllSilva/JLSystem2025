@@ -1,100 +1,225 @@
-<div>
+<div :data-theme="isDarkMode ? 'dark' : 'light'" class="bg-light">
 
-    <!-- SUBTITLE -->
-    <div class="hero_port">
-        <p>Contacto</p>
-        <h3 style=" color: #a52a2a;"> Tem alguma dúvida, sugestão ou <br> gostaria de solicitar um orçamento?</h3>
-        <button class="btn btn-custom">PEDIR UM ORÇAMENTO</button>
-    </div>
-    <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
-        <!-- Section Title -->
+    <div class="container py-4 py-md-5">
 
-        <!-- End Section Title -->
+        <!-- Barra Superior: Boas-vindas e Botão Tema -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Início</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contacto Comercial</li>
+                    </ol>
+                </nav>
+                <h1 class="fw-extrabold m-0" style="font-weight: 800; font-size: 2.2rem;">Contacte-nos</h1>
+            </div>
 
-        <div class="container" data-aos-delay="100">
-            <div class="row g-4 g-lg-5">
-                <div class="col-lg-5">
-                    <div class="info-box" data-aos-delay="200">
-                        <p>
-                            Estamos disponíveis para atendê-lo com profissionalismo e dedicação.
-                        </p>
+            <button class="theme-toggle" @click="toggleTheme" :title="isDarkMode ? 'Modo Claro' : 'Modo Escuro'">
+        <i :class="isDarkMode ? 'fa-solid fa-sun text-warning' : 'fa-solid fa-moon text-dark'"></i>
+      </button>
+        </div>
 
-                        <div class="info-item" data-aos-delay="300">
-                            <div class="icon-box">
-                                <i class="bi bi-geo-alt"></i>
-                            </div>
-                            <div class="content">
-                                <h4>Localizaçao</h4>
-                                <p>Luanda - Angola</p>
-                            </div>
+        <!-- Banner Informativo -->
+        <div class="alert alert-primary border-0 shadow-sm rounded-4 p-3 mb-4 d-flex align-items-center gap-3">
+            <i class="fa-solid fa-circle-info fa-xl"></i>
+            <div>
+                <strong>Atendimento Técnico Eficiente:</strong> O suporte é prestado <u>exclusivamente via tickets</u> para assegurar a máxima prioridade no seu servidor, e-mails e domínios.
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Coluna Esquerda: Estado do Atendimento e Contactos Rápidos -->
+            <div class="col-lg-4">
+
+                <!-- Status Card -->
+                <div class="card card-custom p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-uppercase m-0" style="font-size: 0.8rem; letter-spacing: 1px; opacity: 0.7;">
+                            Horário Comercial
+                        </h6>
+                        <div :class="['status-badge', isOnline ? 'online' : 'offline']">
+                            <span class="pulse-dot"></span> {{ isOnline ? 'ON-LINE' : 'OFF-LINE' }}
                         </div>
+                    </div>
 
-                        <div class="info-item" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-telephone"></i>
-                            </div>
-                            <div class="content">
-                                <h4>Contacto</h4>
-                                <p>+244 952 472 527</p>
-                                <p>+244 997 616 181</p>
-                            </div>
+                    <h3 class="fw-bold mb-1">{{ horario.abertura }} - {{ horario.fecho }}</h3>
+                    <p class="small text-muted mb-3"><i class="fa-regular fa-clock me-1"></i> Fuso Horário: {{ horario.fuso }}</p>
+
+                    <div class="p-3 rounded-3 mb-3" style="background: rgba(0,0,0,0.03);">
+                        <small class="d-block text-muted"><strong>Dias Sem Atendimento Presencial:</strong></small>
+                        <span class="fw-semibold">{{ horario.diasFechado }}</span>
+                    </div>
+
+                    <p class="small text-muted m-0">
+                        <i class="fa-solid fa-reply me-1 text-primary"></i> Tempo estimado de resposta fora do horário: <strong>até 24 horas úteis</strong>.
+                    </p>
+                </div>
+
+                <!-- Contactos Rápidos com Botão Copiar -->
+                <div class="card card-custom p-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-address-book me-2 text-primary"></i>Contactos Directos</h5>
+
+                    <div class="contact-item">
+                        <div>
+                            <small class="text-muted d-block">Telefone Comercial</small>
+                            <strong style="font-size: 0.95rem;">{{ empresa.telefone }}</strong>
                         </div>
+                        <button class="btn btn-sm btn-light border" @click="copyToClipboard(empresa.telefone, 'Telefone')">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+                    </div>
 
-                        <div class="info-item" data-aos-delay="500">
-                            <div class="icon-box">
-                                <i class="bi bi-envelope"></i>
+                    <div class="contact-item">
+                        <div>
+                            <small class="text-muted d-block">E-mail Principal</small>
+                            <strong style="font-size: 0.95rem;">{{ empresa.email }}</strong>
+                        </div>
+                        <button class="btn btn-sm btn-light border" @click="copyToClipboard(empresa.email, 'E-mail')">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+                    </div>
+
+                    <a :href="empresa.whatsappLink" target="_blank" class="btn btn-success w-100 fw-bold py-2 mt-2 rounded-3">
+                        <i class="fa-brands fa-whatsapp fa-lg me-2"></i>Falar no WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Coluna Direita: Cards de Ação e Formulário Interativo -->
+            <div class="col-lg-8">
+
+                <!-- Cards de Ações Principais (Botões Principais) -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4" v-for="(card, index) in actionCards" :key="index">
+                        <div class="action-card" @click="handleCardClick(card.action)">
+                            <div class="action-icon-wrapper">
+                                <i :class="card.icon"></i>
                             </div>
-                            <div class="content">
-                                <h4>E-mail</h4>
-                                <p>geral@h-jlsystem.com</p>
-                                <p>contacto@h-jlsystem.com</p>
-                            </div>
+                            <span>{{ card.title }}</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-7">
-                    <div class="contact-form" data-aos-delay="300">
-                        <h3>Entre em contato conosco!</h3>
-                        <p>
-                            Entre em contato com a nossa equipa para esclarecer dúvidas, solicitar informações adicionais ou pedir um orçamento.
-                        </p>
+                <!-- Tabs Interativas: Contacto / Localização -->
+                <div class="card card-custom p-4">
+                    <ul class="nav nav-pills mb-4 gap-2 border-bottom pb-3" id="pills-tab">
+                        <li class="nav-item">
+                            <button :class="['nav-link fw-bold px-4 rounded-3', activeTab === 'form' ? 'btn-primary active' : 'text-secondary']" @click="activeTab = 'form'">
+                <i class="fa-regular fa-paper-plane me-2"></i>Enviar Mensagem
+              </button>
+                        </li>
+                        <li class="nav-item">
+                            <button :class="['nav-link fw-bold px-4 rounded-3', activeTab === 'map' ? 'btn-primary active' : 'text-secondary']" @click="activeTab = 'map'">
+                <i class="fa-solid fa-map-location-dot me-2"></i>Ver Localização
+              </button>
+                        </li>
+                    </ul>
 
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos-delay="200">
-                            <div class="row gy-4">
+                    <!-- Aba 1: Formulário Reativo -->
+                    <div v-if="activeTab === 'form'">
+                        <div v-if="formSubmitted" class="alert alert-success p-4 text-center rounded-4">
+                            <i class="fa-solid fa-circle-check text-success fa-3x mb-3"></i>
+                            <h4>Mensagem Enviada com Sucesso!</h4>
+                            <p class="text-muted m-0">Obrigado pelo contacto. A nossa equipa responderá em breve.</p>
+                            <button class="btn btn-outline-success mt-3" @click="resetForm">Enviar Nova Mensagem</button>
+                        </div>
+
+                        <form v-else @submit.prevent="submitForm">
+                            <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control" placeholder="Nome" required="" />
+                                    <label class="form-label fw-semibold">Seu Nome *</label>
+                                    <input type="text" class="form-control form-control-custom" v-model="form.nome" required placeholder="Ex: João Silva">
                                 </div>
-
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required="" />
+                                    <label class="form-label fw-semibold">Seu E-mail *</label>
+                                    <input type="email" class="form-control form-control-custom" v-model="form.email" required placeholder="nome@empresa.com">
                                 </div>
-
-                                <div class="col-12">
-                                    <input type="text" class="form-control" name="subject" placeholder="Subjecto" required="" />
+                                <div class="col-md-12">
+                                    <label class="form-label fw-semibold">Assunto</label>
+                                    <select class="form-select form-control-custom" v-model="form.assunto">
+                    <option value="Pré-Venda">Informações Pré-Venda</option>
+                    <option value="Financeiro">Comprovativo / Pedido Financeiro</option>
+                    <option value="Parceria">Parceria Comercial</option>
+                    <option value="Outro">Outro Assunto</option>
+                  </select>
                                 </div>
-
-                                <div class="col-12">
-                                    <textarea class="form-control" name="message" rows="6" placeholder="Mensagem" required=""></textarea>
-                                </div>
-
-                                <div class="col-12 text-center">
-                                    <div class="loading">carregando</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">
-                                        sua mensagem foi enviado com sucesso. Obrigado!
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="form-label fw-semibold">Mensagem *</label>
+                                        <small class="text-muted">{{ form.mensagem.length }}/500</small>
                                     </div>
-
-                                    <button type="submit" class="btn">Envia mensagem</button>
+                                    <textarea class="form-control form-control-custom" rows="4" v-model="form.mensagem" maxlength="500" required placeholder="Como podemos ajudar o seu negócio?"></textarea>
+                                </div>
+                                <div class="col-md-12 text-end">
+                                    <button type="submit" class="btn btn-primary fw-bold px-5 py-2.5 rounded-3" :disabled="isSending">
+                    <span v-if="isSending"><i class="fa-solid fa-spinner fa-spin me-2"></i>A enviar...</span>
+                    <span v-else><i class="fa-solid fa-paper-plane me-2"></i>Enviar Mensagem</span>
+                  </button>
                                 </div>
                             </div>
                         </form>
                     </div>
+
+                    <!-- Aba 2: Mapa Interativo e Endereço -->
+                    <div v-if="activeTab === 'map'">
+                        <p class="text-muted mb-3"><i class="fa-solid fa-location-dot text-danger me-2"></i><strong>Endereço:</strong> {{ empresa.endereco }}</p>
+                        <div class="rounded-4 overflow-hidden border shadow-sm" style="height: 300px;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15768.123456789!2d13.234567!3d-8.834567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f15151515151%3A0x1515151515151515!2sEstr.%20Lar%20do%20Patriota%2C%20Luanda%2C%20Angola!5e0!3m2!1spt-PT!2sao!4v1600000000000!5m2!1spt-PT!2sao"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+              </iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Toast de Notificação do Sistema -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="copyToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fa-solid fa-circle-check text-success me-2"></i> {{ toastMessage }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
                 </div>
             </div>
         </div>
-    </section>
 
+        <!-- Modal para Ticket Rápido -->
+        <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content card-custom p-3">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title fw-bold"><i class="fa-solid fa-life-ring text-primary me-2"></i>Abrir Ticket de Suporte</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-muted small">Será redirecionado para a Área de Cliente para autenticação de segurança antes de registar o ticket.</p>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary fw-bold py-2">Fazer Login e Criar Ticket</a>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Parceiros & Tecnologias Rodapé -->
+    <footer id="partners" class="py-5 border-top mt-5" style="background: var(--card-bg);">
+        <div class="container text-center">
+            <p class="text-uppercase fw-bold text-muted small mb-4" style="letter-spacing: 1.5px;">Tecnologias & Infraestrutura de Confiança</p>
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-4 col-sm-2" v-for="(partner, i) in partners" :key="i">
+                    <img :src="partner.logo" :alt="partner.name" class="img-fluid partner-logo" :title="partner.name">
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </div>

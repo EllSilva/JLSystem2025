@@ -1,7 +1,8 @@
 <div>
 
 
-    <!-- features Criativ HERO SECTION (Fundo com Vídeo / Frente com Animate.css) Perguntas Frequentes -->
+
+    <!--  Laboratório Criativo features Criativ HERO SECTION (Fundo com Vídeo / Frente com Animate.css) Perguntas Frequentes -->
     <section class="hero-section">
 
         <!-- VÍDEO DE FUNDO (Substitua './assets/video/bg-video.mp4' pelo caminho real ou uma URL de teste) -->
@@ -17,41 +18,45 @@
             <div class="row align-items-center gy-5">
 
                 <!-- Conteúdo Textual (Vindo da esquerda) -->
-                <div class="col-lg-7 animate__animated animate__fadeInLeft">
+                <div class="col-lg-7  ">
                     <div class="hero-tagline mb-2 text-uppercase fw-bold">
                         Até {{ hero.discount }}% OFF na hospedagem de sites
                     </div>
-                    <h1 class="hero-title mb-4">
+                    <h1 class="hero-title mb-3">
                         Tudo para criar<br><span>{{ displayedText }}</span>
                     </h1>
 
-                    <div class="hero-features row mb-5">
+
+                    <div class="hero-features row mb-3">
                         <div class="col-md-6" v-for="feat in hero.features" :key="feat">
-                            <i class="bi bi-check-lg me-2"></i> {{ feat }}
+                            <i class="bi bi-check-lg me-1"></i> {{ feat }}
                         </div>
                     </div>
 
+
                     <div class="d-flex flex-nowrap align-items-center gap-3 gap-md-4 mb-4">
-                        <button class="btn btn-yellow animate__animated animate__pulse animate__infinite animate__slow" @click="aproveitarOferta">
+                        <button class="btn bg-danger animate__animated animate__pulse animate__infinite animate__slow" @click="aproveitarOferta">
                         Aproveitar Oferta
                       </button>
 
                         <div class="price-text lh-sm">
                             a partir de
-                            <span class="price-highlight d-block">R$ {{ hero.price }}/mês*</span>
+                            <span class="price-highlight d-block"> {{ hero.price }}/kz*</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Lado Visual (Vindo da direita) -->
-                <div class="col-lg-5 animate__animated animate__fadeInRight">
-                    <div class="hero-artwork-container">
-                        <div class="art-discount-badge animate__animated animate__bounceIn animate__delay-1s">
-                            <span class="ate">Até</span>
-                            <div class="num">{{ hero.discount }}%</div>
-                            <span class="off">OFF</span>
+                <div class="col-lg-5 ">
+                    <div class=" ">
+
+
+                        <div class="price-card-home">
+                            <img id="img-planeta" src="./assets/img/sobre.png" class="img-jacare-principal" alt="Temporada Campeã HostGator">
+
                         </div>
-                        <img src="./assets/img/robo.png" class="img-jacare-principal" alt="Temporada Campeã HostGator">
+
+
                     </div>
                 </div>
 
@@ -61,8 +66,45 @@
 
 
 
+    <section class="about-section  bg-white">
+        <div class="container-sobre">
+
+            <!-- Coluna da Esquerda: Imagem e Badges -->
+            <div class="image-column">
+                <div class="image-wrapper">
+                    <!-- Elemento decorativo de fundo roxo/azul claro -->
+                    <div class="bg-shape-top"></div>
+
+                    <!-- Elemento decorativo pontilhado de fundo -->
+                    <div class="bg-dots"></div>
+
+                    <!-- Imagem Principal -->
+                    <img src="assets/img/sobre.jpg" alt="Profissional a trabalhar" class="main-img">
+
+                    <!-- Badge de Anos de Experiência -->
+                    <div class="experience-badge">
+                        <span class="number">+17</span>
+                        <span class="text">Anos de<br>Experiência</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna da Direita: Conteúdo de Texto -->
+            <div class="content-column">
+                <span class="subtitle">QUEM SOMOS</span>
+                <h2 class="title">Empresa de Soluções <br>Digitais, Design e Marketing</h2>
+                <p class="description">
+                    Desde 2007, transformamos ideias em experiências digitais de alto impacto. Reunimos uma equipa jovem, dinâmica e altamente especializada, com mais de 25 anos de experiência acumulada em desenvolvimento web, criação de aplicações, design gráfico e marketing
+                    estratégico.
+                </p>
+                <a href="#contactos" class="btn-contact">CONTACTOS</a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- SERVICES SECTION -->
-    <section id="servicos" class="services-section container pt-5">
+    <section id="servicos" class="container mb-5  ">
 
         <div class="row align-items-center gy-5 mb-5 pt-xl-5">
             <div class="col-lg-7 animate__animated animate__fadeInLeft pt-5">
@@ -80,7 +122,7 @@
                     <h3>Inteligência de Vendas</h3>
                     <p>Prospecção, qualificação e engajamento com seus clientes ideais.</p>
                 </div>
-                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <a href="#/" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card">
@@ -89,7 +131,7 @@
                     <h3>Criação de Apps</h3>
                     <p>Desenvolvemos plataformas e sistemas digitais personalizadas e sob medida.</p>
                 </div>
-                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card">
@@ -98,7 +140,7 @@
                     <h3>Criação de Website</h3>
                     <p>Desbloqueie oportunidades com a criação de um site, conecte com o público em qualquer lugar.</p>
                 </div>
-                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <a href="#/website" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card">
@@ -107,7 +149,7 @@
                     <h3>Design Gráfico</h3>
                     <p>Criamos a identidade visual da sua marca, garante que sua empresa se destaque e transmita profissionalismo.</p>
                 </div>
-                <a href="#contacto" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <a href="#/designer-grafico" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -126,12 +168,15 @@
 
         <div class="pricing-grid">
             <!-- PLANO START -->
+
+
+
             <div class="price-card">
                 <h3 class="plan-name">Plano Start</h3>
                 <div class="price-wrapper">
                     kz <span class="price-number">255.000</span> / único
                 </div>
-                <p>Indicado para empreendedores que estão a começar e precisam do mínimo para se apresentar de forma profissional.</p>
+                <p class="description p-4">Indicado para empreendedores que estão a começar e precisam do mínimo para se apresentar de forma profissional.</p>
                 <div class="includes-title">Inclui:</div>
 
                 <ul class="features-list">
@@ -172,7 +217,7 @@
                 <div class="price-wrapper">
                     kz <span class="price-number">364.900</span> / único
                 </div>
-                <p class="description">
+                <p class="description p-4">
                     Ideal para empresas que querem reforçar a credibilidade e já ter um site completo e materiais institucionais.
                 </p>
 
@@ -217,7 +262,7 @@
                 <div class="price-wrapper">
                     kz <span class="price-number">500.000</span> / único
                 </div>
-                <p class="description">
+                <p class="description p-4">
                     Pensado para empresas que querem presença digital completa, materiais avançados e marketing de impacto.
                 </p>
 
@@ -249,6 +294,9 @@
 
         </div>
     </div>
+
+
+
 
     <p-portfolio></p-portfolio>
 
@@ -294,7 +342,7 @@
         <!-- Conteúdo -->
         <div class="hero-container container pt-5">
             <div class="col-lg-7 pt-5 animate__animated animate__fadeInLeft">
-                <h5 class="fonte-h2">Testemunho</h5>
+                <h5 class="fonte-h2">Soluções Tecnologicas</h5>
                 <h1 class="hero-title-2  ">
                     Transforme ideias em <span> resultados</span>
                 </h1>
@@ -320,7 +368,7 @@
 
         <div class="row align-items-center gy-5 mb-2 pt-5 pt-xl-5">
             <div class="col-lg-7 animate__animated animate__fadeInLeft">
-                <h5 class="fonte-h2">Soluções Tecnologicas</h5>
+                <h5 class="fonte-h2">Testemunho </h5>
                 <h1 class="hero-title-2  ">
                     O que os nossos <span> Clientes Dizem</span>
                 </h1>
@@ -365,7 +413,7 @@
 
         <div class="container">
             <div class="row gy-4 align-items-center justify-content-between">
-                <div class="col-xl-7" data-aos-delay="200">
+                <div class="col-xl-7">
 
                     <div class="faq-container">
                         <div v-for="(item, index) in faqs" :key="index" class="faq-item" :class="{ active: item.aberto }">
@@ -381,9 +429,9 @@
 
                 </div>
 
-                <div class="col-xl-5" data-aos-delay="300">
+                <div class="col-xl-5">
                     <div class="image-wrapper">
-                        <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                        <div class="images position-relative">
                             <img src="assets/img/robo-3.png" alt="Business Meeting" class="img-fluid main-image rounded-4" />
 
                         </div>
@@ -429,7 +477,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4">
-                    <div class="feature-item text-end mb-3" data-aos="zoom-out" data-aos-delay="200">
+                    <div class="feature-item text-end mb-3">
                         <div class="d-flex align-items-center justify-content-end gap-4">
                             <div class="feature-content">
 
@@ -448,7 +496,7 @@
                     </div>
                     <!-- End .feature-item -->
 
-                    <div class="feature-item text-end mb-3" data-aos="zoom-out" data-aos-delay="200">
+                    <div class="feature-item text-end mb-3">
                         <div class="d-flex align-items-center justify-content-end gap-4">
                             <div class="feature-content">
 
@@ -484,7 +532,7 @@
                     <!-- End .feature-item -->
                 </div>
 
-                <div class="col-lg-4" data-aos-delay="200">
+                <div class="col-lg-4">
                     <div class="phone-mockup text-center">
                         <img src="assets/img/progr.png" alt="Phone Mockup" class="img-fluid" />
                     </div>

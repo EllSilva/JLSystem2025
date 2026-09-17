@@ -1,173 +1,272 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <title>Empresa Multi Idioma</title>
-
-    <!-- Vue -->
-    <script src="https://unpkg.com/vue@3"></script>
-
-    <!-- Vue I18n -->
-    <script src="https://unpkg.com/vue-i18n@9"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedagem de Sites</title>
+    <!-- Bootstrap CSS 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0073e6;
+        }
+        /* Container Principal Hero */
+        
+        .hero-section {
+            background-color: #006ce6;
+            /* Tom de azul vibrante */
+            color: #ffffff;
+            padding: 40px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Breadcrumb personalizado */
+        
+        .breadcrumb-custom {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
-        header {
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-custom span.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        /* Títulos */
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #e6f0ff;
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
+        /* Lista de Recursos / Benefícios */
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
             display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            background: #1e293b;
-            color: white;
+            align-items: center;
         }
         
-        header button {
-            margin-left: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
+        .feature-list i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        /* Card Azul da Direita */
+        
+        .price-card {
+            background-color: #005bbd;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
         }
         
-        .hero {
+        .price-card h5 {
+            font-size: 1.2rem;
+            font-weight: 300;
             text-align: center;
-            padding: 80px 20px;
-            background: #f1f5f9;
+            margin-bottom: 25px;
         }
+        /* Faixa Laranja de Preço Rotacionada */
         
-        .servicos {
-            padding: 60px 20px;
+        .price-banner {
+            background-color: #ff7700;
+            color: #ffffff;
+            padding: 12px 10px;
+            margin: 0 -35px 30px -35px;
+            /* Extrapola levemente as laterais */
+            transform: rotate(-3deg);
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
         
-        .cards {
+        .price-currency {
+            font-size: 0.9rem;
+            vertical-align: super;
+            font-weight: bold;
+        }
+        
+        .price-value {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .price-cents {
+            font-size: 1.2rem;
+            vertical-align: super;
+            font-weight: bold;
+        }
+        
+        .price-period {
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        /* Links de Atendimento no Card */
+        
+        .sales-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .contact-links {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+        
+        .contact-links li {
+            margin-bottom: 10px;
+        }
+        
+        .contact-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            align-items: center;
+            transition: opacity 0.2s;
         }
         
-        .card {
-            width: 250px;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
+        .contact-links a:hover {
+            opacity: 0.8;
         }
         
-        .contacto {
-            padding: 60px;
-            background: #e2e8f0;
-            text-align: center;
+        .contact-links i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        /* Botão "Conheça nossos planos" */
+        
+        .btn-plans {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
         }
         
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #1e293b;
-            color: white;
+        .btn-plans i {
+            font-size: 1.3rem;
+            margin-right: 8px;
+        }
+        
+        .btn-plans:hover {
+            color: #e0e0e0;
         }
     </style>
 </head>
 
 <body>
 
-    <div id="app">
+    <section class="hero-section">
+        <div class="container">
 
-        <!-- HEADER -->
-        <header>
-            <h2>DletroTech</h2>
-
-            <div>
-                <button @click="mudar('pt')">🇦🇴 PT</button>
-                <button @click="mudar('en')">🇺🇸 EN</button>
+            <!-- NAVEGAÇÃO / BREADCRUMB -->
+            <div class="row mb-3">
+                <div class="col-12 text-end breadcrumb-custom">
+                    <a href="#">Home</a> / <a href="#">Produtos</a> / <span class="active">Hospedagem de Sites</span>
+                </div>
             </div>
-        </header>
 
-        <!-- HERO -->
-        <section class="hero">
-            <h1>{{ $t('titulo') }}</h1>
-            <p>{{ $t('descricao') }}</p>
-        </section>
+            <div class="row align-items-center">
+                <!-- COLUNA ESQUERDA: Texto e Lista -->
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <h1 class="hero-title">Hospedagem de Site</h1>
+                    <p class="hero-description">
+                        Planos de <strong>hospedagem de sites</strong> com alta performance, suporte especializado e segurança avançada para garantir a melhor presença online para sua empresa!
+                    </p>
 
-        <!-- SERVIÇOS -->
-        <section class="servicos">
-            <h2>{{ $t('servicos') }}</h2>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span><strong>50% de desconto</strong> + Domínio <strong>GRÁTIS</strong> no primeiro ano</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Contas de e-mail <strong>profissionais e ilimitadas</strong></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Backup diário <strong>grátis</strong> do site, e-mail e banco de dados</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Certificado SSL <strong>grátis</strong></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Tráfego mensal <strong>ilimitado</strong></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span><strong>Satisfação garantida</strong> ou seu dinheiro de volta</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="cards">
-                <div class="card">{{ $t('web') }}</div>
-                <div class="card">{{ $t('seguranca') }}</div>
-                <div class="card">{{ $t('automacao') }}</div>
+                <!-- COLUNA DIREITA: Card de Preços -->
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="price-card">
+                        <h5>Planos à partir de</h5>
+
+                        <!-- FAIXA LARANJA INCLINADA -->
+                        <div class="price-banner">
+                            <span class="price-currency">R$</span>
+                            <span class="price-value">14</span>
+                            <span class="price-cents">,99</span>
+                            <span class="price-period">/ mês*</span>
+                        </div>
+
+                        <!-- CENTRAL DE VENDAS -->
+                        <div class="sales-title">Central de Vendas</div>
+                        <ul class="contact-links">
+                            <li><a href="#"><i class="bi bi-person-workspace"></i> Chat</a></li>
+                            <li><a href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+                            <li><a href="#"><i class="bi bi-telephone"></i> Telefone</a></li>
+                            <li><a href="#"><i class="bi bi-envelope"></i> E-mail</a></li>
+                        </ul>
+
+                        <!-- LINK / BOTÃO "CONHEÇA NOSSOS PLANOS" -->
+                        <a href="#" class="btn-plans">
+                            <i class="bi bi-plus-circle"></i> Conheça nossos planos
+                        </a>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- CONTACTO -->
-        <section class="contacto">
-            <h2>{{ $t('contacto') }}</h2>
-            <p>Email: contacto@empresa.com</p>
-            <p>WhatsApp: +244 900 000 000</p>
-        </section>
+        </div>
+    </section>
 
-        <!-- FOOTER -->
-        <footer>
-            <p>© 2026 DletroTech</p>
-        </footer>
-
-    </div>
-
-    <script>
-        const {
-            createApp
-        } = Vue
-        const {
-            createI18n
-        } = VueI18n
-
-        // 🌍 Traduções
-        const messages = {
-            pt: {
-                titulo: "Bem-vindo à nossa empresa",
-                descricao: "Soluções em tecnologia, segurança e automação",
-                servicos: "Nossos Serviços",
-                web: "Criação de Websites",
-                seguranca: "Segurança Eletrónica",
-                automacao: "Automação Residencial",
-                contacto: "Fale Conosco"
-            },
-            en: {
-                titulo: "Welcome to our company",
-                descricao: "Solutions in technology, security and automation",
-                servicos: "Our Services",
-                web: "Website Development",
-                seguranca: "Electronic Security",
-                automacao: "Home Automation",
-                contacto: "Contact Us"
-            }
-        }
-
-        // 🔧 i18n
-        const i18n = createI18n({
-            locale: localStorage.getItem('lang') || 'pt',
-            fallbackLocale: 'en',
-            messages
-        })
-
-        // 🚀 App
-        const app = createApp({
-            methods: {
-                mudar(lang) {
-                    this.$i18n.locale = lang
-                    localStorage.setItem('lang', lang)
-                }
-            }
-        })
-
-        app.use(i18n)
-        app.mount('#app')
-    </script>
-
+    <!-- Bootstrap JS (opcional caso queira funcionalidades de componentes JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

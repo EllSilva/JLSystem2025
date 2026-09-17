@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Preços - Hospedagem</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 0;
+        }
+        
+        .pricing-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Borda superior decorativa */
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 25px 25px 0 0;
+            border-color: #0052cc transparent transparent transparent;
+            z-index: 2;
+        }
+        
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 15px 15px 0 0;
+            border-color: #e53e3e transparent transparent transparent;
+            z-index: 3;
+        }
+        /* Destaque para o plano PRO (+ Popular!) */
+        
+        .pricing-card.featured {
+            border: 2px solid #ff7a00;
+            transform: scale(1.02);
+            z-index: 10;
+        }
+        /* Badge "Popular!" */
+        
+        .popular-ribbon {
+            position: absolute;
+            top: 18px;
+            right: -32px;
+            background: #ff7a00;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+        }
+        
+        .card-header-custom {
+            background-color: #f1f3f5;
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+        
+        .plan-title {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #333;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .plan-subtitle {
+            color: #718096;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 20px 25px;
+            margin: 0;
+            font-size: 0.88rem;
+            color: #4a5568;
+            flex-grow: 1;
+        }
+        
+        .features-list li {
+            margin-bottom: 8px;
+        }
+        
+        .features-list strong {
+            color: #1a202c;
+        }
+        
+        .info-icon {
+            color: #3182ce;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        
+        .card-footer-custom {
+            padding: 0 20px 25px 20px;
+            text-align: center;
+            background: transparent;
+            border-top: none;
+        }
+        
+        .select-period {
+            font-size: 0.85rem;
+            color: #4a5568;
+            border-color: #cbd5e0;
+            margin-bottom: 15px;
+        }
+        
+        .old-price {
+            color: #a0aec0;
+            font-size: 0.85rem;
+            text-decoration: line-through;
+            margin-bottom: 0;
+        }
+        
+        .price-container {
+            color: #ff5500;
+            font-weight: bold;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .price-currency {
+            font-size: 1rem;
+            margin-right: 2px;
+        }
+        
+        .price-main {
+            font-size: 2.8rem;
+            line-height: 1;
+        }
+        
+        .price-cents {
+            font-size: 1.2rem;
+            position: relative;
+            top: -12px;
+        }
+        
+        .price-period {
+            font-size: 0.85rem;
+            color: #ff5500;
+            margin-left: 4px;
+        }
+        /* Faixa Laranja de Desconto */
+        
+        .discount-badge {
+            background-color: #ff6b00;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 2px;
+            margin: 10px -5px 12px -5px;
+        }
+        
+        .renovation-text {
+            color: #0066ff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .total-price {
+            color: #718096;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-action {
+            background-color: #00b300;
+            color: white;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+        
+        .btn-action:hover {
+            background-color: #009900;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row g-3 justify-content-center align-items-stretch">
+
+            <!-- START -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="pricing-card">
+                    <div class="card-header-custom">
+                        <h3 class="plan-title">START</h3>
+                        <p class="plan-subtitle">Ideal para começar na web</p>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>1</strong> Site</li>
+                        <li><strong>20 GB</strong> Armazenamento SSD</li>
+                        <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                        <li><strong>20</strong> Contas de E-mail</li>
+                        <li><strong>Grátis</strong> Certificado SSL</li>
+                        <li><strong>Grátis</strong> Construtor de Sites</li>
+                        <li><strong>Grátis</strong> Backup Diário</li>
+                        <li><strong>Suporte</strong> Chat e E-mail</li>
+                        <li><strong>Grátis</strong> Domínio por um ano <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" title="Domínio grátis no primeiro ano"></i></li>
+                    </ul>
+                    <div class="card-footer-custom">
+                        <select class="form-select select-period">
+            <option selected>36 meses</option>
+            <option>24 meses</option>
+            <option>12 meses</option>
+          </select>
+                        <p class="old-price">De R$ 29,99 por</p>
+                        <div class="price-container">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">14</span>
+                            <div>
+                                <span class="price-cents">,99</span>
+                                <span class="price-period">/ Mês *</span>
+                            </div>
+                        </div>
+                        <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                        <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                        <p class="total-price">Pagamento total antecipado<br>de <del>R$ 1.079,64</del> por <strong>R$ 539,82</strong></p>
+                        <button class="btn btn-action">Comece Agora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRO (Destaque) -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="pricing-card featured">
+                    <div class="popular-ribbon">+ Popular!</div>
+                    <div class="card-header-custom">
+                        <h3 class="plan-title">PRO</h3>
+                        <p class="plan-subtitle">Ideal para ascensão na web</p>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>Ilimitados</strong> Sites</li>
+                        <li><strong>100 GB</strong> Armazenamento SSD</li>
+                        <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                        <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                        <li><strong>Grátis</strong> Certificado SSL</li>
+                        <li><strong>Grátis</strong> Construtor de Sites</li>
+                        <li><strong>Grátis</strong> Backup Diário</li>
+                        <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+                        <li><strong>Grátis</strong> Domínio por um ano <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" title="Domínio grátis no primeiro ano"></i></li>
+                    </ul>
+                    <div class="card-footer-custom">
+                        <select class="form-select select-period">
+            <option selected>36 meses</option>
+            <option>24 meses</option>
+            <option>12 meses</option>
+          </select>
+                        <p class="old-price">De R$ 44,99 por</p>
+                        <div class="price-container">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">22</span>
+                            <div>
+                                <span class="price-cents">,49</span>
+                                <span class="price-period">/ Mês *</span>
+                            </div>
+                        </div>
+                        <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                        <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                        <p class="total-price">Pagamento total antecipado<br>de <del>R$ 1.619,64</del> por <strong>R$ 809,82</strong></p>
+                        <button class="btn btn-action">Comece Agora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUSINESS -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="pricing-card">
+                    <div class="card-header-custom">
+                        <h3 class="plan-title">BUSINESS</h3>
+                        <p class="plan-subtitle">Ideal para crescimento e performance</p>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>Ilimitados</strong> Sites</li>
+                        <li><strong>100 GB</strong> Armazenamento SSD</li>
+                        <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                        <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                        <li><strong>Grátis</strong> Certificado SSL</li>
+                        <li><strong>Grátis</strong> Construtor de Sites</li>
+                        <li><strong>Grátis</strong> Backup Diário</li>
+                        <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+                        <li><strong>2x Mais</strong> Performance</li>
+                        <li><strong>Grátis</strong> Domínio por um ano <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" title="Domínio grátis no primeiro ano"></i></li>
+                    </ul>
+                    <div class="card-footer-custom">
+                        <select class="form-select select-period">
+            <option selected>36 meses</option>
+            <option>24 meses</option>
+            <option>12 meses</option>
+          </select>
+                        <p class="old-price">De R$ 69,99 por</p>
+                        <div class="price-container">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">34</span>
+                            <div>
+                                <span class="price-cents">,99</span>
+                                <span class="price-period">/ Mês *</span>
+                            </div>
+                        </div>
+                        <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                        <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                        <p class="total-price">Pagamento total antecipado<br>de <del>R$ 2.519,64</del> por <strong>R$ 1.259,82</strong></p>
+                        <button class="btn btn-action">Comece Agora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PREMIUM -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="pricing-card">
+                    <div class="card-header-custom">
+                        <h3 class="plan-title">PREMIUM</h3>
+                        <p class="plan-subtitle">Ideal para alta performance</p>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>Ilimitados</strong> Sites</li>
+                        <li><strong>150 GB</strong> Armazenamento SSD</li>
+                        <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                        <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                        <li><strong>Grátis</strong> Certificado SSL</li>
+                        <li><strong>Grátis</strong> Construtor de Sites</li>
+                        <li><strong>Grátis</strong> Backup Diário</li>
+                        <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+                        <li><strong>4x Mais</strong> Performance</li>
+                        <li><strong>Grátis</strong> Domínio por um ano <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" title="Domínio grátis no primeiro ano"></i></li>
+                    </ul>
+                    <div class="card-footer-custom">
+                        <select class="form-select select-period">
+            <option selected>36 meses</option>
+            <option>24 meses</option>
+            <option>12 meses</option>
+          </select>
+                        <p class="old-price">De R$ 99,99 por</p>
+                        <div class="price-container">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">49</span>
+                            <div>
+                                <span class="price-cents">,99</span>
+                                <span class="price-period">/ Mês *</span>
+                            </div>
+                        </div>
+                        <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                        <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                        <p class="total-price">Pagamento total antecipado<br>de <del>R$ 3.599,64</del> por <strong>R$ 1.799,82</strong></p>
+                        <button class="btn btn-action">Comece Agora</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS e Popper.js (para Tooltips) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Inicializa os Tooltips do Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+</body>
+
+</html>

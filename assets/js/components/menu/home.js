@@ -13,52 +13,50 @@ export default {
             searchQuery: '',
             notificacoes: 3,
             topBar: {
-                title: 'JLSYSTEM AllPass',
-                subtitle: 'As IAs mais poderosas do mercado em uma única assinatura'
+                title: 'Website mais poderosas',
+                subtitle: 'Os Melhores Site e mais poderosas do mercado entregue em apenas 15 dias'
             },
-        
-            
-menuItems: [
-  {
-    text: 'Domínios',
-    link: '/dominios',
-    hasDropdown: false
-  },
-  {
-    text: 'Hospedagem e Sites',
-    link: '#',
-    hasDropdown: true,
-    dropdownItems: [
-      { text: 'Hospedagem de Sites', link: '/hospedagem' },
-      { text: 'Criação de Sites', link: '#/website' },
-      { text: 'Servidores VPS', link: '/vps' },
-      { text: 'Hospedagem WordPress', link: '/wordpress' }
-    ]
-  },
-  {
-    text: 'Email',
-    link: '/email',
-    hasDropdown: false
-  },
-  {
-    text: 'Soluções',
-    link: '#',
-    hasDropdown: true,
-    // URLs para as opções do Mega Menu
-    megaMenu: {
-      afiliados: '/afiliados',
-      revenda: '/revenda',
-      ssl: '/certificado-ssl',
-      vps: '/vps',
-      consultor: '/contato'
-    }
-  },
-  {
-    text: 'AllPass',
-    link: '/allpass',
-    hasDropdown: false
-  }
-],
+
+
+            menuItems: [{
+                    text: 'Projectos',
+                    link: '#/projectos',
+                    hasDropdown: false
+                },
+                {
+                    text: 'Hospedagem e Sites',
+                    link: '#',
+                    hasDropdown: true,
+                    dropdownItems: [
+                        { text: 'Hospedagem de Sites', link: '#/hospedagem-de-sites' },
+                        { text: 'Criação de Sites', link: '#/website' },
+                        { text: 'Email Corporativo', link: '#/email-profissional' },
+                    ]
+                },
+                {
+                    text: 'Design',
+                    link: '#/designer-grafico',
+                    hasDropdown: false
+                },
+                {
+                    text: 'Soluções',
+                    link: '#',
+                    hasDropdown: true,
+                    // URLs para as opções do Mega Menu
+                    megaMenu: {
+                        afiliados: '/afiliados',
+                        revenda: '/revenda',
+                        ssl: '/certificado-ssl',
+                        vps: '/vps',
+                        consultor: '/contato'
+                    }
+                },
+                {
+                    text: 'contato',
+                    link: '#/contato',
+                    hasDropdown: false
+                }
+            ],
 
 
             hero: {
@@ -78,31 +76,7 @@ menuItems: [
             open: false,
 
 
-            menu: [{
-                text: 'Home',
-                link: '#',
-                desc: 'Página inicial'
-            }, {
-                text: 'Sobre',
-                link: '#',
-                desc: 'Quem somos'
-            }, {
-                text: 'Sobre',
-                link: '#',
-                desc: 'Quem somos'
-            }, {
-                text: 'Sobre',
-                link: '#',
-                desc: 'Quem somos'
-            }, {
-                text: 'Serviços',
-                link: '#',
-                desc: 'O que fazemos'
-            }, {
-                text: 'Contacto',
-                link: '#',
-                desc: 'Fale conosco'
-            }]
+
         }
     },
 
@@ -162,6 +136,32 @@ menuItems: [
 
 
     async mounted() {
+
+        const container = document.querySelector('.sphere-container');
+        let ticking = false;
+
+        // 1. Atualização com Scroll
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    document.documentElement.style.setProperty('--scroll', window.scrollY);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // 2. Interatividade Tilt com o Mouse
+        window.addEventListener('mousemove', (e) => {
+            const { innerWidth, innerHeight } = window;
+
+            // Normaliza a posição do mouse de -15 a 15 graus/pixels
+            const mouseX = ((e.clientX / innerWidth) - 0.5) * 30;
+            const mouseY = ((e.clientY / innerHeight) - 0.5) * 30;
+
+            container.style.setProperty('--mouse-x', `${mouseX}deg`);
+            container.style.setProperty('--mouse-y', `${mouseY}deg`);
+        });
 
 
     },

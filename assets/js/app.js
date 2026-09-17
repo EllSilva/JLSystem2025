@@ -38,14 +38,12 @@ Vue.component('p-servicos_app', page_servicos_app)
 import page_servicos_loja_virtual from './view/site_app/loja.js'
 Vue.component('p-servicos_loja_virtual', page_servicos_loja_virtual)
 
-import page_logotipo from './view/servicos/logotipo.js'
-Vue.component('p-logotipo', page_logotipo)
+import page_material_publicitario from './view/servicos/designer-grafico.js'
+Vue.component('p-designer-grafico', page_material_publicitario)
 
-import page_cartoes from './view/servicos/cartoes.js'
-Vue.component('p-cartoes', page_cartoes)
 
-import page_flyers from './view/servicos/flyers.js'
-Vue.component('p-flyers', page_flyers)
+import page_identidade_visual from './view/servicos/identidade-visual.js'
+Vue.component('p-identidade-visual', page_identidade_visual)
 
 import page_papelaria from './view/servicos/papelaria.js'
 Vue.component('p-papelaria', page_papelaria)
@@ -68,11 +66,6 @@ import page_link_patrocinado from './view/marketing/link_patrocinado.js'
 Vue.component('p-link_patrocinado', page_link_patrocinado)
 
 
-import page_identidade from './view/servicos/identidade.js'
-Vue.component('p-identidade', page_identidade)
-
-
-
 
 import page_servicos from './view/servicos/home.js'
 Vue.component('p-servicos', page_servicos)
@@ -92,38 +85,36 @@ Vue.component('p-contato', page_contato)
 
 
 
-
 Vue.use(Router)
 
 page_servicos
 
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
-    { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
-    { path: '/hospedagem', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
-
     { path: '/website', component: { template: '<p-servicos_website></p-servicos_website>' } },
+    { path: '/email-profissional', component: { template: '<p-email></p-email>' } },
+    { path: '/identidade-visual', component: { template: '<p-identidade-visual></p-identidade-visual>' } },
+
+
+    { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
+    { path: '/hospedagem-de-sites', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
+
     { path: '/app-web', component: { template: '<p-servicos_app></p-servicos_app>' } },
     { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
 
-    { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
+    { path: '/designer-grafico', component: { template: '<p-designer-grafico></p-designer-grafico>' } },
     { path: '/criacao-de-cartoes', component: { template: '<p-cartoes></p-cartoes>' } },
     { path: '/papelaria', component: { template: '<p-papelaria></p-papelaria>' } },
     { path: '/portfolio', component: { template: '<p-portifolio></p-portifolio>' } },
 
-    { path: '/criacao-flyer-folder', component: { template: '<p-flyers></p-flyers>' } },
     { path: '/assinatura-de-email', component: { template: '<p-assinatura></p-assinatura>' } },
-    { path: '/email-profissional', component: { template: '<p-email></p-email>' } },
     { path: '/gestao-de-redes-sociais', component: { template: '<p-gestao_redes_social></p-gestao_redes_social>' } },
     { path: '/link-patrocinado', component: { template: '<p-link_patrocinado></p-link_patrocinado>' } },
 
     { path: '/email-marketing', component: { template: '<p-email_marketig></p-email_marketig>' } },
 
-
-    { path: '/criacao-visual', component: { template: '<p-identidade></p-identidade>' } },
-
     { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
-    { path: '/galeria', component: { template: '<p-galeria></p-galeria>' } },
+    { path: '/projectos', component: { template: '<p-galeria></p-galeria>' } },
 
     { path: '/contato', component: { template: '<p-contato></p-contato>' } },
 

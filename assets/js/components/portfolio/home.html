@@ -1,71 +1,117 @@
-<div class="portfolio inicio pt-5">
-    <div class="container">
+<div>
 
+    <div class="numeros">
 
-        <div class="row align-items-center gy-5 mb-5 pt-xl-5 center-contente">
-            <div class="col-lg-12 animate__animated animate__fadeInLeft">
-                <h5 class="fonte-h2">Laboratório Criativo</h5>
-                <h1 class="hero-title-2  ">
-                    Últimos Projecto <span>  Desenvolvidos. </span>
-                </h1>
+        <section class="hero-stats-section position-relative">
+
+            <!-- Fundo com a Silhueta e Árvores -->
+            <div class="silhouette-overlay"></div>
+
+            <!-- Planeta e Anel do Lado Direito -->
+            <div class="orbital-element">
+                <div class="orbital-ring"></div>
+                <div class="orbital-orbe"></div>
             </div>
-        </div>
-        <!-- Filtros -->
-        <div class="filters">
-            <button v-for="category in categories" :key="category" @click="changeFilter(category)" :class="['filter-btn', { active: currentFilter === category }]">
+
+            <div class="container position-relative z-2  text-center">
+                <h1 class=" hero-title-2 display-6 text-white">
+                    As melhores soluções<br>para a sua marca
+                </h1>
+
+                <p class="description-text mx-auto">
+                    Criamos a sua imagem corporativa à medida da sua empresa ou actividade.<br class="d-none d-md-block"> Apostamos na personalização, cada projecto deverá trazer um élan à sua<br class="d-none d-md-block"> empresa, tendo uma personalidade
+                    moderna e vincada.
+                </p>
+
+                <!-- Seção de números dinamizados pelo Vue.js ao fazer Scroll -->
+                <div ref="statsSection" class="row g-4 justify-content-center align-items-center stats-container mx-auto">
+                    <div v-for="(item, index) in stats" :key="index" class="col-6 col-md-3 stat-item-numero">
+                        <div class="icon-wrapper">
+                            <i :class="'bi ' + item.icon + ' fs-2'"></i>
+                        </div>
+                        <h3 class="stat-number">{{ item.currentValue }}</h3>
+                        <p class="stat-label mt-2 mb-0">{{ item.label }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <div class="portfolio inicio pt-5">
+        <div class="container">
+
+
+            <div class="row align-items-center gy-5 mb-5 pt-xl-5 center-contente">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft">
+                    <h5 class="fonte-h2">Laboratório Criativo</h5>
+                    <h1 class="hero-title-2  ">
+                        Últimos Projecto <span>  Desenvolvidos. </span>
+                    </h1>
+                </div>
+            </div>
+            <!-- Filtros -->
+            <div class="filters">
+                <button v-for="category in categories" :key="category" @click="changeFilter(category)" :class="['filter-btn', { active: currentFilter === category }]">
                 {{ category }}
             </button>
-        </div>
+            </div>
 
-        <!-- Slider de Alta Performance -->
-        <div class="slider-wrapper" v-if="filteredProjects.length > 0">
+            <!-- Slider de Alta Performance -->
+            <div class="slider-wrapper" v-if="filteredProjects.length > 0">
 
-            <!-- Seta Esquerda -->
-            <button class="slider-arrow prev" @click="prevSlide" v-if="filteredProjects.length > cardsPerView">
+                <!-- Seta Esquerda -->
+                <button class="slider-arrow prev" @click="prevSlide" v-if="filteredProjects.length > cardsPerView">
                 <i class="fas fa-chevron-left"></i>
             </button>
 
-            <!-- Janela de Visualização -->
-            <div class="slider-container">
-                <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * (100 / cardsPerView)}%)` }">
+                <!-- Janela de Visualização -->
+                <div class="slider-container">
+                    <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * (100 / cardsPerView)}%)` }">
 
-                    <div class="slider-item" v-for="project in filteredProjects" :key="project.id">
-                        <div class="project-card">
-                            <div class="card-img-wrapper">
-                                <img :src="project.image" :alt="project.title">
+                        <div class="slider-item" v-for="project in filteredProjects" :key="project.id">
+                            <div class="project-card">
+                                <div class="card-img-wrapper">
+                                    <img :src="project.image" :alt="project.title">
 
-                                <div class="card-overlay">
-                                    <a :href="project.link" target="_blank" class="view-btn">
-                                        <i class="fas fa-bolt"></i> Inspecionar
-                                    </a>
+                                    <div class="card-overlay">
+                                        <a :href="project.link" target="_blank" class="view-btn">
+                                            <i class="fas fa-bolt"></i> Inspecionar
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="project-tag">{{ project.category }}</span>
+                                    <h3 class="project-title">{{ project.title }}</h3>
+                                    <p class="project-desc">{{ project.description }}</p>
                                 </div>
                             </div>
-                            <div class="card-content">
-                                <span class="project-tag">{{ project.category }}</span>
-                                <h3 class="project-title">{{ project.title }}</h3>
-                                <p class="project-desc">{{ project.description }}</p>
-                            </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <!-- Seta Direita -->
-            <button class="slider-arrow next" @click="nextSlide" v-if="filteredProjects.length > cardsPerView">
+                <!-- Seta Direita -->
+                <button class="slider-arrow next" @click="nextSlide" v-if="filteredProjects.length > cardsPerView">
                 <i class="fas fa-chevron-right"></i>
             </button>
 
-            <!-- Dots Estilo Pílula Fluida -->
-            <div class="slider-dots" v-if="maxSteps > 0">
-                <span v-for="index in (maxSteps + 1)" :key="'dot-' + index" :class="['dot', { active: (index - 1) === currentSlide }]" @click="currentSlide = (index - 1)"></span>
+                <!-- Dots Estilo Pílula Fluida -->
+                <div class="slider-dots" v-if="maxSteps > 0">
+                    <span v-for="index in (maxSteps + 1)" :key="'dot-' + index" :class="['dot', { active: (index - 1) === currentSlide }]" @click="currentSlide = (index - 1)"></span>
+                </div>
+
+            </div>
+
+            <div v-else style="text-align: center; color: var(--secondary); font-weight: bold;">
+                NENHUM PROJETO ENCONTRADO NO BANCO DE DADOS.
             </div>
 
         </div>
-
-        <div v-else style="text-align: center; color: var(--secondary); font-weight: bold;">
-            NENHUM PROJETO ENCONTRADO NO BANCO DE DADOS.
-        </div>
-
     </div>
+
+
 </div>

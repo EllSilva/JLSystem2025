@@ -1,189 +1,468 @@
 <div>
 
-  <!-- Page Header Start -->
-  <div class="container-fluid page-hospedagem mb-5 py-5">
-    <div class="container">
-      <h1 class="display-3 text-white mb-3 animated slideInDown">Hospedagem </h1>
-      <nav aria-label="breadcrumb animated slideInDown">
-        <ol class="breadcrumb text-uppercase">
-          <li class="breadcrumb-item text-white">Os melhores planos de hospedagem de sites para garantir sua presença na
-            web! </li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  <!-- Page Header End -->
+    <!-- Sub-navegação Superior  container py-5 -->
+    <header class="border-bottom py-3 bg-white">
+        <div class="container">
+            <div class="d-flex align-items-center flex-wrap gap-4">
+                <!-- Link na Marca/Título Principal -->
+                <a :href="brandUrl" class="subnav-brand me-3">{{ brandTitle }}</a>
 
-
-
-
-
-  <!-- Service Start Explore Explore  -->
-  <div class="container-fluid py-5 px-4 px-lg-0">
-   
-        <div class="ms-lg-5 ps-lg-5">
-          <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-secondary text-uppercase">NOSSOS PLANOS</h6>
-            <h1 class="mb-5">Escolha a sua hospedagem</h1>
-          </div>
-          <c-planos_hosp></c-planos_hosp>
+                <div class="d-flex gap-4 align-items-center flex-grow-1 overflow-auto">
+                    <!-- Links do Menu -->
+                    <a v-for="(item, index) in navItems" :key="index" :href="item.url" class="subnav-link text-nowrap" :class="{ 'active': item.active }" @click="setActive(index)">
+                            {{ item.label }}
+                            <i v-if="item.hasDropdown" class="bi bi-chevron-down ms-1" style="font-size: 0.75rem;"></i>
+                        </a>
+                </div>
+            </div>
         </div>
-    
-  </div>
-  <!-- Service End -->
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+
+            <!-- NAVEGAÇÃO / BREADCRUMB -->
 
 
+            <div class="row align-items-center">
+                <!-- COLUNA ESQUERDA: Texto e Lista -->
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <h1 class="hero-title-2 centralizar">Hospedagem de Site</h1>
+                    <p class="hero-description">
+                        Planos de <strong>hospedagem de sites</strong> com alta performance, suporte especializado e segurança avançada para garantir a melhor presença online para sua empresa!
+                    </p>
 
-  <div class="container-kk py-7 fadeInUp" data-wow-delay="0.1s">
+                    <ul class="feature-list">
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span><strong>10% de desconto</strong> no primeiro ano do <strong>Plano Premium</strong></span>
+                        </li>
 
-    <div class="img"></div>
-    <div class="overlay3"></div>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Backup diário <strong>grátis</strong> do site, e-mail e banco de dados</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Certificado SSL <strong>grátis</strong></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span>Tráfego mensal <strong>ilimitado</strong></span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-square-fill"></i>
+                            <span><strong>Satisfação garantida</strong></span>
+                        </li>
+                    </ul>
+                </div>
 
-    <div class="text11 container">
+                <!-- COLUNA DIREITA: Card de Preços -->
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="price-card">
+                        <h5>Planos à partir de</h5>
 
-      <!-- Service Start -->
-      <div class="container-fluid  px-4 px-lg-0">
+                        <!-- FAIXA LARANJA INCLINADA -->
+                        <div class="price-banner">
+                            <span class="price-currency">R$</span>
+                            <span class="price-value">14</span>
+                            <span class="price-cents">,99</span>
+                            <span class="price-period">/ mês*</span>
+                        </div>
 
-        <div class="text-center text-lg-start wow fadeInUp py-3" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">Benefícios para hospedagem de site que você só encontra na JLSySTEM</h6>
-          <h1 class="mb-0">Hospedagem de Site confiável e veloz</h1>
+                        <!-- CENTRAL DE VENDAS -->
+                        <div class="sales-title">Central de Vendas</div>
+                        <ul class="contact-links">
+                            <li><a href="#"><i class="bi bi-person-workspace"></i> Chat</a></li>
+                            <li><a href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+                            <li><a href="#"><i class="bi bi-telephone"></i> Telefone</a></li>
+                            <li><a href="#"><i class="bi bi-envelope"></i> E-mail</a></li>
+                        </ul>
+
+                        <!-- LINK / BOTÃO "CONHEÇA NOSSOS PLANOS" -->
+                        <a href="#" class="btn-plans">
+                            <i class="bi bi-plus-circle"></i> Conheça nossos planos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 offset-lg-1"></div>
+            </div>
+
         </div>
+    </section>
 
-        <div class="row g-0 ">
-          <div class="col-md-12 col-lg-8">
-            <div class="row g-0 ">
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                   <i class="fa fa-water fa-1x text-primary p-2"></i></span>Plataforma completa</h4>
-                  <p>Servidores projetados para seu negócio ter a melhor experiência na Internet. Os serviços são monitorados 24/7/365 por profissionais altamente qualificados.</p>
-                </div>
-              </div>
 
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Estamos sempre online</h4>
-                  <p>Aqui você jamais ficará na mão. Nossa equipe de suporte técnico está à disposição 24 horas por dia, inclusive aos finais de semana e feriados.</p>
-                </div>
-              </div>
 
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Crescendo com você</h4>
-                  <p>A JLSystem se preocupa com o crescimeto dos seus clientes. Queremos oferecer as ferramentas necessárias para o crescimento do seu negócio e, juntos, alcançarmos o sucesso!.</p>
-                </div>
-              </div>
+    <section class="py-5 inicio_setion">
+        <div class="container py-4">
 
-              <div class="col-md-12 col-lg-6">
-                <div class="p-4">
-                   <h4 class="mb-3"><span class="border border-5 border-white mb-4 m-2" style="width: 45px; height: 45px;">
-                    <i class="fa fa-water fa-1x text-primary p-2"></i></span>Custos incomparáveis</h4>
-                  <p>Queremos fazer parte do seu sucesso, pois acreditamos que a Internet hoje é um dos melhores caminhos e por isso, oferecemos o que há de melhor em hospedagem por um preço acessível.</p>
+
+            <div class="row align-items-center gy-5 mb-5 ">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
+                    <h5 class="fonte-h2">Hospedagem.</h5>
+                    <h1 class="hero-title-2 text-dark ">
+                        Rápida, segura e <span> confiável. </span>
+                    </h1>
+                    <p class="section-subtitle">
+                        Descubra por que a <strong>hospedagem de site</strong> da JLSystem é a escolha certa para seu negócio.
+                    </p>
                 </div>
-              </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="row g-5 align-items-start">
+
+                <!-- Coluna da Esquerda (Grade de 6 itens) -->
+                <div class="col-lg-8">
+                    <div class="row g-4">
+
+                        <!-- Item 1 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-gear-wide-connected feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Plataforma completa</h3>
+                            </div>
+                            <p class="feature-text">
+                                Servidores robustos e monitorados 24/7/365, garantindo alta performance, segurança e suporte especializado para oferecer a melhor experiência online ao seu negócio.
+                            </p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-rocket-takeoff feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Performance e segurança</h3>
+                            </div>
+                            <p class="feature-text">
+                                Equipamentos de ponta e data centers globais garantem um ambiente de hospedagem rápido, estável e seguro, oferecendo máxima confiabilidade para o seu site.
+                            </p>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-calendar2-check feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Estamos sempre online</h3>
+                            </div>
+                            <p class="feature-text">
+                                Aqui você jamais ficará na mão. Nossa equipe de suporte técnico está à disposição 24 horas por dia, inclusive aos finais de semana e feriados.
+                            </p>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-calendar2-check feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Crescendo com você</h3>
+                            </div>
+                            <p class="feature-text">
+                                Com 8 anos de experiência, oferecemos as ferramentas certas para apoiar o crescimento do seu negócio e garantir sucesso juntos.
+                            </p>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash-coin feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Custos incomparáveis</h3>
+                            </div>
+                            <p class="feature-text">
+                                Queremos fazer parte do seu sucesso, pois acreditamos que a Internet é um dos melhores caminhos atualmente. Por isso, oferecemos o que há de melhor em hospedagem, a um preço acessível.
+                            </p>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-shield-check feature-icon me-3"></i>
+                                <h3 class="feature-title mb-0">Satisfação 100% garantida</h3>
+                            </div>
+                            <p class="feature-text">
+                                Eleve o nível do seu projeto online com a hospedagem mais confiável e estável do mercado. Teste agora sem riscos: satisfação 100% assegurada para o seu site decolar de vez!
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Coluna da Direita (Card de Mais Benefícios) -->
+                <div class="col-lg-4">
+                    <div class="benefits-card p-4">
+                        <h2 class="benefits-title mb-4">
+                            Mais benefícios <span>para você...</span>
+                        </h2>
+
+                        <ul class="benefits-list">
+                            <li><i class="bi bi-tag"></i> Sem taxa de inscrição</li>
+                            <li><i class="bi bi-speedometer2"></i> Uptime garantido de 99.9%</li>
+                            <li><i class="bi bi-cloud-arrow-up"></i> Migração da hospedagem grátis</li>
+                            <li><i class="bi bi-headset"></i> Suporte técnico especializado</li>
+                            <li><i class="bi bi-layers"></i> Isolamento de recursos por cliente</li>
+                            <li><i class="bi bi-emoji-smile"></i> Cancelamento sem burocracia ou taxa</li>
+                            <li><i class="bi bi-lightning-charge"></i> Alta velocidade com rede redundante</li>
+                            <li><i class="bi bi-sliders"></i> Painel de Controle cPanel</li>
+                            <li><i class="bi bi-box-seam"></i> Instale Apps com 1 clique</li>
+                            <li><i class="bi bi-code-slash"></i> Suporte a PHP, Node.js®, Python, etc.</li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="col-md-12 col-lg-4">
-            <div class="p-4 border border-5 border-white bg-light">
-              
-              <h6 class="text-secondary text-uppercase py-4">Mais benefícios para você...</h6>
-         
-              <div class=" wow fadeInUp" data-wow-delay="0.1s">
+    <section>
 
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Uptime garantido de 99.9%
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Liberdade de ir e vir
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Suporte técnico especializado
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Protecção DDoS
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Isolamento de recursos por cliente
-                </p>
-                
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Rede redundante e alta velocidade
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Painel de Controle cPanel
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Instalador automático Softaculous
-                </p>
-                <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>
-                  Suporte a PHP, Node.js®, Python, etc.
-                </p>
-              
-                
-              </div>
+        <div class="plano-fundo inicio pb-5">
+
+            <div class="container ">
+
+                <div class="row align-items-center gy-5 mb-5 pt-xl-5">
+                    <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
+                        <h5 class="fonte-h2">Planos Website.</h5>
+                        <h1 class="hero-title-2  ">
+                            Plano <span> Kombo Site. </span>
+                        </h1>
+                        <p class="">
+                            Encontre o plano de site ideal para si, ou <span> peça um orçamento personalizado. </span>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row g-3 justify-content-center align-items-stretch">
+
+                        <!-- START -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="pricing-card">
+                                <div class="card-header-custom">
+                                    <h3 class="plan-title">START</h3>
+                                    <p class="plan-subtitle">Ideal para começar na web</p>
+                                </div>
+                                <ul class="features-list-plano">
+                                    <li><strong>1</strong> Site</li>
+                                    <li><strong>20 GB</strong> Armazenamento SSD</li>
+                                    <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                                    <li><strong>20</strong> Contas de E-mail</li>
+                                    <li><strong>Grátis</strong> Certificado SSL</li>
+                                    <li><strong>Grátis</strong> Construtor de Sites</li>
+                                    <li><strong>Grátis</strong> Backup Diário</li>
+                                    <li><strong>Suporte</strong> Chat e E-mail</li>
+
+                                </ul>
+                                <div class="card-footer-custom">
+
+
+                                    <div class="price-container">
+                                        <span class="price-currency">R$</span>
+                                        <span class="price-main">14</span>
+                                        <div>
+                                            <span class="price-cents">,99</span>
+                                            <span class="price-period">/ Mês *</span>
+                                        </div>
+                                    </div>
+                                    <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                                    <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                                    <p class="total-price">Pagamento total antecipado<br>de <del>R$ 1.079,64</del> por <strong>R$ 539,82</strong></p>
+                                    <button class="btn btn-action">Comece Agora</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRO (Destaque) -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="pricing-card featured">
+                                <div class="popular-ribbon">+ Popular!</div>
+                                <div class="card-header-custom">
+                                    <h3 class="plan-title">PRO</h3>
+                                    <p class="plan-subtitle">Ideal para ascensão na web</p>
+                                </div>
+                                <ul class="features-list-plano">
+                                    <li><strong>Ilimitados</strong> Sites</li>
+                                    <li><strong>100 GB</strong> Armazenamento SSD</li>
+                                    <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                                    <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                                    <li><strong>Grátis</strong> Certificado SSL</li>
+                                    <li><strong>Grátis</strong> Construtor de Sites</li>
+                                    <li><strong>Grátis</strong> Backup Diário</li>
+                                    <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+
+                                </ul>
+                                <div class="card-footer-custom">
+
+
+                                    <div class="price-container">
+                                        <span class="price-currency">R$</span>
+                                        <span class="price-main">22</span>
+                                        <div>
+                                            <span class="price-cents">,49</span>
+                                            <span class="price-period">/ Mês *</span>
+                                        </div>
+                                    </div>
+                                    <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                                    <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                                    <p class="total-price">Pagamento total antecipado<br>de <del>R$ 1.619,64</del> por <strong>R$ 809,82</strong></p>
+                                    <button class="btn btn-action">Comece Agora</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BUSINESS -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="pricing-card">
+                                <div class="card-header-custom">
+                                    <h3 class="plan-title">BUSINESS</h3>
+                                    <p class="plan-subtitle">Ideal para crescimento e performance</p>
+                                </div>
+                                <ul class="features-list-plano">
+                                    <li><strong>Ilimitados</strong> Sites</li>
+                                    <li><strong>100 GB</strong> Armazenamento SSD</li>
+                                    <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                                    <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                                    <li><strong>Grátis</strong> Certificado SSL</li>
+                                    <li><strong>Grátis</strong> Construtor de Sites</li>
+                                    <li><strong>Grátis</strong> Backup Diário</li>
+                                    <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+
+
+                                </ul>
+                                <div class="card-footer-custom">
+
+
+                                    <div class="price-container">
+                                        <span class="price-currency">R$</span>
+                                        <span class="price-main">34</span>
+                                        <div>
+                                            <span class="price-cents">,99</span>
+                                            <span class="price-period">/ Mês *</span>
+                                        </div>
+                                    </div>
+                                    <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                                    <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                                    <p class="total-price">Pagamento total antecipado<br>de <del>R$ 2.519,64</del> por <strong>R$ 1.259,82</strong></p>
+                                    <button class="btn btn-action">Comece Agora</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PREMIUM -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="pricing-card">
+                                <div class="card-header-custom">
+                                    <h3 class="plan-title">PREMIUM</h3>
+                                    <p class="plan-subtitle">Ideal para alta performance</p>
+                                </div>
+                                <ul class="features-list-plano">
+                                    <li><strong>Ilimitados</strong> Sites</li>
+                                    <li><strong>150 GB</strong> Armazenamento SSD</li>
+                                    <li><strong>Ilimitado</strong> Tráfego Mensal</li>
+                                    <li><strong>Ilimitadas</strong> Contas de E-mail</li>
+                                    <li><strong>Grátis</strong> Certificado SSL</li>
+                                    <li><strong>Grátis</strong> Construtor de Sites</li>
+                                    <li><strong>Grátis</strong> Backup Diário</li>
+                                    <li><strong>Suporte</strong> Telefone, Chat e E-mail</li>
+
+
+                                </ul>
+                                <div class="card-footer-custom">
+
+                                    <div class="price-container">
+                                        <span class="price-currency">R$</span>
+                                        <span class="price-main">49</span>
+                                        <div>
+                                            <span class="price-cents">,99</span>
+                                            <span class="price-period">/ Mês *</span>
+                                        </div>
+                                    </div>
+                                    <div class="discount-badge">50% de desconto no 1º pagamento</div>
+                                    <p class="renovation-text">+ 30% de desconto pra sempre<br>na renovação!</p>
+                                    <p class="total-price">Pagamento total antecipado<br>de <del>R$ 3.599,64</del> por <strong>R$ 1.799,82</strong></p>
+                                    <button class="btn btn-action">Comece Agora</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="py-5">
+        <div class="container py-3">
+
+            <div class="row align-items-center gy-5 mb-5 ">
+                <div class="col-lg-12 animate__animated animate__fadeInLeft pt-5 text-center">
+
+                    <h1 class="hero-title-2  ">
+                        Recursos exclusivos para sua <span> hospedagem. </span>
+                    </h1>
+                    <p class="">
+                        Recursos de hospedagem e domínio sob medida para empresas e desenvolvedores.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Coluna 1: FTP / Gerenciador -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <h2 class="column-title">FTP / Gerenciador</h2>
+                    <ul class="feature-list-hosp">
+                        <li><i class="bi bi-chevron-right"></i>Painel de Controle cPanel</li>
+                        <li><i class="bi bi-chevron-right"></i>Contas de FTP</li>
+                        <li><i class="bi bi-chevron-right"></i>Acesso SSH / Git</li>
+                        <li><i class="bi bi-chevron-right"></i>Gerenciador de arquivos</li>
+                        <li><i class="bi bi-chevron-right"></i>Gerenciador de espaço em disco</li>
+                        <li><i class="bi bi-chevron-right"></i>Assistente de backup</li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 2: Ferramentas -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <h2 class="column-title">Ferramentas</h2>
+                    <ul class="feature-list-hosp">
+                        <li><i class="bi bi-chevron-right"></i>Página de erro customizável</li>
+                        <li><i class="bi bi-chevron-right"></i>Instalador Softaculous</li>
+                        <li><i class="bi bi-chevron-right"></i>Construtor de Sites</li>
+                        <li><i class="bi bi-chevron-right"></i>Agendador de tarefas (Cron Jobs)</li>
+                        <li><i class="bi bi-chevron-right"></i>Gerenciador de DNS</li>
+                        <li><i class="bi bi-chevron-right"></i>Gerenciador de índices</li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Segurança -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <h2 class="column-title">Segurança</h2>
+                    <ul class="feature-list-hosp">
+                        <li><i class="bi bi-chevron-right"></i>Bloqueio de IP</li>
+                        <li><i class="bi bi-chevron-right"></i>Proteção de link</li>
+                        <li><i class="bi bi-chevron-right"></i>Proteção de diretórios com senha</li>
+                        <li><i class="bi bi-chevron-right"></i>Sistema de Firewall</li>
+                        <li><i class="bi bi-chevron-right"></i>Monitoramento 24 horas</li>
+                        <li><i class="bi bi-chevron-right"></i>Backup para disaster recovery</li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4: Estatísticas -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <h2 class="column-title">Estatísticas</h2>
+                    <ul class="feature-list-hosp">
+                        <li><i class="bi bi-chevron-right"></i>Webalizer e Awstats</li>
+                        <li><i class="bi bi-chevron-right"></i>Webalizer FTP</li>
+                        <li><i class="bi bi-chevron-right"></i>Relatório de tráfego mensal</li>
+                        <li><i class="bi bi-chevron-right"></i>Registro de erros</li>
+                        <li><i class="bi bi-chevron-right"></i>Logs dos últimos visitantes</li>
+                        <li><i class="bi bi-chevron-right"></i>Logs de acesso bruto</li>
+                    </ul>
+                </div>
 
             </div>
-          </div>
-
         </div>
-      </div>
-      <!-- Service End -->
-
-
-    </div>
-  </div>
- 
-
-  <!-- Service Start -->
-  <div class="container-xxl py-5">
-    <div class="container">
-      <div class="row g-4">
-
-        <div class="text-center text-lg-start wow fadeInUp" data-wow-delay="0.1s">
-          <h6 class="text-secondary text-uppercase">NOSSOS PLANOS</h6>
-          <h1 class="mb-5">Podes precissar Também </h1>
-        </div>
-
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_hospedagem.webp" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Hospedagem de Sites</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_dominios.jpg" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">Domínio</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
-          <div class="overflow-hidden">
-            <img class="img-fluid w-100 h-100" src="assets/img/sc_email.png" alt="">
-          </div>
-          <div class="d-flex align-items-center justify-content-between bg-light p-4">
-            <h5 class="text-truncate me-3 mb-0">
-              E-mail profissional</h5>
-            <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0" href=""><i
-                class="fa fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Service End -->
-
-
+    </section>
 
 </div>

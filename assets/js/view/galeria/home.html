@@ -1,100 +1,31 @@
-<div>
-    <div class="container">
+<div class="container">
+    <header>
+        <h1>Creative Lab</h1>
+        <p style="color: var(--primary); letter-spacing: 2px;">GALERIA DE PROJETOS DO FUTURO</p>
+    </header>
 
-        <!-- HERO -->
-        <section class="hero_port">
-            <p style=" color: #a52a2a;">PORTFÓLIO</p>
-            <h1>Trabalhos Realizados: <br> Exemplos de <span>Sucesso</span></h1>
-        </section>
-
-
-        <!-- SUBTITLE -->
-        <div class="subtitle">
-            <p>ALGUNS EXEMPLOS</p>
-            <h3>Transformando Ideias em Realidade</h3>
-            <button class="btn btn-custom">PEDIR UM ORÇAMENTO</button>
-        </div>
-
-        <!-- PORTFOLIO -->
-        <section class="portfolio">
-            <div class="container_portfolio">
-
-                <!-- TABS -->
-                <div class="tabs">
-                    <div class="tab" :class="{active: activeTab === 0}" @click="activeTab = 0">
-                        WebSite / Lojas
-                    </div>
-
-                    <div class="tab" :class="{active: activeTab === 1}" @click="activeTab = 1">
-                        Designer
-                    </div>
-
-                    <div class="tab" :class="{active: activeTab === 2}" @click="activeTab = 2">
-                        Video Publicitario
-                    </div>
-                </div>
-
-                <!-- CARDS (HTML REAL) -->
-                <div class="card" :class="{active: activeTab === 0}">
-
-                    <div class="row g-3">
-
-                        <!-- ITEM -->
-
-                        <div class="col-md-3">
-                            <div class="portfolio-item">
-                                <div class="portfolio-img" style="background-image:url('assets/img/portfolio/website001.jpeg');"></div>
-                                <div class="portfolio-title">ecco</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="portfolio-item">
-                                <div class="portfolio-img" style="background-image:url('assets/img/portfolio/website002.jpg');"></div>
-                                <div class="portfolio-title">Famp</div>
-                            </div>
-                        </div>
-
-                        <!-- DUPLICAR ITENS -->
-                        <div class="col-md-3">
-                            <div class="portfolio-item">
-                                <div class="portfolio-img" style="background-image:url('assets/img/portfolio/website003.jpg');"></div>
-                                <div class="portfolio-title">FDULAN</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="portfolio-item">
-                                <div class="portfolio-img" style="background-image:url('assets/img/portfolio/website004.jpg');"></div>
-                                <div class="portfolio-title">Melkor</div>
-                            </div>
-                        </div>
-
-
-                        <!-- MAIS ITENS -->
-
-
-
-                    </div>
-
-                </div>
-
-                <div class="card" :class="{active: activeTab === 1}">
-                    <h3>Lojas Online</h3>
-                    <p>Venda produtos com pagamento online integrado.</p>
-                    <button>Comprar agora</button>
-                </div>
-
-                <div class="card" :class="{active: activeTab === 2}">
-                    <h3>Portais</h3>
-                    <p>Sistemas completos com usuários e conteúdos dinâmicos.</p>
-                    <button>Acessar</button>
-                </div>
-
-
-
-            </div>
-        </section>
-
+    <div class="filters">
+        <button v-for="category in categories" :key="category" @click="currentFilter = category" :class="['filter-btn', { active: currentFilter === category }]">
+                {{ category }}
+            </button>
     </div>
+
+    <transition-group name="gallery" tag="div" class="gallery-grid">
+        <div class="project-card" v-for="project in filteredProjects" :key="project.id" @click="handleProjectClick(project)" style="transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+            <div class="card-img-wrapper">
+                <img :src="project.image" :alt="project.title">
+                <div class="card-overlay">
+                    <button class="view-btn">
+                            <i :class="project.category === 'Websites' ? 'fas fa-external-link-alt' : 'fas fa-images'"></i>
+                            {{ project.category === 'Websites' ? 'Acessar Site' : 'Ver Galeria' }}
+                        </button>
+                </div>
+            </div>
+            <div class="card-content">
+                <span class="project-tag">{{ project.category }}</span>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-desc">{{ project.description }}</p>
+            </div>
+        </div>
+    </transition-group>
 </div>
